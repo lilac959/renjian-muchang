@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+ <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+ <meta name="theme-color" content="#102b32"><meta name="description" content="人间牧场：在五分钟里，执掌生命、天气与死亡，维系双岛文明，收集三百灵魂。">
+ <meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
+ <title>人间牧场 · 双岛纪事</title><link rel="icon" href="./icon.svg" type="image/svg+xml"><link rel="manifest" href="./manifest.webmanifest"><link rel="stylesheet" href="./style.css">
+</head>
+<body>
+ <canvas id="world" aria-label="双岛世界：选择技能后点按岛屿施放"></canvas>
+ <div id="hud" hidden>
+  <header><div class="brand"><button id="menu" class="square" aria-label="游戏菜单">☰</button><span>人间牧场<small>双岛纪事</small></span></div><div class="score"><span class="soul-mark">✧</span><b id="souls">0</b><span class="muted">/ 300</span><i></i><span id="timer">05:00</span><div class="progress"><span id="progress"></span></div></div><div class="right"><span class="mana">✦ <b id="mana">30</b><small>灵力</small></span><button id="pause" class="square" aria-label="暂停或继续">Ⅱ</button></div></header>
+  <div id="warning" hidden></div><div id="toast" role="status" hidden></div>
+  <div id="countries"></div><div id="paused" hidden>时间停驻<small>点右上角 ▶ 继续</small></div>
+  <aside id="detail" hidden></aside>
+  <div id="targetPanel" hidden><span id="targetInfo"></span><button id="cast" class="primary">✓ 施放</button><button id="cancel" class="square" aria-label="取消技能">×</button></div>
+  <footer><div id="gods"><button data-group="0" class="god life active"><span>❦</span><b>生命</b><small>生生不息</small></button><button data-group="1" class="god sky"><span>☁</span><b>天气</b><small>风雨有时</small></button><button data-group="2" class="god death"><span>☾</span><b>死亡</b><small>万物归途</small></button></div><div class="skill-area"><div id="hint">选择神明与技能，干预这片人间</div><div id="skills"></div></div><div class="chapter"><span id="year">第 0 年</span><small>固定 1 倍速 · 300 秒</small></div></footer>
+  <div id="weather" hidden><label>温度 <select id="temperature"><option value="normal">恒温</option><option value="hot">高温</option><option value="cold">低温</option></select></label><label>云量 <select id="cloud"><option value="yes">多云</option><option value="no">少云</option></select></label><small>恒温多云：降雨增产</small></div>
+ </div>
+ <main id="home" class="overlay"><section class="home-card"><div class="eyebrow">A LITTLE WORLD IN YOUR HANDS</div><div class="ornament">✧ ── ❦ ── ✧</div><h1>人间牧场</h1><p class="subtitle">予以生机，亦予归途。</p><p class="intro">两座岛屿，两个自行生长的文明。<br>你掌管生命、天气与死亡，<br>在五分钟里，收集三百个人类灵魂。</p><div class="home-actions"><button id="start" class="primary">开启一段人间 <span>→</span></button><button id="continue" hidden>继续上次的世界</button></div><div class="home-note">手机横屏 · 触控游玩 · 本地自动存档</div><div class="version">玩法原型 v0.1</div></section></main>
+ <div id="dialog" class="overlay" hidden><section class="dialog-card"><div id="dialogBody"></div><div id="dialogActions"></div></section></div>
+ <div id="portrait"><div class="rotate">▱ ↻</div><h2>把世界横过来</h2><p>横屏后，两座岛屿便能尽收眼底。</p><small>旋转设备继续 · 游戏已暂停</small></div>
+ <script type="module" src="./app.js"></script>
+</body></html>

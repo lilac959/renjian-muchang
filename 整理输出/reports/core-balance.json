@@ -1,0 +1,188 @@
+{
+  "note": "真实模拟、合法施法，无强制补人。候选参数未证明300魂可达。",
+  "reports": [
+    {
+      "strategy": "observe",
+      "seed": 11,
+      "result": "timeout",
+      "time": 300,
+      "souls": 0,
+      "births": 22,
+      "peak": 26,
+      "population": 26,
+      "islands": 2,
+      "conflict": false,
+      "firstMeat": 59.15,
+      "milestones": {
+        "birth": 15,
+        "build": 15.05,
+        "offering": 20,
+        "houseComplete": 24.3,
+        "adult": 35
+      }
+    },
+    {
+      "strategy": "observe",
+      "seed": 22,
+      "result": "timeout",
+      "time": 300,
+      "souls": 0,
+      "births": 24,
+      "peak": 28,
+      "population": 28,
+      "islands": 2,
+      "conflict": false,
+      "firstMeat": 57.7,
+      "milestones": {
+        "birth": 15,
+        "build": 15.05,
+        "offering": 20,
+        "houseComplete": 25.05,
+        "adult": 35
+      }
+    },
+    {
+      "strategy": "observe",
+      "seed": 33,
+      "result": "timeout",
+      "time": 300,
+      "souls": 0,
+      "births": 22,
+      "peak": 26,
+      "population": 26,
+      "islands": 2,
+      "conflict": false,
+      "firstMeat": 57.95,
+      "milestones": {
+        "birth": 15,
+        "build": 15.05,
+        "offering": 20,
+        "houseComplete": 31.1,
+        "adult": 35
+      }
+    },
+    {
+      "strategy": "rain",
+      "seed": 11,
+      "result": "timeout",
+      "time": 300,
+      "souls": 0,
+      "births": 24,
+      "peak": 28,
+      "population": 28,
+      "islands": 2,
+      "conflict": false,
+      "firstMeat": 58.95,
+      "milestones": {
+        "birth": 15,
+        "build": 15.05,
+        "offering": 20,
+        "houseComplete": 24.3,
+        "adult": 35
+      }
+    },
+    {
+      "strategy": "rain",
+      "seed": 22,
+      "result": "timeout",
+      "time": 300,
+      "souls": 0,
+      "births": 22,
+      "peak": 26,
+      "population": 26,
+      "islands": 2,
+      "conflict": false,
+      "firstMeat": 56.6,
+      "milestones": {
+        "birth": 15,
+        "build": 15.05,
+        "offering": 20,
+        "houseComplete": 25.05,
+        "adult": 35
+      }
+    },
+    {
+      "strategy": "rain",
+      "seed": 33,
+      "result": "timeout",
+      "time": 300,
+      "souls": 0,
+      "births": 25,
+      "peak": 29,
+      "population": 29,
+      "islands": 2,
+      "conflict": false,
+      "firstMeat": 58.85,
+      "milestones": {
+        "birth": 15,
+        "build": 15.05,
+        "offering": 20,
+        "houseComplete": 31.1,
+        "adult": 35
+      }
+    },
+    {
+      "strategy": "growth-and-harvest",
+      "seed": 11,
+      "result": "timeout",
+      "time": 300,
+      "souls": 3,
+      "births": 30,
+      "peak": 31,
+      "population": 31,
+      "islands": 2,
+      "conflict": false,
+      "firstMeat": 60.15,
+      "milestones": {
+        "birth": 9.55,
+        "build": 9.6,
+        "offering": 20,
+        "houseComplete": 20.2,
+        "adult": 29.55,
+        "soul": 235.9
+      }
+    },
+    {
+      "strategy": "growth-and-harvest",
+      "seed": 22,
+      "result": "timeout",
+      "time": 300,
+      "souls": 3,
+      "births": 30,
+      "peak": 31,
+      "population": 31,
+      "islands": 2,
+      "conflict": false,
+      "firstMeat": 56.6,
+      "milestones": {
+        "birth": 9.55,
+        "build": 9.6,
+        "houseComplete": 18.95,
+        "offering": 20,
+        "adult": 29.55,
+        "soul": 235.9
+      }
+    },
+    {
+      "strategy": "growth-and-harvest",
+      "seed": 33,
+      "result": "timeout",
+      "time": 300,
+      "souls": 3,
+      "births": 30,
+      "peak": 31,
+      "population": 31,
+      "islands": 2,
+      "conflict": false,
+      "firstMeat": 60,
+      "milestones": {
+        "birth": 9.55,
+        "build": 9.6,
+        "offering": 20,
+        "houseComplete": 20.25,
+        "adult": 29.55,
+        "soul": 235.9
+      }
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "assets": {
+    "building.house": {
+      "url": null,
+      "scale": 1,
+      "rotationY": 0
+    },
+    "building.palace": {
+      "url": null,
+      "scale": 1,
+      "rotationY": 0
+    },
+    "building.store": {
+      "url": null,
+      "scale": 1,
+      "rotationY": 0
+    },
+    "building.altar": {
+      "url": null,
+      "scale": 1,
+      "rotationY": 0
+    },
+    "building.pen": {
+      "url": null,
+      "scale": 1,
+      "rotationY": 0
+    },
+    "building.field": {
+      "url": null,
+      "scale": 1,
+      "rotationY": 0
+    },
+    "nature.tree": {
+      "url": null,
+      "scale": 1,
+      "rotationY": 0
+    },
+    "actor.villager": {
+      "url": null,
+      "scale": 1,
+      "rotationY": 0
+    },
+    "actor.king": {
+      "url": null,
+      "scale": 1,
+      "rotationY": 0
+    },
+    "actor.soldier": {
+      "url": null,
+      "scale": 1,
+      "rotationY": 0
+    },
+    "actor.sheep": {
+      "url": null,
+      "scale": 1,
+      "rotationY": 0
+    },
+    "actor.undead": {
+      "url": null,
+      "scale": 1,
+      "rotationY": 0
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "renjian-muchang-workspace",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix 整理输出 run dev",
+    "test": "npm --prefix 整理输出 run test",
+    "test:config": "npm --prefix 整理输出 run test:config",
+    "balance": "npm --prefix 整理输出 run balance",
+    "config:check": "npm --prefix 整理输出 run config:check",
+    "config:sync": "npm --prefix 整理输出 run config:sync"
+  }
+}

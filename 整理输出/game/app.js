@@ -2,7 +2,7 @@ import {targetPreview} from './target-preview.js';
 import {GameAudio} from './game-audio.js';
 import {PauseState} from './pause-state.js';
 import {CameraControls,DEFAULT_CAMERA} from './camera-controls.js';
-import {WorldView} from './scene.js';
+import {WorldView} from './scene.js?v=16.2';
 import {World,distance} from './engine.js';
 import {CONFIG as C,SKILLS} from './config.js';
 import {GameInput} from './input.js';
@@ -16,6 +16,8 @@ const gameAudio=new GameAudio();
 function unlockAudio(){gameAudio.setSettings(settings);gameAudio.unlock();}
 document.addEventListener('pointerdown',unlockAudio,{capture:true});
 document.addEventListener('keydown',unlockAudio,{capture:true});
+document.addEventListener('visibilitychange',()=>gameAudio.update([],{paused:running&&world.paused&&!world.result,hidden:document.hidden}));
+window.addEventListener('pagehide',()=>gameAudio.track.update(settings.music,true));
 function audioSetting(key){settings[key]=!settings[key];gameAudio.setSettings(settings);try{localStorage.setItem('rjmc-settings',JSON.stringify(settings));}catch{}menu();}
 
 function save(){if(!running||world.result)return;try{saved=world.serialize();localStorage.setItem(saveKey,saved);world.saveRequested=false;lastSave=world.time;}catch{if(!world.pending.length)toast('保存失败，请检查浏览器存储');}}
@@ -28,7 +30,7 @@ function openModal(kind){modalKind=kind;if(running)pauseState.open('dialog');cle
 function closeModal(){modalKind='';$('dialog').hidden=true;pauseState.close('dialog');syncPause();input.clear();updateUI();if(running)$('menu').focus({preventScroll:true});}
 function togglePause(){if(!running||world.result||modalKind)return;pauseState.toggle();clearPick();syncPause();updateUI();}
 function help(fromHome=false,fresh=false){openModal(fromHome?'home-help':fresh?'intro':'help');dialog(guide(),[{label:fresh?'进入人间':'返回',primary:true,action:fromHome||fresh?closeModal:menu}],'guide');}
-function menu(){if(!running||world.result)return;openModal('menu');dialog(`<div class="menu-heading"><img class="menu-portrait" src="assets/ui/approved-${art[group]}.png" alt="当前神明"><div><small>人间牧场</small><h2>游戏菜单</h2><p>暂歇片刻，再执神谕</p></div></div>`,[{label:'返回游戏',primary:true,action:closeModal},{label:'玩法说明',action:()=>help()},{label:'音效：'+(settings.sound?'开':'关'),action:()=>audioSetting('sound')},{label:'背景音乐：'+(settings.music?'开':'关'),action:()=>audioSetting('music')},{label:'重新开始',action:restart},{label:'保存并返回首页',action:home}],'game-menu');}
+function menu(){if(!running||world.result)return;openModal('menu');dialog(`<div class="menu-heading"><img class="menu-portrait" src="assets/ui/approved-${art[group]}.png" alt="当前神明"><div><small>人间牧场</small><h2>游戏菜单</h2><p>暂歇片刻，再执神谕</p><small>BGM：<a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100565" target="_blank" rel="noopener">Corncob — Kevin MacLeod</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></small></div></div>`,[{label:'返回游戏',primary:true,action:closeModal},{label:'玩法说明',action:()=>help()},{label:'音效：'+(settings.sound?'开':'关'),action:()=>audioSetting('sound')},{label:'背景音乐：'+(settings.music?'开':'关'),action:()=>audioSetting('music')},{label:'重新开始',action:restart},{label:'保存并返回首页',action:home}],'game-menu');}
 function restart(){openModal('restart');dialog('<h2>重新开始？</h2><p>当前对局将被替换。</p>',[{label:'开始新局',primary:true,action:()=>begin(false)},{label:'取消',action:running?menu:closeModal}]);}
 function home(){if(!world.result&&world.pending.length){toast('陨石尚未落地，请继续游戏后保存');return;}save();pauseState.reset(true);modalKind='';world.paused=true;running=false;clearPick();$('dialog').hidden=true;$('hud').hidden=true;showHome(saved,{start:()=>saved?restart():begin(),continue:()=>begin(true),help:()=>help(true)});}
 function begin(load=false){if(!view.ready){toast('岛屿尚未加载完成');return;}try{world=load?World.restore(saved):new World();}catch(e){toast(e.message);return;}pauseState.reset(load);modalKind='';syncPause();view.clearVisuals();running=true;resultShown=false;group=0;lastSoul=world.souls;lastSave=world.time;controls.reset(false);clearPick();$('home').hidden=true;$('hud').hidden=false;$('dialog').hidden=true;cards();if(load){syncPause();updateUI();}else{help(false,true);save();}}

@@ -1,7 +1,7 @@
 {
   "status": "简化双岛战争版：目标以自动策略实测验证，仍需真人试玩",
   "config": {
-    "version": 4,
+    "version": 5,
     "duration": 300,
     "goal": 60,
     "mana": 30,

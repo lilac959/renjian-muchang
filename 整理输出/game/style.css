@@ -45,3 +45,6 @@ footer:before,footer:after{content:"";position:absolute;top:0;bottom:0;width:44p
 
 /* Simplified loop: keep names, trends and a consistent casting instruction visible. */
 .country strong{display:block;font-size:13px;letter-spacing:1px}.country .climate{max-width:340px}#hint{display:block;font-size:11px;max-width:300px;margin-bottom:6px;color:#e0d0b0}.skill .label{display:block;position:static;font-size:10px;margin:0}.skill.active .label{position:static;border:0;padding:0;width:auto;background:none}.skill .icon{height:44px;width:44px}.skill-area{align-self:flex-end}#weather{top:150px}#targetPanel{z-index:6}.country .stats{flex-wrap:wrap}#warning{top:150px}
+
+#resetView{position:fixed;right:14px;top:10px;pointer-events:auto;padding:8px 10px;font-size:12px;z-index:3}#paused{pointer-events:none}
+#paused{top:auto;bottom:112px;left:14px;transform:none;font-size:14px;text-align:left;background:#252a2bd9;padding:8px 12px;border-radius:5px;letter-spacing:1px}#paused small{font-size:10px;margin-top:4px}

@@ -1,3 +1,4 @@
+import {islandId,castable,walkable,nearestWalkable,moveAlong} from './island-layout.js';
 import {CONFIG as C, SKILLS, CLIMATE} from './config.js';
 export const distance = (a,b) => Math.hypot(a.x-b.x,a.y-b.y);
 
@@ -9,7 +10,7 @@ export class World {
   for(let id=0;id<2;id++) this.createIsland(id);
  }
  random(){this.seed=(Math.imul(this.seed,1664525)+1013904223)>>>0;return this.seed/4294967296;}
- point(c){const a=this.random()*Math.PI*2,r=Math.sqrt(this.random());return {x:c.x+Math.cos(a)*r*11,y:c.y+Math.sin(a)*r*8};}
+ point(c){for(let i=0;i<64;i++){const a=this.random()*Math.PI*2,r=Math.sqrt(this.random()),p={x:c.x+Math.cos(a)*r*11,y:c.y+Math.sin(a)*r*8};if(walkable(p)&&islandId(p)===c.id)return p;}return nearestWalkable(c,c.id);}
  createIsland(id){
   const c={id,name:id?'白鹿岛':'青禾岛',x:id?76:27,y:28,food:C.initialFood,birthProgress:0,
    offering:0,weather:{kind:'normal',left:0},army:null,lastArmy:-C.armyInterval};
@@ -17,6 +18,7 @@ export class World {
   for(let i=0;i<C.initialAdults;i++)this.spawn('human',c,true);
  }
  spawn(kind,c,adult=false,p=this.point(c)){
+  p=nearestWalkable(p,c.id);
   const e={id:++this.serial,kind,country:c.id,x:p.x,y:p.y,adult,growth:0,hp:kind==='undead'?C.undeadHP:C.humanHP,
    dead:false,bless:0,joy:0,sick:0,immune:0,spread:0,starve:0,attack:0,soldier:false,returning:false,
    life:C.undeadSeconds,action:adult?'自动生产':'成长中',destination:this.point(c)};
@@ -27,8 +29,8 @@ export class World {
  workers(c){return this.adults(c).filter(e=>!e.soldier&&e.sick<=0&&e.action!=='守卫岛屿');}
  get(id){return this.entities.find(e=>e.id===id&&!e.dead);}
  targets(p,r){return this.entities.filter(e=>!e.dead&&distance(e,p)<=r);}
- islandAt(p){return this.islands.find(c=>((p.x-c.x)/22)**2+((p.y-c.y)/17)**2<=1);}
- inWorld(p){return this.islandAt(p)||p.x>=43&&p.x<=60&&Math.abs(p.y-28)<=4;}
+ islandAt(p){const id=islandId(p);return id===null?undefined:this.islands[id];}
+ inWorld(p){return castable(p);}
  climate(c){return CLIMATE[c.weather.left>0?c.weather.kind:'normal'];}
  consumption(c){return this.humans(c.id).reduce((n,e)=>n+C.foodUse*(e.joy>0?C.joyFoodFactor:1),0);}
  production(c){return this.workers(c).reduce((n,e)=>n+C.foodRate*(e.bless>0?C.blessFactor:1)*(e.starve>0?.5:1),0)*this.climate(c).field;}
@@ -48,7 +50,7 @@ export class World {
   }
  }
  damage(e,n){if(!e||e.dead)return;e.hurt=true;e.hp-=n;if(e.hp<=0)this.kill(e);}
- move(e,p,dt,speed=C.walkSpeed){const d=distance(e,p);if(d<=speed*dt){e.x=p.x;e.y=p.y;}else if(d>0){const f=speed*dt/d;e.x+=(p.x-e.x)*f;e.y+=(p.y-e.y)*f;}return distance(e,p)<.2;}
+ move(e,p,dt,speed=C.walkSpeed){return moveAlong(e,p,dt,speed);}
  attackTarget(e,v,dt,damage){this.move(e,v,dt,C.soldierSpeed);if(distance(e,v)<=1.2&&e.attack<=0){this.damage(v,damage);e.attack=C.attackInterval;this.fx(v.x,v.y,'－'+damage,'#ffb39d');}}
  armyCheck(c,p=c){
   if(this.truce>0)return '双方停战保护中';
@@ -78,12 +80,7 @@ export class World {
   const victim=enemyAdults.filter(v=>distance(v,e)<8).sort((a,b)=>distance(a,e)-distance(b,e))[0];
   if(victim){e.action='交战中';this.attackTarget(e,victim,dt,C.soldierDamage);}else{e.action='跨桥出征';this.cross(e,enemy,dt);if(!enemyAdults.length)this.retreat(c);}
  }
- cross(e,dest,dt){
-  let p=dest;
-  if(dest.id===1){if(e.x<43)p={x:43,y:28};else if(e.x<60)p={x:60,y:28};}
-  else {if(e.x>60)p={x:60,y:28};else if(e.x>43)p={x:43,y:28};}
-  this.move(e,p,dt,C.soldierSpeed);
- }
+ cross(e,dest,dt){this.move(e,nearestWalkable(dest,dest.id),dt,C.soldierSpeed);}
  legalTargets(id,p,r){return this.targets(p,r).filter(e=>e.kind==='human'&&(id!=='joy'||e.adult)&&(id!=='plague'||e.sick<=0&&e.immune<=0));}
  validate(id,p,weather='rain'){
   const s=SKILLS.find(s=>s.id===id);if(!s)return '未知技能';if(this.result)return '本局已结束';if(this.paused)return '请先继续游戏';
@@ -151,7 +148,7 @@ export class World {
  judge(){if(this.result)return;if(this.souls>=C.goal)this.result='success';else if(!this.humans().length)this.result='extinct';else if(this.time+1e-8>=C.duration)this.result='timeout';if(this.result)this.paused=true;}
  serialize(){if(this.result)throw Error('本局已结束');if(this.pending.length){this.saveRequested=true;throw Error('陨石落地后补存');}return JSON.stringify({version:C.version,state:{...this,effects:[],events:[],saveRequested:false}});}
  static restore(json){const d=JSON.parse(json);if(d.version!==C.version)throw Error('旧版存档不兼容，请开始新局');const s=d.state;
-  if(!s||s.result||!Number.isFinite(s.time)||s.time<0||s.time>=C.duration||!Number.isFinite(s.mana)||s.mana<0||!Number.isInteger(s.souls)||s.souls<0||!Array.isArray(s.islands)||s.islands.length!==2||!Array.isArray(s.entities)||!Array.isArray(s.corpses)||!Array.isArray(s.fires)||!Array.isArray(s.pending)||s.pending.length||new Set(s.entities.map(e=>e.id)).size!==s.entities.length||s.entities.some(e=>!s.islands[e.country]||!Number.isFinite(e.hp)||!Number.isFinite(e.x)||!Number.isFinite(e.y))||s.islands.some(c=>!Number.isFinite(c.food)||c.food<0))throw Error('存档损坏，无法恢复');
+  if(!s||s.result||!Number.isFinite(s.time)||s.time<0||s.time>=C.duration||!Number.isFinite(s.mana)||s.mana<0||!Number.isInteger(s.souls)||s.souls<0||!Array.isArray(s.islands)||s.islands.length!==2||!Array.isArray(s.entities)||!Array.isArray(s.corpses)||!Array.isArray(s.fires)||!Array.isArray(s.pending)||s.pending.length||new Set(s.entities.map(e=>e.id)).size!==s.entities.length||s.entities.some(e=>!s.islands[e.country]||!Number.isFinite(e.hp)||!Number.isFinite(e.x)||!Number.isFinite(e.y)||!walkable(e)||!e.destination||!walkable(e.destination))||s.islands.some(c=>!Number.isFinite(c.food)||c.food<0))throw Error('存档损坏，无法恢复');
   return Object.assign(Object.create(World.prototype),s,{paused:true});
  }
 }

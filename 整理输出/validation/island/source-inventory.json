@@ -1,0 +1,7106 @@
+{
+  "version": "5.2.3 LTS",
+  "scene": "HumanPasture_Island_v02",
+  "scenes": [
+    "HumanPasture_Island_v02",
+    "Tripo_建筑素材_6件"
+  ],
+  "camera": "Camera | 总览",
+  "objects": [
+    {
+      "name": "Wind_Control | 风浪控制",
+      "type": "EMPTY",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "Scene Collection"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [],
+      "vertices": 0,
+      "polygons": 0,
+      "materials": [],
+      "modifiers": []
+    },
+    {
+      "name": "cardboard shelter 3d model",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "Scene Collection"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -0.4895,
+          -0.31,
+          -0.0
+        ],
+        [
+          0.49,
+          0.3087,
+          0.9428
+        ]
+      ],
+      "vertices": 11135,
+      "polygons": 22310,
+      "materials": [
+        "tripo_mat_e952b209"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "house 3d model",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "Scene Collection"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -0.4572,
+          -0.4921,
+          -0.0
+        ],
+        [
+          0.4574,
+          0.4886,
+          0.8358
+        ]
+      ],
+      "vertices": 10815,
+      "polygons": 21645,
+      "materials": [
+        "tripo_mat_d35d4e1e"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "cardboard house 3d model",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "Scene Collection"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -0.4903,
+          -0.3347,
+          -0.0
+        ],
+        [
+          0.49,
+          0.3347,
+          0.8173
+        ]
+      ],
+      "vertices": 11059,
+      "polygons": 22112,
+      "materials": [
+        "tripo_mat_0f45af1d"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "church building 3d model",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "Scene Collection"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -0.4899,
+          -0.345,
+          -0.0
+        ],
+        [
+          0.4912,
+          0.3452,
+          0.8926
+        ]
+      ],
+      "vertices": 10494,
+      "polygons": 21006,
+      "materials": [
+        "tripo_mat_e1ce7e55"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Island_Ground | 草坡_沙滩_浅滩",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "01 | 岛屿地形与沙滩"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -44.7175,
+          -29.558,
+          -0.462
+        ],
+        [
+          40.1061,
+          42.2703,
+          4.4246
+        ]
+      ],
+      "vertices": 38401,
+      "polygons": 38400,
+      "materials": [
+        "Island | Meadow painted tones.001",
+        "Island | Warm sand.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Path Edge 00",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -23.1801,
+          -6.6661,
+          0.9165
+        ],
+        [
+          28.1548,
+          1.9422,
+          1.1739
+        ]
+      ],
+      "vertices": 218,
+      "polygons": 108,
+      "materials": [
+        "Path | Worn earth edge.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Village Lane 00",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -23.1689,
+          -6.6061,
+          0.9401
+        ],
+        [
+          28.1458,
+          1.8825,
+          1.1969
+        ]
+      ],
+      "vertices": 218,
+      "polygons": 108,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path Edge 01",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -18.9791,
+          -5.638,
+          0.9881
+        ],
+        [
+          12.8182,
+          9.185,
+          2.7115
+        ]
+      ],
+      "vertices": 194,
+      "polygons": 96,
+      "materials": [
+        "Path | Worn earth edge.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Village Lane 01",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -18.9196,
+          -5.6298,
+          1.0118
+        ],
+        [
+          12.7586,
+          9.1248,
+          2.6558
+        ]
+      ],
+      "vertices": 194,
+      "polygons": 96,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path Edge 02",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -11.7565,
+          -19.8376,
+          0.9185
+        ],
+        [
+          6.1303,
+          -1.9239,
+          1.1676
+        ]
+      ],
+      "vertices": 170,
+      "polygons": 84,
+      "materials": [
+        "Path | Worn earth edge.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Village Lane 02",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -11.6971,
+          -19.7771,
+          0.9419
+        ],
+        [
+          6.0702,
+          -1.9294,
+          1.1902
+        ]
+      ],
+      "vertices": 170,
+      "polygons": 84,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path Edge 03",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -10.0008,
+          -12.9605,
+          1.0132
+        ],
+        [
+          5.0,
+          -11.6393,
+          1.0835
+        ]
+      ],
+      "vertices": 74,
+      "polygons": 36,
+      "materials": [
+        "Path | Worn earth edge.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Village Lane 03",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -10.0016,
+          -12.9013,
+          1.0379
+        ],
+        [
+          5.0,
+          -11.6986,
+          1.1047
+        ]
+      ],
+      "vertices": 74,
+      "polygons": 36,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path Edge 04",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -4.1861,
+          -19.0005,
+          0.9672
+        ],
+        [
+          -3.0145,
+          -6.0012,
+          1.1154
+        ]
+      ],
+      "vertices": 74,
+      "polygons": 36,
+      "materials": [
+        "Path | Worn earth edge.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Village Lane 04",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -4.1272,
+          -19.0024,
+          0.9905
+        ],
+        [
+          -3.0738,
+          -6.0024,
+          1.1355
+        ]
+      ],
+      "vertices": 74,
+      "polygons": 36,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path Edge 05",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          10.5195,
+          5.3852,
+          1.0159
+        ],
+        [
+          22.3815,
+          16.507,
+          1.2726
+        ]
+      ],
+      "vertices": 74,
+      "polygons": 36,
+      "materials": [
+        "Path | Worn earth edge.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Village Lane 05",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          10.5655,
+          5.4233,
+          1.0389
+        ],
+        [
+          22.3461,
+          16.4579,
+          1.2924
+        ]
+      ],
+      "vertices": 74,
+      "polygons": 36,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path Edge 06",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -18.1217,
+          7.6315,
+          1.3358
+        ],
+        [
+          -6.4615,
+          18.7529,
+          4.165
+        ]
+      ],
+      "vertices": 74,
+      "polygons": 36,
+      "materials": [
+        "Path | Worn earth edge.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Village Lane 06",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -18.1158,
+          7.642,
+          1.3622
+        ],
+        [
+          -6.5164,
+          18.6993,
+          4.1678
+        ]
+      ],
+      "vertices": 74,
+      "polygons": 36,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path Edge 07",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          4.7552,
+          -8.2128,
+          0.9159
+        ],
+        [
+          9.2447,
+          -5.3877,
+          1.026
+        ]
+      ],
+      "vertices": 50,
+      "polygons": 24,
+      "materials": [
+        "Path | Worn earth edge.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Village Lane 07",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          4.7778,
+          -8.1561,
+          0.9389
+        ],
+        [
+          9.2219,
+          -5.4441,
+          1.0489
+        ]
+      ],
+      "vertices": 50,
+      "polygons": 24,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path Edge 08",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          14.5395,
+          -8.2003,
+          1.0427
+        ],
+        [
+          17.4596,
+          -5.0997,
+          1.1236
+        ]
+      ],
+      "vertices": 26,
+      "polygons": 12,
+      "materials": [
+        "Path | Worn earth edge.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Village Lane 08",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          14.5846,
+          -8.1622,
+          1.0661
+        ],
+        [
+          17.4136,
+          -5.1391,
+          1.1451
+        ]
+      ],
+      "vertices": 26,
+      "polygons": 12,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Village Square",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -2.4013,
+          -5.802,
+          0.9586
+        ],
+        [
+          6.4028,
+          0.2002,
+          1.1298
+        ]
+      ],
+      "vertices": 513,
+      "polygons": 468,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path | Rounded end",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -23.9003,
+          0.0986,
+          1.0711
+        ],
+        [
+          -22.1002,
+          1.8985,
+          1.1316
+        ]
+      ],
+      "vertices": 25,
+      "polygons": 24,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path | Rounded end.001",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          27.1009,
+          -3.9,
+          1.0309
+        ],
+        [
+          28.9009,
+          -2.1002,
+          1.07
+        ]
+      ],
+      "vertices": 25,
+      "polygons": 24,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path | Rounded end.002",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -17.7502,
+          -0.7511,
+          1.0616
+        ],
+        [
+          -16.2504,
+          0.7489,
+          1.1965
+        ]
+      ],
+      "vertices": 25,
+      "polygons": 24,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path | Rounded end.003",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          10.2485,
+          -6.2499,
+          0.9769
+        ],
+        [
+          11.7489,
+          -4.7503,
+          1.0762
+        ]
+      ],
+      "vertices": 25,
+      "polygons": 24,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path | Rounded end.004",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -11.7006,
+          -2.6982,
+          1.0945
+        ],
+        [
+          -10.3005,
+          -1.303,
+          1.1305
+        ]
+      ],
+      "vertices": 25,
+      "polygons": 24,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path | Rounded end.005",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          4.3004,
+          -6.6996,
+          0.9432
+        ],
+        [
+          5.7,
+          -5.3008,
+          0.9716
+        ]
+      ],
+      "vertices": 25,
+      "polygons": 24,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path | Rounded end.006",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -10.5998,
+          -12.9011,
+          1.0354
+        ],
+        [
+          -9.4002,
+          -11.701,
+          1.0692
+        ]
+      ],
+      "vertices": 25,
+      "polygons": 24,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path | Rounded end.007",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          4.3999,
+          -12.8986,
+          1.067
+        ],
+        [
+          5.6,
+          -11.6986,
+          1.1047
+        ]
+      ],
+      "vertices": 25,
+      "polygons": 24,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path | Rounded end.008",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -4.1233,
+          -6.5268,
+          1.0835
+        ],
+        [
+          -3.0757,
+          -5.4741,
+          1.1612
+        ]
+      ],
+      "vertices": 25,
+      "polygons": 24,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path | Rounded end.009",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -4.1256,
+          -19.5234,
+          0.99
+        ],
+        [
+          -3.0753,
+          -18.4802,
+          1.0353
+        ]
+      ],
+      "vertices": 25,
+      "polygons": 24,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path | Rounded end.010",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          10.426,
+          5.2243,
+          1.0818
+        ],
+        [
+          11.5796,
+          6.375,
+          1.1536
+        ]
+      ],
+      "vertices": 25,
+      "polygons": 24,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path | Rounded end.011",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          21.4261,
+          15.423,
+          1.2338
+        ],
+        [
+          22.5762,
+          16.573,
+          1.2926
+        ]
+      ],
+      "vertices": 25,
+      "polygons": 24,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path | Rounded end.012",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -7.4943,
+          7.2889,
+          1.2727
+        ],
+        [
+          -6.4951,
+          8.286,
+          1.5456
+        ]
+      ],
+      "vertices": 25,
+      "polygons": 24,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path | Rounded end.013",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -18.5122,
+          17.711,
+          2.6319
+        ],
+        [
+          -17.5108,
+          18.7101,
+          3.0064
+        ]
+      ],
+      "vertices": 25,
+      "polygons": 24,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path | Rounded end.014",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          4.4005,
+          -6.5998,
+          0.944
+        ],
+        [
+          5.6001,
+          -5.4009,
+          0.9697
+        ]
+      ],
+      "vertices": 25,
+      "polygons": 24,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path | Rounded end.015",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          8.3993,
+          -8.2,
+          0.9689
+        ],
+        [
+          9.5995,
+          -6.9967,
+          1.049
+        ]
+      ],
+      "vertices": 25,
+      "polygons": 24,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path | Rounded end.016",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          14.4499,
+          -6.0487,
+          1.0773
+        ],
+        [
+          15.55,
+          -4.95,
+          1.0892
+        ]
+      ],
+      "vertices": 25,
+      "polygons": 24,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Path | Rounded end.017",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          16.4495,
+          -8.3505,
+          1.0656
+        ],
+        [
+          17.5488,
+          -7.253,
+          1.1344
+        ]
+      ],
+      "vertices": 25,
+      "polygons": 24,
+      "materials": [
+        "Island | Ochre pathways.001"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Village Square | Individual sandstone paving",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "02 | 道路与广场"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -2.025,
+          -5.5271,
+          0.9915
+        ],
+        [
+          6.29,
+          -1.2394,
+          1.1459
+        ]
+      ],
+      "vertices": 364,
+      "polygons": 91,
+      "materials": [
+        "Square | Sandstone 0",
+        "Square | Sandstone 1",
+        "Square | Sandstone 2",
+        "Square | Sandstone 3"
+      ],
+      "modifiers": [
+        {
+          "name": "Conform | Surface subdivision",
+          "type": "SUBSURF",
+          "render": true,
+          "viewport": true
+        },
+        {
+          "name": "Conform | Follow island ground",
+          "type": "SHRINKWRAP",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Village Hall",
+      "type": "EMPTY",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [],
+      "vertices": 0,
+      "polygons": 0,
+      "materials": [],
+      "modifiers": []
+    },
+    {
+      "name": "Village Hall | MH_Church_01",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": "Village Hall",
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -1.6484,
+          -0.2944,
+          1.0368
+        ],
+        [
+          5.6183,
+          5.6944,
+          6.8161
+        ]
+      ],
+      "vertices": 12601,
+      "polygons": 19770,
+      "materials": [
+        "M_Church_01.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Village Hall | MH_Church_01_RoofCore",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": "Village Hall",
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          4.1224,
+          3.0417,
+          6.7876
+        ],
+        [
+          5.6419,
+          4.5539,
+          7.6309
+        ]
+      ],
+      "vertices": 5,
+      "polygons": 5,
+      "materials": [
+        "M_Church_01_RepairRoof.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Village Hall | MH_Church_01_RoofTilesRepair",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": "Village Hall",
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          4.116,
+          3.0352,
+          6.7934
+        ],
+        [
+          5.6484,
+          4.5604,
+          7.6368
+        ]
+      ],
+      "vertices": 240,
+      "polygons": 60,
+      "materials": [
+        "M_Church_01_RepairRoof.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Village Hall | MH_Church_01_TowerWallRepair",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": "Village Hall",
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          4.3551,
+          3.2889,
+          1.2185
+        ],
+        [
+          5.4602,
+          4.3576,
+          5.7988
+        ]
+      ],
+      "vertices": 8,
+      "polygons": 6,
+      "materials": [
+        "M_Church_01_RepairWall.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Academy",
+      "type": "EMPTY",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [],
+      "vertices": 0,
+      "polygons": 0,
+      "materials": [],
+      "modifiers": []
+    },
+    {
+      "name": "Academy | MH_School_01",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": "Academy",
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          1.9303,
+          8.7778,
+          1.0883
+        ],
+        [
+          9.4697,
+          16.4222,
+          7.7883
+        ]
+      ],
+      "vertices": 5007,
+      "polygons": 6796,
+      "materials": [
+        "M_School_01.002"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Windmill",
+      "type": "EMPTY",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 最新Tripo建筑_v03",
+        "03 | 用户建筑资产"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [],
+      "vertices": 0,
+      "polygons": 0,
+      "materials": [],
+      "modifiers": []
+    },
+    {
+      "name": "Windmill | MH_Windmill_02",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 最新Tripo建筑_v03",
+        "03 | 用户建筑资产"
+      ],
+      "parent": "Windmill",
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -16.186,
+          -0.1864,
+          1.1369
+        ],
+        [
+          -7.814,
+          6.1864,
+          8.9369
+        ]
+      ],
+      "vertices": 119266,
+      "polygons": 239855,
+      "materials": [
+        "M_Windmill_02.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Granary",
+      "type": "EMPTY",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [],
+      "vertices": 0,
+      "polygons": 0,
+      "materials": [],
+      "modifiers": []
+    },
+    {
+      "name": "Granary | MH_Granary_01",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": "Granary",
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -16.8774,
+          -9.9066,
+          0.9993
+        ],
+        [
+          -11.1226,
+          -6.0934,
+          5.5993
+        ]
+      ],
+      "vertices": 5124,
+      "polygons": 8167,
+      "materials": [
+        "M_Granary_01.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Cottage NW",
+      "type": "EMPTY",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [],
+      "vertices": 0,
+      "polygons": 0,
+      "materials": [],
+      "modifiers": []
+    },
+    {
+      "name": "Cottage NW | MH_House_01",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": "Cottage NW",
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -8.9187,
+          9.5813,
+          1.8174
+        ],
+        [
+          -5.0813,
+          13.4187,
+          6.3174
+        ]
+      ],
+      "vertices": 5090,
+      "polygons": 7765,
+      "materials": [
+        "M_House_01.002"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Cottage W",
+      "type": "EMPTY",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [],
+      "vertices": 0,
+      "polygons": 0,
+      "materials": [],
+      "modifiers": []
+    },
+    {
+      "name": "Cottage W | MH_House_02",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": "Cottage W",
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -19.8965,
+          8.2284,
+          3.7209
+        ],
+        [
+          -12.9034,
+          14.1716,
+          7.7209
+        ]
+      ],
+      "vertices": 5088,
+      "polygons": 8694,
+      "materials": [
+        "M_House_02.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Cottage E",
+      "type": "EMPTY",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [],
+      "vertices": 0,
+      "polygons": 0,
+      "materials": [],
+      "modifiers": []
+    },
+    {
+      "name": "Cottage E | MH_House_01",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": "Cottage E",
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          12.7236,
+          4.7236,
+          0.9789
+        ],
+        [
+          17.2764,
+          9.2764,
+          5.6789
+        ]
+      ],
+      "vertices": 5090,
+      "polygons": 7765,
+      "materials": [
+        "M_House_01.002"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Cottage SE",
+      "type": "EMPTY",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [],
+      "vertices": 0,
+      "polygons": 0,
+      "materials": [],
+      "modifiers": []
+    },
+    {
+      "name": "Cottage SE | MH_House_02",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": "Cottage SE",
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          10.7337,
+          -5.4721,
+          1.0173
+        ],
+        [
+          18.2663,
+          0.6721,
+          5.5173
+        ]
+      ],
+      "vertices": 5088,
+      "polygons": 8694,
+      "materials": [
+        "M_House_02.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Cottage S",
+      "type": "EMPTY",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [],
+      "vertices": 0,
+      "polygons": 0,
+      "materials": [],
+      "modifiers": []
+    },
+    {
+      "name": "Cottage S | MH_House_01",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": "Cottage S",
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          7.0699,
+          -12.1301,
+          0.989
+        ],
+        [
+          10.9301,
+          -8.2699,
+          5.589
+        ]
+      ],
+      "vertices": 5090,
+      "polygons": 7765,
+      "materials": [
+        "M_House_01.002"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Cottage Coast",
+      "type": "EMPTY",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [],
+      "vertices": 0,
+      "polygons": 0,
+      "materials": [],
+      "modifiers": []
+    },
+    {
+      "name": "Cottage Coast | MH_House_02",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": "Cottage Coast",
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          13.3739,
+          -13.5598,
+          1.0056
+        ],
+        [
+          20.0261,
+          -8.0402,
+          4.9056
+        ]
+      ],
+      "vertices": 5088,
+      "polygons": 8694,
+      "materials": [
+        "M_House_02.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Market West",
+      "type": "EMPTY",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [],
+      "vertices": 0,
+      "polygons": 0,
+      "materials": [],
+      "modifiers": []
+    },
+    {
+      "name": "Market West | MH_MarketStall_01",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": "Market West",
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -3.2552,
+          -4.0632,
+          1.0398
+        ],
+        [
+          -0.7448,
+          -2.1368,
+          3.3398
+        ]
+      ],
+      "vertices": 5220,
+      "polygons": 9928,
+      "materials": [
+        "M_MarketStall_01.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Market East",
+      "type": "EMPTY",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [],
+      "vertices": 0,
+      "polygons": 0,
+      "materials": [],
+      "modifiers": []
+    },
+    {
+      "name": "Market East | MH_MarketStall_01",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": "Market East",
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          5.067,
+          -5.0747,
+          0.9138
+        ],
+        [
+          7.733,
+          -2.9253,
+          3.2138
+        ]
+      ],
+      "vertices": 5220,
+      "polygons": 9928,
+      "materials": [
+        "M_MarketStall_01.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Wayside Shrine",
+      "type": "EMPTY",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [],
+      "vertices": 0,
+      "polygons": 0,
+      "materials": [],
+      "modifiers": []
+    },
+    {
+      "name": "Wayside Shrine | MH_Shrine_01",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "03 | 用户建筑资产"
+      ],
+      "parent": "Wayside Shrine",
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -10.2427,
+          -5.0576,
+          1.0864
+        ],
+        [
+          -8.1573,
+          -3.5424,
+          3.0864
+        ]
+      ],
+      "vertices": 4873,
+      "polygons": 9009,
+      "materials": [
+        "M_Shrine_01.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow | Grass distribution points",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "04 | 动漫草地"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -41.4312,
+          -25.9539,
+          0.8821
+        ],
+        [
+          36.0818,
+          38.8812,
+          5.0483
+        ]
+      ],
+      "vertices": 30147,
+      "polygons": 0,
+      "materials": [],
+      "modifiers": [
+        {
+          "name": "Rooted bending + shared travelling wind",
+          "type": "NODES",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Wheat Plot 00",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "05 | 麦田"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -8.75,
+          -11.55,
+          1.077
+        ],
+        [
+          -4.25,
+          -7.05,
+          1.077
+        ]
+      ],
+      "vertices": 196,
+      "polygons": 169,
+      "materials": [
+        "Island | Tilled soil.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Wheat Plot 01",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "05 | 麦田"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -3.0,
+          -11.55,
+          1.077
+        ],
+        [
+          1.6,
+          -7.05,
+          1.077
+        ]
+      ],
+      "vertices": 196,
+      "polygons": 169,
+      "materials": [
+        "Island | Tilled soil.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Wheat Plot 02",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "05 | 麦田"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -8.75,
+          -17.55,
+          1.077
+        ],
+        [
+          -4.25,
+          -13.05,
+          1.077
+        ]
+      ],
+      "vertices": 196,
+      "polygons": 169,
+      "materials": [
+        "Island | Tilled soil.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Wheat Plot 03",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "05 | 麦田"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -3.0,
+          -17.55,
+          1.077
+        ],
+        [
+          1.6,
+          -13.05,
+          1.077
+        ]
+      ],
+      "vertices": 196,
+      "polygons": 169,
+      "materials": [
+        "Island | Tilled soil.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Wheat 01 | 12 planted rows",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "05 | 麦田"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -8.8239,
+          -11.5952,
+          1.077
+        ],
+        [
+          -4.1449,
+          -7.0158,
+          2.3969
+        ]
+      ],
+      "vertices": 132,
+      "polygons": 0,
+      "materials": [],
+      "modifiers": [
+        {
+          "name": "Rooted bending + shared travelling wind",
+          "type": "NODES",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Wheat 02 | 12 planted rows",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "05 | 麦田"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -3.0625,
+          -11.6099,
+          1.077
+        ],
+        [
+          1.6992,
+          -7.0025,
+          2.346
+        ]
+      ],
+      "vertices": 132,
+      "polygons": 0,
+      "materials": [],
+      "modifiers": [
+        {
+          "name": "Rooted bending + shared travelling wind",
+          "type": "NODES",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Wheat 03 | 12 planted rows",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "05 | 麦田"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -8.8045,
+          -17.5564,
+          1.077
+        ],
+        [
+          -4.2287,
+          -13.0472,
+          2.3957
+        ]
+      ],
+      "vertices": 132,
+      "polygons": 0,
+      "materials": [],
+      "modifiers": [
+        {
+          "name": "Rooted bending + shared travelling wind",
+          "type": "NODES",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Wheat 04 | 12 planted rows",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "05 | 麦田"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -3.0947,
+          -17.5989,
+          1.077
+        ],
+        [
+          1.7269,
+          -13.0255,
+          2.3822
+        ]
+      ],
+      "vertices": 132,
+      "polygons": 0,
+      "materials": [],
+      "modifiers": [
+        {
+          "name": "Rooted bending + shared travelling wind",
+          "type": "NODES",
+          "render": true,
+          "viewport": true
+        }
+      ]
+    },
+    {
+      "name": "Coastal Stone",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          37.4782,
+          4.7366,
+          -0.5023
+        ],
+        [
+          39.2488,
+          6.4563,
+          0.6636
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Coastal Stone.001",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          33.864,
+          13.5044,
+          -0.5588
+        ],
+        [
+          35.7296,
+          15.3492,
+          0.7708
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Coastal Stone.002",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          34.1735,
+          14.0764,
+          -0.2817
+        ],
+        [
+          34.8836,
+          14.8696,
+          0.3049
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Coastal Stone.003",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          24.4781,
+          24.6811,
+          -0.4024
+        ],
+        [
+          25.7251,
+          26.0261,
+          0.5739
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Coastal Stone.004",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          25.5165,
+          25.2839,
+          -0.2708
+        ],
+        [
+          26.3577,
+          26.1622,
+          0.2755
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Coastal Stone.005",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          6.1378,
+          30.6397,
+          -0.4312
+        ],
+        [
+          7.4992,
+          32.0657,
+          0.5718
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Coastal Stone.006",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          7.2204,
+          30.933,
+          -0.2817
+        ],
+        [
+          7.9032,
+          31.7015,
+          0.3049
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Coastal Stone.007",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -15.9177,
+          41.3225,
+          -0.4938
+        ],
+        [
+          -14.1989,
+          43.1719,
+          0.6988
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Coastal Stone.008",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -14.1607,
+          41.9458,
+          -0.2945
+        ],
+        [
+          -13.2273,
+          42.8791,
+          0.2945
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Coastal Stone.009",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -40.2946,
+          34.0219,
+          -0.5553
+        ],
+        [
+          -37.9529,
+          35.9629,
+          0.949
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Coastal Stone.010",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -37.883,
+          34.809,
+          -0.3186
+        ],
+        [
+          -36.9547,
+          35.7345,
+          0.3149
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Coastal Stone.011",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -45.0232,
+          9.7536,
+          -0.3864
+        ],
+        [
+          -43.304,
+          11.4588,
+          0.5296
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Coastal Stone.012",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -39.9382,
+          -4.5116,
+          -0.4645
+        ],
+        [
+          -38.0372,
+          -2.3356,
+          0.7399
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Coastal Stone.013",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -27.3174,
+          -17.1652,
+          -0.4785
+        ],
+        [
+          -25.5772,
+          -15.539,
+          0.7319
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Coastal Stone.014",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -16.9082,
+          -26.1428,
+          -0.6447
+        ],
+        [
+          -14.0876,
+          -23.3466,
+          1.0048
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Coastal Stone.015",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          0.2232,
+          -29.1793,
+          -0.5517
+        ],
+        [
+          2.3544,
+          -27.1023,
+          0.9068
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Coastal Stone.016",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          1.737,
+          -29.3786,
+          -0.2758
+        ],
+        [
+          2.6595,
+          -28.5498,
+          0.3051
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Coastal Stone.017",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          16.5915,
+          -24.4617,
+          -0.5494
+        ],
+        [
+          18.5654,
+          -22.6306,
+          0.8115
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Coastal Stone.018",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          18.119,
+          -23.6844,
+          -0.2817
+        ],
+        [
+          18.8465,
+          -22.9582,
+          0.3049
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Coastal Stone.019",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          26.3375,
+          -17.2896,
+          -0.5201
+        ],
+        [
+          28.7713,
+          -15.1595,
+          0.8233
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Coastal Stone.020",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          32.5839,
+          -7.1104,
+          -0.5333
+        ],
+        [
+          34.3602,
+          -5.5615,
+          0.8658
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -22.6269,
+          6.2626,
+          1.0697
+        ],
+        [
+          -21.3335,
+          7.8095,
+          2.0736
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.001",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -22.4992,
+          6.0043,
+          1.1742
+        ],
+        [
+          -21.8818,
+          6.6217,
+          1.6196
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.002",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -22.0095,
+          7.2536,
+          1.3557
+        ],
+        [
+          -21.5439,
+          7.6964,
+          1.637
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.003",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -22.1312,
+          7.9931,
+          1.2673
+        ],
+        [
+          -20.013,
+          10.0436,
+          2.6732
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.004",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -20.4819,
+          8.042,
+          1.8451
+        ],
+        [
+          -19.9433,
+          8.6077,
+          2.2226
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.005",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -21.6342,
+          8.8388,
+          1.5652
+        ],
+        [
+          -21.1042,
+          9.341,
+          1.9978
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.006",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -18.7426,
+          17.2168,
+          2.5111
+        ],
+        [
+          -17.1227,
+          18.7465,
+          3.4485
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.007",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -18.8554,
+          16.5752,
+          2.7941
+        ],
+        [
+          -18.2647,
+          17.1805,
+          3.1803
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.008",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -17.2543,
+          18.9198,
+          2.5697
+        ],
+        [
+          -16.5208,
+          19.7325,
+          3.0956
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.009",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -12.6759,
+          17.3725,
+          3.1616
+        ],
+        [
+          -11.2911,
+          18.6016,
+          3.9627
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.010",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -11.9144,
+          18.0114,
+          3.0444
+        ],
+        [
+          -11.1232,
+          18.799,
+          3.4651
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.011",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -12.8189,
+          18.6948,
+          2.9494
+        ],
+        [
+          -12.0851,
+          19.4181,
+          3.341
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.012",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -0.6059,
+          18.1393,
+          0.8455
+        ],
+        [
+          0.6074,
+          19.9684,
+          2.174
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.013",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          0.3053,
+          18.0561,
+          1.0771
+        ],
+        [
+          0.898,
+          18.8034,
+          1.5339
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.014",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -0.8311,
+          19.6639,
+          1.1805
+        ],
+        [
+          -0.1322,
+          20.3676,
+          1.6088
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.015",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          12.3867,
+          16.3949,
+          1.0578
+        ],
+        [
+          13.6688,
+          17.6399,
+          1.9139
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.016",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          11.8159,
+          15.4484,
+          1.0315
+        ],
+        [
+          12.3979,
+          16.0893,
+          1.4968
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.017",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          11.78,
+          16.5988,
+          1.1354
+        ],
+        [
+          12.3196,
+          17.2865,
+          1.6389
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.018",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          22.4214,
+          4.3639,
+          0.6534
+        ],
+        [
+          23.6929,
+          5.6372,
+          1.4421
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.019",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          23.5666,
+          4.4288,
+          0.7809
+        ],
+        [
+          24.4231,
+          5.1917,
+          1.2675
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.020",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          21.5669,
+          4.1102,
+          0.7558
+        ],
+        [
+          22.3044,
+          4.8417,
+          1.249
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.021",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          22.1096,
+          -8.6969,
+          0.7954
+        ],
+        [
+          23.8096,
+          -7.2327,
+          1.8031
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.022",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          22.6946,
+          -7.9352,
+          0.9794
+        ],
+        [
+          23.1044,
+          -7.4535,
+          1.3775
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.023",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          23.2049,
+          -8.9357,
+          0.968
+        ],
+        [
+          23.8107,
+          -8.3002,
+          1.3806
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.024",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -19.64,
+          -11.4264,
+          0.7033
+        ],
+        [
+          -18.4273,
+          -10.555,
+          1.6584
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.025",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -19.3259,
+          -12.1716,
+          0.8791
+        ],
+        [
+          -18.5793,
+          -11.4755,
+          1.3548
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.026",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -18.5597,
+          -10.975,
+          0.8564
+        ],
+        [
+          -18.0389,
+          -10.4866,
+          1.2495
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.027",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -14.703,
+          -17.7069,
+          0.6743
+        ],
+        [
+          -13.3366,
+          -16.3844,
+          1.7054
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.028",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -13.3835,
+          -18.0253,
+          0.8709
+        ],
+        [
+          -12.657,
+          -17.2804,
+          1.3
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.029",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -14.0708,
+          -17.3406,
+          0.9249
+        ],
+        [
+          -13.6128,
+          -16.9725,
+          1.2448
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.030",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          7.2863,
+          -18.7161,
+          0.7655
+        ],
+        [
+          8.6921,
+          -17.2123,
+          1.9874
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.031",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          7.6233,
+          -18.6098,
+          1.04
+        ],
+        [
+          8.031,
+          -18.2175,
+          1.3706
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.032",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          7.0996,
+          -18.7838,
+          1.0161
+        ],
+        [
+          7.8196,
+          -18.0624,
+          1.4252
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.033",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -26.2699,
+          -3.3136,
+          0.6038
+        ],
+        [
+          -23.7801,
+          -0.737,
+          1.8676
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.034",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -26.2022,
+          -2.9583,
+          0.9032
+        ],
+        [
+          -25.6712,
+          -2.4259,
+          1.1897
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.035",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -24.047,
+          -2.7116,
+          0.8459
+        ],
+        [
+          -23.4637,
+          -2.1249,
+          1.2225
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.036",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          18.1336,
+          0.1976,
+          0.6335
+        ],
+        [
+          19.8,
+          1.9429,
+          1.7676
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.037",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          19.7052,
+          2.1289,
+          0.798
+        ],
+        [
+          20.166,
+          2.5608,
+          1.2685
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Meadow Stone.038",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "06 | 岸边碎石"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          19.705,
+          -0.12,
+          0.9125
+        ],
+        [
+          20.2149,
+          0.4042,
+          1.2425
+        ]
+      ],
+      "vertices": 12,
+      "polygons": 20,
+      "materials": [
+        "Stone | 0.001",
+        "Stone | 1.001",
+        "Stone | 2.001",
+        "Stone | 3.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Sea_Surface | 岸线距离已适配",
+      "type": "MESH",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "07 | 动态海水"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -80.0,
+          -66.0,
+          0.0
+        ],
+        [
+          80.0,
+          66.0,
+          0.0
+        ]
+      ],
+      "vertices": 116281,
+      "polygons": 115600,
+      "materials": [
+        "Island | Anime shore water"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "Sun | Warm late morning",
+      "type": "LIGHT",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "08 | 相机与日光"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [],
+      "vertices": 0,
+      "polygons": 0,
+      "materials": [],
+      "modifiers": []
+    },
+    {
+      "name": "Sky | Broad soft fill",
+      "type": "LIGHT",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "08 | 相机与日光"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [],
+      "vertices": 0,
+      "polygons": 0,
+      "materials": [],
+      "modifiers": []
+    },
+    {
+      "name": "Camera | 总览",
+      "type": "CAMERA",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "08 | 相机与日光"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [],
+      "vertices": 0,
+      "polygons": 0,
+      "materials": [],
+      "modifiers": []
+    },
+    {
+      "name": "Camera | 麦田与村庄",
+      "type": "CAMERA",
+      "visible": true,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "08 | 相机与日光"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [],
+      "vertices": 0,
+      "polygons": 0,
+      "materials": [],
+      "modifiers": []
+    },
+    {
+      "name": "MH_Church_01",
+      "type": "MESH",
+      "visible": false,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "09 | 源资产_隐藏"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -0.4998,
+          -0.4119,
+          0.0
+        ],
+        [
+          0.4998,
+          0.4119,
+          0.7949
+        ]
+      ],
+      "vertices": 12601,
+      "polygons": 19770,
+      "materials": [
+        "M_Church_01.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "MH_Church_01_RoofCore",
+      "type": "MESH",
+      "visible": false,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "09 | 源资产_隐藏"
+      ],
+      "parent": "MH_Church_01",
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          0.294,
+          0.047,
+          0.791
+        ],
+        [
+          0.503,
+          0.255,
+          0.907
+        ]
+      ],
+      "vertices": 5,
+      "polygons": 5,
+      "materials": [
+        "M_Church_01_RepairRoof.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "MH_Church_01_RoofTilesRepair",
+      "type": "MESH",
+      "visible": false,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "09 | 源资产_隐藏"
+      ],
+      "parent": "MH_Church_01",
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          0.2931,
+          0.0461,
+          0.7918
+        ],
+        [
+          0.5039,
+          0.2559,
+          0.9078
+        ]
+      ],
+      "vertices": 240,
+      "polygons": 60,
+      "materials": [
+        "M_Church_01_RepairRoof.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "MH_Church_01_TowerWallRepair",
+      "type": "MESH",
+      "visible": false,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "09 | 源资产_隐藏"
+      ],
+      "parent": "MH_Church_01",
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          0.326,
+          0.081,
+          0.025
+        ],
+        [
+          0.478,
+          0.228,
+          0.655
+        ]
+      ],
+      "vertices": 8,
+      "polygons": 6,
+      "materials": [
+        "M_Church_01_RepairWall.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "MH_Granary_01",
+      "type": "MESH",
+      "visible": false,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "09 | 源资产_隐藏"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -0.4734,
+          -0.2942,
+          -0.3962
+        ],
+        [
+          0.4719,
+          0.2932,
+          0.3904
+        ]
+      ],
+      "vertices": 5124,
+      "polygons": 8167,
+      "materials": [
+        "M_Granary_01.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "MH_House_01",
+      "type": "MESH",
+      "visible": false,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "09 | 源资产_隐藏"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -0.3831,
+          -0.3831,
+          0.0
+        ],
+        [
+          0.3831,
+          0.3831,
+          0.9995
+        ]
+      ],
+      "vertices": 5090,
+      "polygons": 7765,
+      "materials": [
+        "M_House_01.002"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "MH_House_02",
+      "type": "MESH",
+      "visible": false,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "09 | 源资产_隐藏"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -0.4734,
+          -0.3533,
+          -0.3181
+        ],
+        [
+          0.4734,
+          0.3513,
+          0.3137
+        ]
+      ],
+      "vertices": 5088,
+      "polygons": 8694,
+      "materials": [
+        "M_House_02.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "MH_MarketStall_01",
+      "type": "MESH",
+      "visible": false,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "09 | 源资产_隐藏"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -0.4998,
+          -0.3728,
+          0.0
+        ],
+        [
+          0.4998,
+          0.3728,
+          0.9487
+        ]
+      ],
+      "vertices": 5220,
+      "polygons": 9928,
+      "materials": [
+        "M_MarketStall_01.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "MH_School_01",
+      "type": "MESH",
+      "visible": false,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "09 | 源资产_隐藏"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -0.4768,
+          -0.4846,
+          0.0
+        ],
+        [
+          0.4768,
+          0.4846,
+          0.9136
+        ]
+      ],
+      "vertices": 5007,
+      "polygons": 6796,
+      "materials": [
+        "M_School_01.002"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "MH_Shrine_01",
+      "type": "MESH",
+      "visible": false,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "09 | 源资产_隐藏"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -0.4905,
+          -0.3313,
+          0.0
+        ],
+        [
+          0.4905,
+          0.3313,
+          0.9995
+        ]
+      ],
+      "vertices": 4873,
+      "polygons": 9009,
+      "materials": [
+        "M_Shrine_01.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "MH_Windmill_02",
+      "type": "MESH",
+      "visible": false,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "09 | 源资产_隐藏"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -0.4918,
+          -0.3636,
+          0.0
+        ],
+        [
+          0.4918,
+          0.3636,
+          0.9492
+        ]
+      ],
+      "vertices": 119266,
+      "polygons": 239855,
+      "materials": [
+        "M_Windmill_02.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "SOURCE | AnimeGrass four blades",
+      "type": "MESH",
+      "visible": false,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "09 | 源资产_隐藏"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -0.2789,
+          -0.3143,
+          0.0
+        ],
+        [
+          0.2188,
+          0.0872,
+          0.6075
+        ]
+      ],
+      "vertices": 32,
+      "polygons": 12,
+      "materials": [
+        "Island | Grass painted green.001"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "SOURCE | Wheat three stalks",
+      "type": "MESH",
+      "visible": false,
+      "render": true,
+      "hide_viewport": false,
+      "collections": [
+        "09 | 源资产_隐藏"
+      ],
+      "parent": null,
+      "instance_type": "NONE",
+      "instance_collection": null,
+      "bbox": [
+        [
+          -0.2619,
+          -0.2424,
+          0.0
+        ],
+        [
+          0.2619,
+          0.2424,
+          1.2285
+        ]
+      ],
+      "vertices": 477,
+      "polygons": 141,
+      "materials": [
+        "Island harvest | Wheat | Straw Gold.001",
+        "Island harvest | Wheat | Golden Ear",
+        "Island harvest | Wheat | Lit Fold",
+        "Island harvest | Wheat | Olive Leaf"
+      ],
+      "modifiers": []
+    }
+  ],
+  "collections": [
+    {
+      "name": "01 | 岛屿地形与沙滩",
+      "hide_render": false,
+      "hide_viewport": false,
+      "objects": 1
+    },
+    {
+      "name": "01_纸艺房屋",
+      "hide_render": false,
+      "hide_viewport": false,
+      "objects": 1
+    },
+    {
+      "name": "02 | 道路与广场",
+      "hide_render": false,
+      "hide_viewport": false,
+      "objects": 38
+    },
+    {
+      "name": "02_纸艺房屋_另一版",
+      "hide_render": false,
+      "hide_viewport": false,
+      "objects": 1
+    },
+    {
+      "name": "03 | 最新Tripo建筑_v03",
+      "hide_render": false,
+      "hide_viewport": false,
+      "objects": 26
+    },
+    {
+      "name": "03 | 用户建筑资产",
+      "hide_render": false,
+      "hide_viewport": false,
+      "objects": 29
+    },
+    {
+      "name": "03_纸艺棚亭",
+      "hide_render": false,
+      "hide_viewport": false,
+      "objects": 1
+    },
+    {
+      "name": "04 | 动漫草地",
+      "hide_render": false,
+      "hide_viewport": false,
+      "objects": 1
+    },
+    {
+      "name": "04_教堂",
+      "hide_render": false,
+      "hide_viewport": false,
+      "objects": 1
+    },
+    {
+      "name": "05 | 麦田",
+      "hide_render": false,
+      "hide_viewport": false,
+      "objects": 8
+    },
+    {
+      "name": "05_集市摊位",
+      "hide_render": false,
+      "hide_viewport": false,
+      "objects": 1
+    },
+    {
+      "name": "06 | 岸边碎石",
+      "hide_render": false,
+      "hide_viewport": false,
+      "objects": 60
+    },
+    {
+      "name": "06_桥接已收到的房屋",
+      "hide_render": false,
+      "hide_viewport": false,
+      "objects": 1
+    },
+    {
+      "name": "07 | 动态海水",
+      "hide_render": false,
+      "hide_viewport": false,
+      "objects": 1
+    },
+    {
+      "name": "08 | 相机与日光",
+      "hide_render": false,
+      "hide_viewport": false,
+      "objects": 4
+    },
+    {
+      "name": "09 | 源资产_隐藏",
+      "hide_render": true,
+      "hide_viewport": true,
+      "objects": 13
+    }
+  ],
+  "images": [
+    {
+      "name": "cardboard_house_3d_model111_basecolor",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "cardboard_house_3d_model111_metallic",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "cardboard_house_3d_model111_normal",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "cardboard_house_3d_model111_roughness",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "cardboard_house_3d_model_basecolor",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "cardboard_house_3d_model_metallic",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "cardboard_house_3d_model_normal",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "cardboard_house_3d_model_roughness",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "cardboard_shelter_3d_model_basecolor",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "cardboard_shelter_3d_model_metallic",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "cardboard_shelter_3d_model_normal",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "cardboard_shelter_3d_model_roughness",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "church_building_3d_model_basecolor",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "church_building_3d_model_metallic",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "church_building_3d_model_normal",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "church_building_3d_model_roughness",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "house_3d_model_basecolor",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "house_3d_model_metallic",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "house_3d_model_normal",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "house_3d_model_roughness",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "market_stall_3d_model_basecolor",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "market_stall_3d_model_metallic",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "market_stall_3d_model_normal",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "market_stall_3d_model_roughness",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "Render Result",
+      "size": [
+        0,
+        0
+      ],
+      "packed": false
+    },
+    {
+      "name": "T_Church_01_D.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_Church_01_M.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_Church_01_N.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_Church_01_R.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_Granary_01_D.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_Granary_01_M.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_Granary_01_N.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_Granary_01_R.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_House_01_D.002",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_House_01_M.002",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_House_01_N.002",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_House_01_R.002",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_House_02_D.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_House_02_M.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_House_02_N.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_House_02_R.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_MarketStall_01_D.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_MarketStall_01_M.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_MarketStall_01_N.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_MarketStall_01_R.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_School_01_D.002",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_School_01_M.002",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_School_01_N.002",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_School_01_R.002",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_Shrine_01_D.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_Shrine_01_M.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_Shrine_01_N.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_Shrine_01_R.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_Windmill_02_D.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_Windmill_02_M.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_Windmill_02_N.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "T_Windmill_02_R.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    }
+  ],
+  "materials": [
+    {
+      "name": "Island harvest | Wheat | Golden Ear",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        },
+        {
+          "name": "属性",
+          "type": "ATTRIBUTE"
+        },
+        {
+          "name": "值",
+          "type": "VALUE"
+        },
+        {
+          "name": "矢量运算",
+          "type": "VECT_MATH"
+        },
+        {
+          "name": "噪波纹理",
+          "type": "TEX_NOISE"
+        },
+        {
+          "name": "运算",
+          "type": "MATH"
+        },
+        {
+          "name": "运算.001",
+          "type": "MATH"
+        },
+        {
+          "name": "值.001",
+          "type": "VALUE"
+        },
+        {
+          "name": "运算.002",
+          "type": "MATH"
+        },
+        {
+          "name": "运算.003",
+          "type": "MATH"
+        },
+        {
+          "name": "运算.004",
+          "type": "MATH"
+        },
+        {
+          "name": "运算.005",
+          "type": "MATH"
+        },
+        {
+          "name": "混合 (旧版)",
+          "type": "MIX_RGB"
+        }
+      ]
+    },
+    {
+      "name": "Island harvest | Wheat | Lit Fold",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        },
+        {
+          "name": "属性",
+          "type": "ATTRIBUTE"
+        },
+        {
+          "name": "值",
+          "type": "VALUE"
+        },
+        {
+          "name": "矢量运算",
+          "type": "VECT_MATH"
+        },
+        {
+          "name": "噪波纹理",
+          "type": "TEX_NOISE"
+        },
+        {
+          "name": "运算",
+          "type": "MATH"
+        },
+        {
+          "name": "运算.001",
+          "type": "MATH"
+        },
+        {
+          "name": "值.001",
+          "type": "VALUE"
+        },
+        {
+          "name": "运算.002",
+          "type": "MATH"
+        },
+        {
+          "name": "运算.003",
+          "type": "MATH"
+        },
+        {
+          "name": "运算.004",
+          "type": "MATH"
+        },
+        {
+          "name": "运算.005",
+          "type": "MATH"
+        },
+        {
+          "name": "混合 (旧版)",
+          "type": "MIX_RGB"
+        }
+      ]
+    },
+    {
+      "name": "Island harvest | Wheat | Olive Leaf",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        },
+        {
+          "name": "属性",
+          "type": "ATTRIBUTE"
+        },
+        {
+          "name": "值",
+          "type": "VALUE"
+        },
+        {
+          "name": "矢量运算",
+          "type": "VECT_MATH"
+        },
+        {
+          "name": "噪波纹理",
+          "type": "TEX_NOISE"
+        },
+        {
+          "name": "运算",
+          "type": "MATH"
+        },
+        {
+          "name": "运算.001",
+          "type": "MATH"
+        },
+        {
+          "name": "值.001",
+          "type": "VALUE"
+        },
+        {
+          "name": "运算.002",
+          "type": "MATH"
+        },
+        {
+          "name": "运算.003",
+          "type": "MATH"
+        },
+        {
+          "name": "运算.004",
+          "type": "MATH"
+        },
+        {
+          "name": "运算.005",
+          "type": "MATH"
+        },
+        {
+          "name": "混合 (旧版)",
+          "type": "MIX_RGB"
+        }
+      ]
+    },
+    {
+      "name": "Island harvest | Wheat | Straw Gold.001",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        },
+        {
+          "name": "属性",
+          "type": "ATTRIBUTE"
+        },
+        {
+          "name": "值",
+          "type": "VALUE"
+        },
+        {
+          "name": "矢量运算",
+          "type": "VECT_MATH"
+        },
+        {
+          "name": "噪波纹理",
+          "type": "TEX_NOISE"
+        },
+        {
+          "name": "运算",
+          "type": "MATH"
+        },
+        {
+          "name": "运算.001",
+          "type": "MATH"
+        },
+        {
+          "name": "值.001",
+          "type": "VALUE"
+        },
+        {
+          "name": "运算.002",
+          "type": "MATH"
+        },
+        {
+          "name": "运算.003",
+          "type": "MATH"
+        },
+        {
+          "name": "运算.004",
+          "type": "MATH"
+        },
+        {
+          "name": "运算.005",
+          "type": "MATH"
+        },
+        {
+          "name": "混合 (旧版)",
+          "type": "MIX_RGB"
+        }
+      ]
+    },
+    {
+      "name": "Island | Anime shore water",
+      "nodes": [
+        {
+          "name": "属性",
+          "type": "ATTRIBUTE"
+        },
+        {
+          "name": "群组",
+          "type": "GROUP"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        }
+      ]
+    },
+    {
+      "name": "Island | Grass painted green.001",
+      "nodes": [
+        {
+          "name": "几何数据",
+          "type": "NEW_GEOMETRY"
+        },
+        {
+          "name": "噪波纹理",
+          "type": "TEX_NOISE"
+        },
+        {
+          "name": "颜色渐变",
+          "type": "VALTORGB"
+        },
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        },
+        {
+          "name": "属性",
+          "type": "ATTRIBUTE"
+        },
+        {
+          "name": "值",
+          "type": "VALUE"
+        },
+        {
+          "name": "矢量运算",
+          "type": "VECT_MATH"
+        },
+        {
+          "name": "噪波纹理.001",
+          "type": "TEX_NOISE"
+        },
+        {
+          "name": "运算",
+          "type": "MATH"
+        },
+        {
+          "name": "运算.001",
+          "type": "MATH"
+        },
+        {
+          "name": "值.001",
+          "type": "VALUE"
+        },
+        {
+          "name": "运算.002",
+          "type": "MATH"
+        },
+        {
+          "name": "运算.003",
+          "type": "MATH"
+        },
+        {
+          "name": "运算.004",
+          "type": "MATH"
+        },
+        {
+          "name": "运算.005",
+          "type": "MATH"
+        },
+        {
+          "name": "混合 (旧版)",
+          "type": "MIX_RGB"
+        },
+        {
+          "name": "颜色渐变.001",
+          "type": "VALTORGB"
+        },
+        {
+          "name": "值.002",
+          "type": "VALUE"
+        }
+      ]
+    },
+    {
+      "name": "Island | Meadow painted tones.001",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        },
+        {
+          "name": "噪波纹理",
+          "type": "TEX_NOISE"
+        },
+        {
+          "name": "几何数据",
+          "type": "NEW_GEOMETRY"
+        },
+        {
+          "name": "颜色渐变",
+          "type": "VALTORGB"
+        },
+        {
+          "name": "几何数据.001",
+          "type": "NEW_GEOMETRY"
+        },
+        {
+          "name": "值",
+          "type": "VALUE"
+        },
+        {
+          "name": "矢量运算",
+          "type": "VECT_MATH"
+        },
+        {
+          "name": "噪波纹理.001",
+          "type": "TEX_NOISE"
+        },
+        {
+          "name": "运算",
+          "type": "MATH"
+        },
+        {
+          "name": "运算.001",
+          "type": "MATH"
+        },
+        {
+          "name": "值.001",
+          "type": "VALUE"
+        },
+        {
+          "name": "运算.002",
+          "type": "MATH"
+        },
+        {
+          "name": "运算.003",
+          "type": "MATH"
+        },
+        {
+          "name": "运算.004",
+          "type": "MATH"
+        },
+        {
+          "name": "运算.005",
+          "type": "MATH"
+        },
+        {
+          "name": "混合 (旧版)",
+          "type": "MIX_RGB"
+        },
+        {
+          "name": "颜色渐变.001",
+          "type": "VALTORGB"
+        },
+        {
+          "name": "值.002",
+          "type": "VALUE"
+        }
+      ]
+    },
+    {
+      "name": "Island | Ochre pathways.001",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        },
+        {
+          "name": "噪波纹理",
+          "type": "TEX_NOISE"
+        },
+        {
+          "name": "几何数据",
+          "type": "NEW_GEOMETRY"
+        },
+        {
+          "name": "颜色渐变",
+          "type": "VALTORGB"
+        }
+      ]
+    },
+    {
+      "name": "Island | Tilled soil.001",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        },
+        {
+          "name": "噪波纹理",
+          "type": "TEX_NOISE"
+        },
+        {
+          "name": "几何数据",
+          "type": "NEW_GEOMETRY"
+        },
+        {
+          "name": "颜色渐变",
+          "type": "VALTORGB"
+        }
+      ]
+    },
+    {
+      "name": "Island | Warm sand.001",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        },
+        {
+          "name": "噪波纹理",
+          "type": "TEX_NOISE"
+        },
+        {
+          "name": "几何数据",
+          "type": "NEW_GEOMETRY"
+        },
+        {
+          "name": "颜色渐变",
+          "type": "VALTORGB"
+        }
+      ]
+    },
+    {
+      "name": "M_Church_01.001",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        },
+        {
+          "name": "法线贴图",
+          "type": "NORMAL_MAP"
+        },
+        {
+          "name": "T_Church_01_D",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "T_Church_01_N",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "T_Church_01_R",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "T_Church_01_M",
+          "type": "TEX_IMAGE"
+        }
+      ]
+    },
+    {
+      "name": "M_Church_01_RepairRoof.001",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        }
+      ]
+    },
+    {
+      "name": "M_Church_01_RepairWall.001",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        }
+      ]
+    },
+    {
+      "name": "M_Granary_01.001",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        },
+        {
+          "name": "法线贴图",
+          "type": "NORMAL_MAP"
+        },
+        {
+          "name": "T_Granary_01_D",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "T_Granary_01_N",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "T_Granary_01_R",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "T_Granary_01_M",
+          "type": "TEX_IMAGE"
+        }
+      ]
+    },
+    {
+      "name": "M_House_01.002",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        },
+        {
+          "name": "法线贴图",
+          "type": "NORMAL_MAP"
+        },
+        {
+          "name": "T_House_01_D",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "T_House_01_N",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "T_House_01_R",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "T_House_01_M",
+          "type": "TEX_IMAGE"
+        }
+      ]
+    },
+    {
+      "name": "M_House_02.001",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        },
+        {
+          "name": "法线贴图",
+          "type": "NORMAL_MAP"
+        },
+        {
+          "name": "T_House_02_D",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "T_House_02_N",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "T_House_02_R",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "T_House_02_M",
+          "type": "TEX_IMAGE"
+        }
+      ]
+    },
+    {
+      "name": "M_MarketStall_01.001",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        },
+        {
+          "name": "法线贴图",
+          "type": "NORMAL_MAP"
+        },
+        {
+          "name": "T_MarketStall_01_D",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "T_MarketStall_01_N",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "T_MarketStall_01_R",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "T_MarketStall_01_M",
+          "type": "TEX_IMAGE"
+        }
+      ]
+    },
+    {
+      "name": "M_School_01.002",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        },
+        {
+          "name": "法线贴图",
+          "type": "NORMAL_MAP"
+        },
+        {
+          "name": "T_School_01_D",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "T_School_01_N",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "T_School_01_R",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "T_School_01_M",
+          "type": "TEX_IMAGE"
+        }
+      ]
+    },
+    {
+      "name": "M_Shrine_01.001",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        },
+        {
+          "name": "法线贴图",
+          "type": "NORMAL_MAP"
+        },
+        {
+          "name": "T_Shrine_01_D",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "T_Shrine_01_N",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "T_Shrine_01_R",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "T_Shrine_01_M",
+          "type": "TEX_IMAGE"
+        }
+      ]
+    },
+    {
+      "name": "M_Windmill_02.001",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        },
+        {
+          "name": "法线贴图",
+          "type": "NORMAL_MAP"
+        },
+        {
+          "name": "T_Windmill_02_D",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "T_Windmill_02_N",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "T_Windmill_02_R",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "T_Windmill_02_M",
+          "type": "TEX_IMAGE"
+        }
+      ]
+    },
+    {
+      "name": "Path | Worn earth edge.001",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        }
+      ]
+    },
+    {
+      "name": "Square | Sandstone 0",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        }
+      ]
+    },
+    {
+      "name": "Square | Sandstone 1",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        }
+      ]
+    },
+    {
+      "name": "Square | Sandstone 2",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        }
+      ]
+    },
+    {
+      "name": "Square | Sandstone 3",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        }
+      ]
+    },
+    {
+      "name": "Stone | 0.001",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        }
+      ]
+    },
+    {
+      "name": "Stone | 1.001",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        }
+      ]
+    },
+    {
+      "name": "Stone | 2.001",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        }
+      ]
+    },
+    {
+      "name": "Stone | 3.001",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        }
+      ]
+    },
+    {
+      "name": "tripo_mat_0f45af1d",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        },
+        {
+          "name": "法线贴图",
+          "type": "NORMAL_MAP"
+        },
+        {
+          "name": "图像纹理",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "图像纹理.001",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "图像纹理.002",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "图像纹理.003",
+          "type": "TEX_IMAGE"
+        }
+      ]
+    },
+    {
+      "name": "tripo_mat_14687529",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        },
+        {
+          "name": "法线贴图",
+          "type": "NORMAL_MAP"
+        },
+        {
+          "name": "图像纹理",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "图像纹理.001",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "图像纹理.002",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "图像纹理.003",
+          "type": "TEX_IMAGE"
+        }
+      ]
+    },
+    {
+      "name": "tripo_mat_16ccdb80",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        },
+        {
+          "name": "法线贴图",
+          "type": "NORMAL_MAP"
+        },
+        {
+          "name": "图像纹理",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "图像纹理.001",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "图像纹理.002",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "图像纹理.003",
+          "type": "TEX_IMAGE"
+        }
+      ]
+    },
+    {
+      "name": "tripo_mat_d35d4e1e",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        },
+        {
+          "name": "法线贴图",
+          "type": "NORMAL_MAP"
+        },
+        {
+          "name": "图像纹理",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "图像纹理.001",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "图像纹理.002",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "图像纹理.003",
+          "type": "TEX_IMAGE"
+        }
+      ]
+    },
+    {
+      "name": "tripo_mat_e1ce7e55",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        },
+        {
+          "name": "法线贴图",
+          "type": "NORMAL_MAP"
+        },
+        {
+          "name": "图像纹理",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "图像纹理.001",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "图像纹理.002",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "图像纹理.003",
+          "type": "TEX_IMAGE"
+        }
+      ]
+    },
+    {
+      "name": "tripo_mat_e952b209",
+      "nodes": [
+        {
+          "name": "原理化 BSDF",
+          "type": "BSDF_PRINCIPLED"
+        },
+        {
+          "name": "材质输出",
+          "type": "OUTPUT_MATERIAL"
+        },
+        {
+          "name": "法线贴图",
+          "type": "NORMAL_MAP"
+        },
+        {
+          "name": "图像纹理",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "图像纹理.001",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "图像纹理.002",
+          "type": "TEX_IMAGE"
+        },
+        {
+          "name": "图像纹理.003",
+          "type": "TEX_IMAGE"
+        }
+      ]
+    }
+  ]
+}

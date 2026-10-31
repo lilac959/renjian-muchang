@@ -1,0 +1,33 @@
+✔ both islands share a simple economy, nine skills available immediately (3.550833ms)
+✔ pause freezes every simulation system (7.451625ms)
+✔ actual human deaths award once; undead do not reward (2.24925ms)
+✔ births create actual children, with maturation and no pairing or housing (189.158542ms)
+✔ no food or insufficient healthy adults blocks birth; no resurrection by economy (96.998208ms)
+✔ production enters stock directly, bless boosts work and joy increases food use (2.543625ms)
+✔ rage recruits actual nearby adults, reserves workers and stops troop production (2.354125ms)
+✔ rage rejects too few adults, existing army and cooldown without charging (1.244792ms)
+✔ crossing follows bridge, armies produce real casualties (2008.245833ms)
+✔ peace works on the bridge, returns both armies and blocks immediate rewar (256.485542ms)
+✔ peace without a troop is rejected without cost (0.533666ms)
+✔ half losses and timeout trigger retreat (54.896958ms)
+✔ all skills require confirmation-compatible validation and invalid targets never charge (0.694792ms)
+✔ meteor resolves after delay, no indoor protection, rain puts out fire (26.891416ms)
+✔ plague stops production and surviving people gain immunity (249.763625ms)
+✔ resurrection consumes corpses once, undead expire without duplicate souls (203.840209ms)
+✔ success takes priority over extinction and timeout (8.980667ms)
+✔ save/restore preserves ongoing war, resources and timers; old and broken saves rejected (168.040208ms)
+✔ simulation conserves actual population across varied attacks (27519.321125ms)
+✔ returning soldiers snap to bridge waypoints instead of stalling just off shore (153.844125ms)
+✔ births and random destinations remain on the correct walkable island (4017.786417ms)
+✔ buildings block walking but remain valid spell ground; roofs are not sampled (0.544667ms)
+✔ both bridge ends and complete routes connect continuously around obstacles (21.504209ms)
+✔ war, defenders, retreat and undead never leave legal terrain (992.767875ms)
+✔ previous coordinate saves are explicitly incompatible (2.815ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 34234.249334

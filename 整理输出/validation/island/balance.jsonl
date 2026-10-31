@@ -1,0 +1,16 @@
+{"strategy":"observe","seed":11,"result":"timeout","time":300,"souls":0,"births":144,"peak":160,"population":160,"mana":54,"milestones":{"birth":6.05},"casts":{}}
+{"strategy":"observe","seed":22,"result":"timeout","time":300,"souls":0,"births":144,"peak":160,"population":160,"mana":54,"milestones":{"birth":6.05},"casts":{}}
+{"strategy":"observe","seed":33,"result":"timeout","time":300,"souls":0,"births":144,"peak":160,"population":160,"mana":54,"milestones":{"birth":6.05},"casts":{}}
+{"strategy":"observe","seed":44,"result":"timeout","time":300,"souls":0,"births":144,"peak":160,"population":160,"mana":54,"milestones":{"birth":6.05},"casts":{}}
+{"strategy":"observe","seed":55,"result":"timeout","time":300,"souls":0,"births":144,"peak":160,"population":160,"mana":54,"milestones":{"birth":6.05},"casts":{}}
+{"strategy":"war","seed":11,"result":"timeout","time":300,"souls":24,"births":168,"peak":160,"population":160,"mana":6,"milestones":{"birth":6.05,"army":25.3,"soul":38.1},"casts":{"weather":8,"rage":8}}
+{"strategy":"war","seed":22,"result":"timeout","time":300,"souls":27,"births":171,"peak":160,"population":160,"mana":4,"milestones":{"birth":6.05,"army":25.3,"soul":37.5},"casts":{"weather":8,"rage":9}}
+{"strategy":"war","seed":33,"result":"timeout","time":300,"souls":31,"births":175,"peak":160,"population":160,"mana":4,"milestones":{"birth":6.05,"army":25.3,"soul":38.55},"casts":{"weather":8,"rage":10}}
+{"strategy":"war","seed":44,"result":"timeout","time":300,"souls":31,"births":175,"peak":160,"population":160,"mana":4,"milestones":{"birth":6.05,"army":25.3,"soul":37.65},"casts":{"weather":8,"rage":10}}
+{"strategy":"war","seed":55,"result":"timeout","time":300,"souls":27,"births":171,"peak":160,"population":160,"mana":4,"milestones":{"birth":6.05,"army":25.3,"soul":37.9},"casts":{"weather":8,"rage":9}}
+{"strategy":"cycles","seed":11,"result":"success","time":138.6,"souls":67,"births":72,"peak":42,"population":21,"mana":24,"milestones":{"birth":3.25,"army":25.3,"soul":37.85},"casts":{"weather":8,"joy":6,"rage":5,"meteor":4}}
+{"strategy":"cycles","seed":22,"result":"success","time":123.85,"souls":60,"births":68,"peak":46,"population":24,"mana":42,"milestones":{"birth":3.25,"army":25.3,"soul":38.6},"casts":{"weather":8,"joy":4,"rage":4,"meteor":3}}
+{"strategy":"cycles","seed":33,"result":"success","time":173.6,"souls":82,"births":152,"peak":140,"population":86,"mana":109,"milestones":{"birth":3.45,"army":25.3,"soul":37.6},"casts":{"weather":5,"joy":2,"rage":7,"meteor":2}}
+{"strategy":"cycles","seed":44,"result":"success","time":139.6,"souls":69,"births":81,"peak":47,"population":28,"mana":40,"milestones":{"birth":3.25,"army":25.3,"soul":39},"casts":{"weather":8,"joy":4,"rage":5,"meteor":4}}
+{"strategy":"cycles","seed":55,"result":"success","time":151.6,"souls":65,"births":71,"peak":40,"population":22,"mana":20,"milestones":{"birth":3.75,"army":25.3,"soul":38.45},"casts":{"weather":10,"joy":5,"rage":5,"meteor":4}}
+{"goal":60,"successes":5,"runs":15}

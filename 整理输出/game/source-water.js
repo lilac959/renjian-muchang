@@ -1,8 +1,10 @@
+import {cloudGLSL} from './environment-v16.js?v=16.3';
 import * as T from './vendor/three.module.js';
 import {QINGHE} from './island-layout.js';
 // Reconstruct the source shoreline material: lace foam, two narrow retreat lines,
 // linear shallow-water fade and a five-second phase. The source distance field is retained.
-export function sourceWater(time,buffer,meta){
+export function sourceWater(time,buffer,meta,version=9){
+ const modern=version===16;
  const values=new Float32Array(buffer),data=new Uint16Array(values.length);
  for(let i=0;i<data.length;i++)data[i]=T.DataUtils.toHalfFloat(values[i]);
  const map=new T.DataTexture(data,meta.width,meta.height,T.RedFormat,T.HalfFloatType);map.minFilter=map.magFilter=T.LinearFilter;map.needsUpdate=true;
@@ -11,7 +13,7 @@ export function sourceWater(time,buffer,meta){
   shader.uniforms.sourceTime=time;shader.uniforms.sourceShore={value:map};
   shader.vertexShader='varying vec3 vWaterWorld;\n'+shader.vertexShader;
   shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvWaterWorld=(modelMatrix*vec4(position,1.)).xyz;');
-  shader.fragmentShader=`uniform float sourceTime;uniform sampler2D sourceShore;varying vec3 vWaterWorld;
+  shader.fragmentShader=`${cloudGLSL}uniform float sourceTime;uniform sampler2D sourceShore;varying vec3 vWaterWorld;
    float waterHash(vec3 p){p=fract(p*.1031);p+=dot(p,p.yzx+33.33);return fract((p.x+p.y)*p.z);}
    float waterNoise(vec3 p){vec3 i=floor(p),f=fract(p);f=f*f*f*(f*(f*6.-15.)+10.);return mix(mix(mix(waterHash(i),waterHash(i+vec3(1,0,0)),f.x),mix(waterHash(i+vec3(0,1,0)),waterHash(i+vec3(1,1,0)),f.x),f.y),mix(mix(waterHash(i+vec3(0,0,1)),waterHash(i+vec3(1,0,1)),f.x),mix(waterHash(i+vec3(0,1,1)),waterHash(i+vec3(1,1,1)),f.x),f.y),f.z);}
    float waterFbm(vec3 p){return (waterNoise(p)+.5*waterNoise(p*2.)+.25*waterNoise(p*4.))/1.75;}
@@ -21,19 +23,22 @@ export function sourceWater(time,buffer,meta){
   shader.fragmentShader=shader.fragmentShader.replace('#include <color_fragment>',`#include <color_fragment>
    vec2 p=vec2((vWaterWorld.x-${QINGHE.transform.position[0]})/.5,(${QINGHE.transform.position[2]}-vWaterWorld.z)/.5);
    vec2 uv=(p-vec2(${meta.min.join(',')}))/vec2(${meta.size.join(',')});
-   float sourceDistance=texture2D(sourceShore,uv).r;
+   float sourceDistance=texture2D(sourceShore,clamp(uv,0.,1.)).r+length((uv-clamp(uv,0.,1.))*vec2(${meta.size.join(',')}));
    float d=max(0.,sourceDistance);
-   float phase=sourceTime*6.28318530718/5.;float movement=sin(phase)*.07;float w=sin(phase)*.25;
+   float phase=sourceTime*6.28318530718/5.;float movement=sin(phase)*${modern?.04:.07};float w=sin(phase)*.25;
    float edgeNoise=waterFbm(vec3(p*2.5,w*2.5));float holes=waterFbm(vec3(p*9.,w*9.));
-   float ratio=d/(.63+movement);float aa=max(fwidth(ratio),.025);
+   float ratio=d/(${modern?.44:.63}+movement);float aa=max(fwidth(ratio),.025);
    float foam=(1.-smoothstep(.62+edgeNoise*.85-aa,.62+edgeNoise*.85+aa,ratio))*smoothstep(.24+ratio*.3-.035,.24+ratio*.3+.035,holes);
    float shift=movement+edgeNoise*.1;
    float lines=max(fineLine(d-(.66+shift),.016),fineLine(d-(1.04+shift),.009))*smoothstep(.37,.41,edgeNoise);
    float broad=waterFbm(vec3(p*.48,w*.48));
-   vec3 water=mix(vec3(.09,.36,.319),vec3(.014,.155,.205),clamp(d/2.7,0.,1.));
+   vec3 water=mix(${modern?'vec3(.0648,.42869,.41788),vec3(.008568,.25415,.318547)':'vec3(.09,.36,.319),vec3(.014,.155,.205)'},clamp(d/${modern?2.8:2.7},0.,1.));
+   ${modern?'water*=mix(vec3(.82,.87,.89),vec3(1.),envCloud(p));foam*=smoothstep(.35,.65,waterNoise(vec3(p*.7,phase*.08)));lines*=.24;':''}
    water=mix(water,2.*broad*water+water*water*(1.-2.*broad),.09);
-   diffuseColor.rgb=mix(water,vec3(.92,.95,.84),max(foam,lines));
+   diffuseColor.rgb=mix(water,${modern?'vec3(.48515,.67954,.63076)':'vec3(.92,.95,.84)'},max(foam,lines));
   `);
- };material.customProgramCacheKey=()=> 'source-shore-v2';
- const sea=new T.Mesh(new T.PlaneGeometry(500,500),material);sea.name='Source shoreline water';sea.rotation.x=-Math.PI/2;sea.position.y=-.5;sea.receiveShadow=true;return sea;
+  if(modern)shader.fragmentShader=shader.fragmentShader.replace('#include <normal_fragment_maps>',`#include <normal_fragment_maps>
+vec2 ripple=vec2(sin(vWaterWorld.x*1.9+sourceTime*.7),cos(vWaterWorld.z*2.3-sourceTime*.55));normal=normalize(normal+vec3(ripple.x,0.,ripple.y)*.075);`);
+ };material.customProgramCacheKey=()=> 'source-shore-'+version;
+ const sea=new T.Mesh(new T.PlaneGeometry(modern?3000:500,modern?3000:500),material);sea.name='Source shoreline water';sea.rotation.x=-Math.PI/2;sea.position.y=-.5;sea.receiveShadow=true;return sea;
 }

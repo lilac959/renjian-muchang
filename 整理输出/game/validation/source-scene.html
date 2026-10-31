@@ -1,5 +1,5 @@
 <!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>双岛 v09 原场景对照</title><style>body{margin:0;overflow:hidden}canvas{display:block;width:100vw;height:100vh}nav{position:fixed;left:12px;top:12px;display:flex;gap:6px}button{padding:6px 12px}#status{position:fixed;bottom:10px;left:10px;color:white;background:#234a}</style><canvas id="world"></canvas><nav><button id="overview">原场景总览</button><button id="closeup">麦田与村庄</button><button id="top">正俯视</button><button id="motion">播放风浪</button></nav><output id="status">加载中</output><script type="module">
-import {WorldView} from '../scene.js';import {World} from '../engine.js';import {QINGHE} from '../island-layout.js';
+import {WorldView} from '../scene.js?v=16.3';import {World} from '../engine.js';import {QINGHE} from '../island-layout.js';
 const canvas=document.querySelector('canvas'),view=new WorldView(canvas),world=new World();world.entities=[];world.effects=[];world.corpses=[];world.time=91/24;
 let camera={x:27,y:28,zoom:2.1,yaw:0,pitch:.92},playing=false,last=performance.now();
 function resize(){view.resize(innerWidth,innerHeight)}addEventListener('resize',resize);resize();

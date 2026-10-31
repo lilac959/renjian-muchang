@@ -1,0 +1,19 @@
+{
+  "checks": {
+    "pickable": true,
+    "independent": true,
+    "paused": true,
+    "stable": true,
+    "child": true,
+    "sick": true,
+    "hit": true,
+    "restored": true,
+    "textures": [
+      40,
+      40,
+      40,
+      40
+    ]
+  },
+  "errors": []
+}

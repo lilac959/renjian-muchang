@@ -1,0 +1,31 @@
+{
+  "sourcePackage": "双岛农民角色_Codex交付_v1.zip",
+  "factions": {"0": "farming.glb", "1": "livestock.glb"},
+  "rig": "PeasantRig",
+  "bones": 40,
+  "outfits": [0,1,2,3,4,5,6,7,8,9],
+  "head": 0,
+  "hairWithoutHat": [0,1,2,3],
+  "hairWithHat": 4,
+  "hats": [0,1,2],
+  "face": 0,
+  "hand": "RigRPalm",
+  "sourceForward": "+Z after glTF conversion",
+  "adultScale": 0.65,
+  "childScale": 0.4,
+  "animations": {"idle": "Idle", "walk": "Walk Forward In Place", "run": "Run Forward W Weapons In Place"},
+  "optionalAnimations": ["Walk Forward W Root", "Run Forward W Weapons W Root"],
+  "tools": {"farming": ["sickle","basket_empty"], "livestock": ["basket_empty"], "militia": ["hammer"]},
+  "exportedButNotEnabled": {
+    "head_1": "No dedicated matching face is supplied; keep validated head_0 with the original face.",
+    "prop_rake": "Existing clips have no two-handed grip; avoid obvious hand separation.",
+    "prop_pickaxe": "No two-handed tool animation supplied.",
+    "prop_log": "No carrying mechanic or matching carrying pose.",
+    "prop_urn_clay": "No current gameplay use.",
+    "prop_urn_empty": "No current gameplay use."
+  },
+  "notExported": {"Basket Vegetables": "Duplicate basket with contents; no harvest-carrying mechanic.", "SOURCE MODULES duplicates": "Use READY CHARACTER and WARDROBE; omit duplicate source rigs, studio lights and cameras."},
+  "rootChannels": "Preserved in faction-source.json; gameplay never uses root-motion clips.",
+  "textures": "Original embedded image resolutions and alpha preserved; source hair MixRGB multiplier preserved as glTF baseColorFactor.",
+  "sharing": "One GLB per faction, loaded once; geometry/animations/texture objects shared within faction, independent skeleton per resident. Common geometry and textures are duplicated between the two GLBs."
+}

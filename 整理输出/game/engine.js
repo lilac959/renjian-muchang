@@ -51,7 +51,7 @@ export class World {
  }
  damage(e,n){if(!e||e.dead)return;e.hurt=true;e.hp-=n;if(e.hp<=0)this.kill(e);}
  move(e,p,dt,speed=C.walkSpeed){return moveAlong(e,p,dt,speed);}
- attackTarget(e,v,dt,damage){this.move(e,v,dt,C.soldierSpeed);if(distance(e,v)<=1.2&&e.attack<=0){this.damage(v,damage);e.attack=C.attackInterval;this.fx(v.x,v.y,'－'+damage,'#ffb39d');}}
+ attackTarget(e,v,dt,damage){this.move(e,v,dt,C.soldierSpeed);if(distance(e,v)<=1.2&&e.attack<=0){const hp=v.hp;this.damage(v,damage);if(v.hp<hp)this.visualEvents.push({id:'actor-hit',attackerId:e.id,targetId:v.id,x:v.x,y:v.y,time:this.time});e.attack=C.attackInterval;this.fx(v.x,v.y,'－'+damage,'#ffb39d');}}
  armyCheck(c,p=c){
   if(this.truce>0)return '双方停战保护中';
   if(c.army)return '本岛队伍尚未返乡';

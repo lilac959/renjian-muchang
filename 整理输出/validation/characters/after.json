@@ -1,0 +1,59 @@
+[
+  {
+    "population": 16,
+    "zoom": 1,
+    "fps": 47.09905801861504,
+    "p95": 33.70000000000073,
+    "metrics": {
+      "fps": 43,
+      "population": 16,
+      "loadMs": 3289,
+      "triangles": 3059612,
+      "drawCalls": 876,
+      "geometries": 372,
+      "textures": 40,
+      "animatedPlants": 39,
+      "sourcePlantCount": 30675,
+      "plantShadersReady": true,
+      "sceneryTime": 12.483299999999977
+    }
+  },
+  {
+    "population": 160,
+    "zoom": 1,
+    "fps": 16.23619176631966,
+    "p95": 83.30000000000291,
+    "metrics": {
+      "fps": 17,
+      "population": 160,
+      "loadMs": 3289,
+      "triangles": 3647452,
+      "drawCalls": 1550,
+      "geometries": 443,
+      "textures": 40,
+      "animatedPlants": 39,
+      "sourcePlantCount": 30675,
+      "plantShadersReady": true,
+      "sceneryTime": 11.266500000000018
+    }
+  },
+  {
+    "population": 160,
+    "zoom": 3,
+    "fps": 18.518887273675073,
+    "p95": 67.30000000000291,
+    "metrics": {
+      "fps": 18,
+      "population": 160,
+      "loadMs": 3289,
+      "triangles": 3476468,
+      "drawCalls": 1221,
+      "geometries": 443,
+      "textures": 40,
+      "animatedPlants": 39,
+      "sourcePlantCount": 30675,
+      "plantShadersReady": true,
+      "sceneryTime": 11.950000000000026
+    }
+  }
+]

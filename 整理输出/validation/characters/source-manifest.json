@@ -1,0 +1,76 @@
+{
+  "package": "双岛农民角色_Codex交付_v1",
+  "blender_version": "5.2.3 LTS",
+  "files": [
+    {
+      "path": "CODEX_HANDOFF.md",
+      "bytes": 2980,
+      "sha256": "d10687eace255c518fe09dd20f851ed2797351e31d1573adef22eb0f6fc073ac"
+    },
+    {
+      "path": "使用说明与制作记录.txt",
+      "bytes": 1894,
+      "sha256": "6c95eb21e47dee289d57a91cd699c5cf17d42305aa68793c3ea4ada9c51f104d"
+    },
+    {
+      "path": "农耕岛_麦田暖色.blend",
+      "bytes": 7725200,
+      "sha256": "1c6131ebf0564b6af3a55ca38f1aa41d488ba0d12aa3baf257d39d429640e73c"
+    },
+    {
+      "path": "畜牧岛_雾蓝冷色.blend",
+      "bytes": 7664545,
+      "sha256": "98a99412623f45a12b1c47d68de5ec0e6c2a0419d409146ca90dab01c36ff0e4"
+    },
+    {
+      "path": "Previews/Farming_Preview.png",
+      "bytes": 521082,
+      "sha256": "5bb923c7efdfd9bc1cb04c4904d84c3ba8d8b87d0fa50213930d36810b7f8022"
+    },
+    {
+      "path": "Previews/Farming_Run.png",
+      "bytes": 522127,
+      "sha256": "6f4b1fd782c06387dbf1dfa27fbca4a48794b0d02dc8578876305c9d0c57874c"
+    },
+    {
+      "path": "Previews/Farming_Walk.png",
+      "bytes": 534361,
+      "sha256": "87ce0d38e52692968855cd903c6ffe8e6e17fd9fc28e49538494a21ba3717e85"
+    },
+    {
+      "path": "Previews/Livestock_Preview.png",
+      "bytes": 521239,
+      "sha256": "ac94e8cd157478cfc5f32dfc72619aa2f2781ea3b43ea376e63ac3cf0b012ca3"
+    },
+    {
+      "path": "Previews/Livestock_Run.png",
+      "bytes": 521707,
+      "sha256": "027f3f3dd006e9b3f3b65980deddd0b9cec6b6dd00b9c730870a56482aac53bc"
+    },
+    {
+      "path": "Previews/Livestock_Walk.png",
+      "bytes": 532382,
+      "sha256": "10027c0219f73571c2d76805eadc83b17827e640b4bbcf9a315461a4047c3427"
+    },
+    {
+      "path": "Textures/Farming_Clothing.png",
+      "bytes": 2458781,
+      "sha256": "4ed95769cb3bc4a3abeaadb6c809c162b66f63c3cc9748eda512e5616cdd33f6"
+    },
+    {
+      "path": "Textures/Livestock_Clothing.png",
+      "bytes": 2466787,
+      "sha256": "a23a0d410ccefd1e90fbd94b74e0c2b44e30a0ed0ea9778a44b216f71a6c3122"
+    },
+    {
+      "path": "Checks/动画逐帧检查.json",
+      "bytes": 4781,
+      "sha256": "855260ed27d4e8de3d5371ed24573b2a98f07e87f4885b5f4a6ea081cfc46b30"
+    },
+    {
+      "path": "Checks/导出回读检查.json",
+      "bytes": 297,
+      "sha256": "d99a3ee50b0096fb73aee91cb7d11ab2afabf756cda234e302a6106204d6e599"
+    }
+  ]
+}

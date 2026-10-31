@@ -1,0 +1,38 @@
+{
+  "manifestFilesChecked": 14,
+  "blender": "5.2.3 LTS",
+  "exports": {
+    "farming": {
+      "bones": 40,
+      "outfits": 10,
+      "actions": [
+        "Idle",
+        "Run Forward W Weapons In Place",
+        "Run Forward W Weapons W Root",
+        "Walk Forward In Place",
+        "Walk Forward W Root"
+      ],
+      "sampledFramesPerAction": 3,
+      "finiteBoundsUnder4Meters": true
+    },
+    "livestock": {
+      "bones": 40,
+      "outfits": 10,
+      "actions": [
+        "Idle",
+        "Run Forward W Weapons In Place",
+        "Run Forward W Weapons W Root",
+        "Walk Forward In Place",
+        "Walk Forward W Root"
+      ],
+      "sampledFramesPerAction": 3,
+      "finiteBoundsUnder4Meters": true
+    }
+  },
+  "tests": {
+    "committedSuite": 40,
+    "workingTreeSuiteIncludingConcurrentPauseTests": 44,
+    "balanceRuns": 15,
+    "balanceMatchesPreviousByteForByte": true
+  }
+}

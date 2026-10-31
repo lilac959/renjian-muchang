@@ -1,0 +1,10 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>青禾岛原场景对照</title><style>body{margin:0;overflow:hidden}canvas{display:block;width:100vw;height:100vh}nav{position:fixed;left:12px;top:12px;display:flex;gap:6px}button{padding:6px 12px}#status{position:fixed;bottom:10px;left:10px;color:white;background:#234a}</style><canvas id="world"></canvas><nav><button id="overview">原场景总览</button><button id="closeup">麦田与村庄</button><button id="top">正俯视</button><button id="motion">播放风浪</button></nav><output id="status">加载中</output><script type="module">
+import {WorldView} from '../scene.js';import {World} from '../engine.js';import {QINGHE} from '../island-layout.js';
+const canvas=document.querySelector('canvas'),view=new WorldView(canvas),world=new World();world.entities=[];world.islands=world.islands.slice(0,1);world.effects=[];world.corpses=[];world.time=91/24;
+let camera={x:27,y:28,zoom:2.1,yaw:0,pitch:.92},playing=false,last=performance.now();
+function resize(){view.resize(innerWidth,innerHeight)}addEventListener('resize',resize);resize();
+function preset(index){const c=view.sourceMeta.cameras[index],m=c.matrix,s=QINGHE.transform.scale,p=QINGHE.transform.position,h=m[2][3]*s+p[1],dy=-m[2][2],f=-h/dy;camera={x:m[0][3]*s+p[0]-m[0][2]*f,y:-m[1][3]*s+p[2]+m[1][2]*f,zoom:110/(c.scale*s),yaw:Math.atan2(m[0][2],-m[1][2]),pitch:Math.asin(m[2][2])};}
+document.querySelector('#overview').onclick=()=>preset(0);document.querySelector('#closeup').onclick=()=>preset(1);document.querySelector('#top').onclick=()=>camera={x:27,y:28,zoom:2.1,yaw:0,pitch:Math.PI/2-.0001};document.querySelector('#motion').onclick=()=>playing=!playing;
+await view.load();preset(0);document.querySelector('#status').textContent='源布局 · '+view.scenery.plantCount+' 个植被实例';
+function frame(now){if(playing)world.time+=(now-last)/1000;last=now;view.render(world,camera,null,null);requestAnimationFrame(frame)}requestAnimationFrame(frame);
+</script></html>

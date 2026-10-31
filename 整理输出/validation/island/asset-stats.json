@@ -1,7 +1,15 @@
 {
-  "glbBytes": 54278216,
+  "glbBytes": 86410004,
   "embeddedImages": 25,
-  "embeddedImageBytes": 14015276,
-  "triangles": 682962,
-  "meshNodes": 124
+  "embeddedImageBytes": 55939004,
+  "staticAndPrototypeTriangles": 664987,
+  "meshNodes": 121,
+  "plantInstances": 30675,
+  "grassInstances": 30147,
+  "wheatInstances": 528,
+  "auxiliaryBytes": {
+    "shore.bin": 465124,
+    "display-lut.bin": 1098500,
+    "plants.bin": 858900
+  }
 }

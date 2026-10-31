@@ -1,0 +1,840 @@
+{
+  "objects": 119,
+  "maxMatrixError": 4.76837158203125e-07,
+  "maxBoundsError": 9.5367431640625e-07,
+  "results": [
+    {
+      "name": "Island_Ground | 草坡_沙滩_浅滩",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 76416,
+      "exportTriangles": 76416
+    },
+    {
+      "name": "Path Edge 00",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 13824,
+      "exportTriangles": 13824
+    },
+    {
+      "name": "Village Lane 00",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 13824,
+      "exportTriangles": 13824
+    },
+    {
+      "name": "Path Edge 01",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 12288,
+      "exportTriangles": 12288
+    },
+    {
+      "name": "Village Lane 01",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 12288,
+      "exportTriangles": 12288
+    },
+    {
+      "name": "Path Edge 02",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 10752,
+      "exportTriangles": 10752
+    },
+    {
+      "name": "Village Lane 02",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 10752,
+      "exportTriangles": 10752
+    },
+    {
+      "name": "Path Edge 03",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 4608,
+      "exportTriangles": 4608
+    },
+    {
+      "name": "Village Lane 03",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 4608,
+      "exportTriangles": 4608
+    },
+    {
+      "name": "Path Edge 04",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 4608,
+      "exportTriangles": 4608
+    },
+    {
+      "name": "Village Lane 04",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 4608,
+      "exportTriangles": 4608
+    },
+    {
+      "name": "Path Edge 05",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 4608,
+      "exportTriangles": 4608
+    },
+    {
+      "name": "Village Lane 05",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 4608,
+      "exportTriangles": 4608
+    },
+    {
+      "name": "Path Edge 06",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 4608,
+      "exportTriangles": 4608
+    },
+    {
+      "name": "Village Lane 06",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 4608,
+      "exportTriangles": 4608
+    },
+    {
+      "name": "Path Edge 07",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 3072,
+      "exportTriangles": 3072
+    },
+    {
+      "name": "Village Lane 07",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 3072,
+      "exportTriangles": 3072
+    },
+    {
+      "name": "Path Edge 08",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 1536,
+      "exportTriangles": 1536
+    },
+    {
+      "name": "Village Lane 08",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 1536,
+      "exportTriangles": 1536
+    },
+    {
+      "name": "Village Square",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 59904,
+      "exportTriangles": 59904
+    },
+    {
+      "name": "Path | Rounded end",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 2304,
+      "exportTriangles": 2304
+    },
+    {
+      "name": "Path | Rounded end.001",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 2304,
+      "exportTriangles": 2304
+    },
+    {
+      "name": "Path | Rounded end.002",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 2304,
+      "exportTriangles": 2304
+    },
+    {
+      "name": "Path | Rounded end.003",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 2304,
+      "exportTriangles": 2304
+    },
+    {
+      "name": "Path | Rounded end.004",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 2304,
+      "exportTriangles": 2304
+    },
+    {
+      "name": "Path | Rounded end.005",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 2304,
+      "exportTriangles": 2304
+    },
+    {
+      "name": "Path | Rounded end.006",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 2304,
+      "exportTriangles": 2304
+    },
+    {
+      "name": "Path | Rounded end.007",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 2304,
+      "exportTriangles": 2304
+    },
+    {
+      "name": "Path | Rounded end.008",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 2304,
+      "exportTriangles": 2304
+    },
+    {
+      "name": "Path | Rounded end.009",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 2304,
+      "exportTriangles": 2304
+    },
+    {
+      "name": "Path | Rounded end.010",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 2304,
+      "exportTriangles": 2304
+    },
+    {
+      "name": "Path | Rounded end.011",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 2304,
+      "exportTriangles": 2304
+    },
+    {
+      "name": "Path | Rounded end.012",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 2304,
+      "exportTriangles": 2304
+    },
+    {
+      "name": "Path | Rounded end.013",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 2304,
+      "exportTriangles": 2304
+    },
+    {
+      "name": "Path | Rounded end.014",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 2304,
+      "exportTriangles": 2304
+    },
+    {
+      "name": "Path | Rounded end.015",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 2304,
+      "exportTriangles": 2304
+    },
+    {
+      "name": "Path | Rounded end.016",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 2304,
+      "exportTriangles": 2304
+    },
+    {
+      "name": "Path | Rounded end.017",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 2304,
+      "exportTriangles": 2304
+    },
+    {
+      "name": "Village Square | Individual sandstone paving",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 11648,
+      "exportTriangles": 11648
+    },
+    {
+      "name": "Village Hall | MH_Church_01",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 19770,
+      "exportTriangles": 19770
+    },
+    {
+      "name": "Village Hall | MH_Church_01_RoofCore",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 6,
+      "exportTriangles": 6
+    },
+    {
+      "name": "Village Hall | MH_Church_01_RoofTilesRepair",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 120,
+      "exportTriangles": 120
+    },
+    {
+      "name": "Village Hall | MH_Church_01_TowerWallRepair",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 12,
+      "exportTriangles": 12
+    },
+    {
+      "name": "Academy | MH_School_01",
+      "matrixError": 2.2351741790771484e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 6796,
+      "exportTriangles": 6796
+    },
+    {
+      "name": "Windmill | MH_Windmill_02",
+      "matrixError": 1.1920928955078125e-07,
+      "boundsError": 9.5367431640625e-07,
+      "sourceTriangles": 239855,
+      "exportTriangles": 239855
+    },
+    {
+      "name": "Granary | MH_Granary_01",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 8167,
+      "exportTriangles": 8167
+    },
+    {
+      "name": "Cottage NW | MH_House_01",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 7765,
+      "exportTriangles": 7765
+    },
+    {
+      "name": "Cottage W | MH_House_02",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 8694,
+      "exportTriangles": 8694
+    },
+    {
+      "name": "Cottage E | MH_House_01",
+      "matrixError": 5.960464477539063e-08,
+      "boundsError": 9.5367431640625e-07,
+      "sourceTriangles": 7765,
+      "exportTriangles": 7765
+    },
+    {
+      "name": "Cottage SE | MH_House_02",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 8694,
+      "exportTriangles": 8694
+    },
+    {
+      "name": "Cottage S | MH_House_01",
+      "matrixError": 7.450580596923828e-09,
+      "boundsError": 4.76837158203125e-07,
+      "sourceTriangles": 7765,
+      "exportTriangles": 7765
+    },
+    {
+      "name": "Cottage Coast | MH_House_02",
+      "matrixError": 2.9802322387695312e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 8694,
+      "exportTriangles": 8694
+    },
+    {
+      "name": "Market West | MH_MarketStall_01",
+      "matrixError": 7.450580596923828e-09,
+      "boundsError": 0.0,
+      "sourceTriangles": 9928,
+      "exportTriangles": 9928
+    },
+    {
+      "name": "Market East | MH_MarketStall_01",
+      "matrixError": 2.2351741790771484e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 9928,
+      "exportTriangles": 9928
+    },
+    {
+      "name": "Wayside Shrine | MH_Shrine_01",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 9009,
+      "exportTriangles": 9009
+    },
+    {
+      "name": "Wheat Plot 00",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 338,
+      "exportTriangles": 338
+    },
+    {
+      "name": "Wheat Plot 01",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 338,
+      "exportTriangles": 338
+    },
+    {
+      "name": "Wheat Plot 02",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 338,
+      "exportTriangles": 338
+    },
+    {
+      "name": "Wheat Plot 03",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 338,
+      "exportTriangles": 338
+    },
+    {
+      "name": "Coastal Stone",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Coastal Stone.001",
+      "matrixError": 2.980232238769531e-07,
+      "boundsError": 9.5367431640625e-07,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Coastal Stone.002",
+      "matrixError": 4.470348358154297e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Coastal Stone.003",
+      "matrixError": 5.960464477539063e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Coastal Stone.004",
+      "matrixError": 4.470348358154297e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Coastal Stone.005",
+      "matrixError": 5.960464477539063e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Coastal Stone.006",
+      "matrixError": 8.940696716308594e-08,
+      "boundsError": 4.76837158203125e-07,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Coastal Stone.007",
+      "matrixError": 8.940696716308594e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Coastal Stone.008",
+      "matrixError": 2.9802322387695312e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Coastal Stone.009",
+      "matrixError": 1.1920928955078125e-07,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Coastal Stone.010",
+      "matrixError": 2.9802322387695312e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Coastal Stone.011",
+      "matrixError": 2.9802322387695312e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Coastal Stone.012",
+      "matrixError": 2.9802322387695312e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Coastal Stone.013",
+      "matrixError": 5.960464477539063e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Coastal Stone.014",
+      "matrixError": 1.1920928955078125e-07,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Coastal Stone.015",
+      "matrixError": 4.76837158203125e-07,
+      "boundsError": 4.76837158203125e-07,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Coastal Stone.016",
+      "matrixError": 5.960464477539063e-08,
+      "boundsError": 1.1920928955078125e-07,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Coastal Stone.017",
+      "matrixError": 1.1920928955078125e-07,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Coastal Stone.018",
+      "matrixError": 1.1920928955078125e-07,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Coastal Stone.019",
+      "matrixError": 4.76837158203125e-07,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Coastal Stone.020",
+      "matrixError": 1.1920928955078125e-07,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone",
+      "matrixError": 8.940696716308594e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.001",
+      "matrixError": 1.1920928955078125e-07,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.002",
+      "matrixError": 1.4901161193847656e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.003",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.004",
+      "matrixError": 7.450580596923828e-09,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.005",
+      "matrixError": 2.9802322387695312e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.006",
+      "matrixError": 5.960464477539063e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.007",
+      "matrixError": 7.450580596923828e-09,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.008",
+      "matrixError": 6.705522537231445e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.009",
+      "matrixError": 2.9802322387695312e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.010",
+      "matrixError": 5.960464477539063e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.011",
+      "matrixError": 1.043081283569336e-07,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.012",
+      "matrixError": 3.725290298461914e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.013",
+      "matrixError": 2.2351741790771484e-08,
+      "boundsError": 2.9802322387695312e-08,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.014",
+      "matrixError": 2.2351741790771484e-08,
+      "boundsError": 1.4901161193847656e-08,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.015",
+      "matrixError": 5.960464477539063e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.016",
+      "matrixError": 7.450580596923828e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.017",
+      "matrixError": 5.960464477539063e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.018",
+      "matrixError": 2.9802322387695312e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.019",
+      "matrixError": 2.9802322387695312e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.020",
+      "matrixError": 7.450580596923828e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.021",
+      "matrixError": 8.940696716308594e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.022",
+      "matrixError": 1.4901161193847656e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.023",
+      "matrixError": 1.4901161193847656e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.024",
+      "matrixError": 5.960464477539063e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.025",
+      "matrixError": 2.9802322387695312e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.026",
+      "matrixError": 1.043081283569336e-07,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.027",
+      "matrixError": 2.682209014892578e-07,
+      "boundsError": 9.5367431640625e-07,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.028",
+      "matrixError": 2.9802322387695312e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.029",
+      "matrixError": 1.4901161193847656e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.030",
+      "matrixError": 5.960464477539063e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.031",
+      "matrixError": 2.9802322387695312e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.032",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.033",
+      "matrixError": 2.384185791015625e-07,
+      "boundsError": 2.384185791015625e-07,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.034",
+      "matrixError": 1.4901161193847656e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.035",
+      "matrixError": 2.9802322387695312e-08,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.036",
+      "matrixError": 2.39349901676178e-07,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.037",
+      "matrixError": 0.0,
+      "boundsError": 0.0,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    },
+    {
+      "name": "Meadow Stone.038",
+      "matrixError": 1.043081283569336e-07,
+      "boundsError": 1.1175870895385742e-07,
+      "sourceTriangles": 20,
+      "exportTriangles": 20
+    }
+  ]
+}

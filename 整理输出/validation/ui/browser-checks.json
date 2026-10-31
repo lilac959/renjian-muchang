@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-31",
+  "baseCommit": "4202a8159179924fe64241255208ccba98c0eff9",
+  "unitTests": {"passed": 35, "failed": 0},
+  "browser": "Playwright Chromium, Metal backend on local desktop",
+  "viewports": ["1440x900", "844x390 touch emulation", "390x844 portrait"],
+  "passed": [
+    "Actual 3D scene and all UI assets load",
+    "Resident ray picking, detail close and live data",
+    "Lightning releases without confirmation; net mana and soul rewards match engine",
+    "Save, home, restore and paused resume",
+    "Engine-driven success, extinction and timeout screens; new-game buttons",
+    "Touch hold does not charge before release",
+    "Sea release does not charge; valid release casts once",
+    "Second touch transfers to camera without casting",
+    "Portrait pauses the world",
+    "Meteor uses actual engine launch and impact; all nine effect paths render",
+    "Pause freezes simulation animation clock",
+    "Island load failure, retry and start",
+    "No page runtime errors during successful-flow checks"
+  ],
+  "limitations": ["Touch emulation is not physical phone performance validation", "Full original island model and vegetation retained; first load remains heavy"],
+  "screenshots": "This directory",
+  "testInstrumentation": "Browser tests append temporary module access through Playwright response routing; no debug API is shipped in the game."
+}

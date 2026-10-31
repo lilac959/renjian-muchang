@@ -1,0 +1,43 @@
+✔ right drag rotates and tilts without tapping; pitch remains above ground (1.962417ms)
+✔ pinch and twist never become a tap after one finger lifts (2.881041ms)
+✔ cancelled and dragged gestures do not select targets (0.31375ms)
+✔ zoom keeps pointer anchor and reset restores all view coordinates (1.172792ms)
+✔ rotated low and high views retain projection/pan-plane correspondence (2.376125ms)
+✔ both islands share a simple economy, nine skills available immediately (2.795167ms)
+✔ pause freezes every simulation system (1.962625ms)
+✔ actual human deaths award once; undead do not reward (0.531417ms)
+✔ births create actual children, with maturation and no pairing or housing (73.727625ms)
+✔ no food or insufficient healthy adults blocks birth; no resurrection by economy (27.128625ms)
+✔ production enters stock directly, bless boosts work and joy increases food use (0.670333ms)
+✔ rage recruits actual nearby adults, reserves workers and stops troop production (0.552917ms)
+✔ rage rejects too few adults, existing army and cooldown without charging (0.531167ms)
+✔ crossing follows bridge, armies produce real casualties (749.746708ms)
+✔ peace works on the bridge, returns both armies and blocks immediate rewar (465.672542ms)
+✔ peace without a troop is rejected without cost (1.521ms)
+✔ half losses and timeout trigger retreat (16.476083ms)
+✔ all skills validate at release and invalid targets never charge (1.208ms)
+✔ meteor resolves after delay, no indoor protection, rain puts out fire (15.09575ms)
+✔ plague stops production and surviving people gain immunity (28.9205ms)
+✔ resurrection consumes corpses once, undead expire without duplicate souls (51.676625ms)
+✔ success takes priority over extinction and timeout (1.192084ms)
+✔ save/restore preserves ongoing war, resources and timers; old and broken saves rejected (44.866458ms)
+✔ simulation conserves actual population across varied attacks (13112.904625ms)
+✔ returning soldiers snap to bridge waypoints instead of stalling just off shore (33.376834ms)
+✔ visual events preserve targets before death, follow impact timing, and are not restored (16.522708ms)
+✔ births and random destinations remain on the correct walkable island (2039.064042ms)
+✔ buildings block walking but remain valid spell ground; roofs are not sampled (0.461667ms)
+✔ both bridge ends and complete routes connect continuously around obstacles (37.999708ms)
+✔ war, defenders, retreat and undead never leave legal terrain (2044.478666ms)
+✔ previous coordinate saves are explicitly incompatible (1.609417ms)
+✔ touch aiming does not pan or cast until release (3.178916ms)
+✔ second touch transfers to camera and never casts on either release (0.751792ms)
+✔ cancelled touch and cleared gesture cannot release a spell (0.319ms)
+✔ observation taps and pans still belong to camera controls (0.373541ms)
+ℹ tests 35
+ℹ suites 0
+ℹ pass 35
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16421.200959

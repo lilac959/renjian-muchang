@@ -1,26 +1,5 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
- <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
- <meta name="theme-color" content="#102b32"><meta name="description" content="人间牧场：在五分钟里，执掌生命、天气与死亡，维系双岛文明，通过轻量战争与神力收集灵魂。">
- <meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
- <title>人间牧场 · 双岛纪事</title><link rel="icon" href="./icon.svg" type="image/svg+xml"><link rel="manifest" href="./manifest.webmanifest"><link rel="stylesheet" href="./style.css">
-</head>
-<body>
- <canvas id="world" aria-label="双岛世界：选择技能，点击岛屿或桥面预览，再确认施放"></canvas>
- <div id="hud" hidden>
-  <header><div class="brand"><button id="menu" class="square" aria-label="游戏菜单">☰</button></div><div class="score"><span class="soul-mark">✧</span><b id="souls">0</b><span class="muted">/ <span id="goal">60</span></span><i></i><span id="timer">05:00</span><div class="progress"><span id="progress"></span></div></div><button id="pause" hidden aria-label="暂停或继续">Ⅱ</button></header>
-  <button id="resetView" title="回到双岛全景">↺ 复位视角</button><div id="warning" hidden></div>
-  <div id="countries"></div><div id="paused" hidden>时间停驻<small>点左上角菜单继续</small></div>
-  <aside id="detail" hidden></aside>
-  <div id="targetPanel" hidden><span id="targetInfo"></span><button id="cast" class="primary">✓ 施放</button><button id="cancel" class="square" aria-label="取消技能">×</button></div>
-  <footer><div id="gods"><button data-group="0" class="god life active"><img src="./assets/ui/approved-love.png" alt=""><b>生命</b><small>生生不息</small></button><button data-group="1" class="god sky"><img src="./assets/ui/approved-weather.png" alt=""><b>天气</b><small>风雨有时</small></button><button data-group="2" class="god death"><img src="./assets/ui/approved-death.png" alt=""><b>死亡</b><small>万物归途</small></button></div><div class="skill-area"><div id="hint">选择神明与技能，干预这片人间</div><div id="skills"></div></div><span class="mana">✦ <b id="mana">30</b></span><span id="saveStatus"></span></footer>
-  <div id="weather" hidden><label>天气 <select id="weatherKind"><option value="normal">晴天</option><option value="rain" selected>降雨</option><option value="hot">酷热</option><option value="cold">寒冷</option></select></label><small>降雨增产并灭火。选择天气后点岛屿预览，再点击施放。</small></div>
- </div>
- <main id="home" class="overlay"><section class="home-card"><div class="ornament">✧ ── ❦ ── ✧</div><h1>人间牧场</h1><p class="subtitle">予以生机，亦予归途。</p><div class="home-actions"><button id="start" class="primary">开启一段人间 <span>→</span></button><button id="continue" hidden>继续上次的世界</button></div></section></main>
- <div id="dialog" class="overlay" hidden><section class="dialog-card"><div id="dialogBody"></div><div id="dialogActions"></div></section></div>
- <div id="portrait"><div class="rotate">▱ ↻</div><h2>把世界横过来</h2><p>横屏后，两座岛屿便能尽收眼底。</p><small>旋转设备继续 · 游戏已暂停</small></div>
- <div id="assetLoading" class="overlay"><section class="dialog-card"><p id="assetStatus" role="status">正在载入青禾岛…</p><button id="assetRetry" hidden>重新加载岛屿</button></section></div>
- <div id="toast" role="status" hidden></div>
- <script type="module" src="./app.js"></script>
-</body></html>
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><meta name="theme-color" content="#242c2b"><title>人间牧场</title><link rel="icon" href="icon.svg"><link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="style.css"></head><body>
+<canvas id="world" aria-label="双岛世界：选择技能，瞄准后释放；未选技能时可拖动镜头与查看居民"></canvas>
+<div id="hud" hidden><header><button id="menu" aria-label="游戏菜单">Ⅱ</button><div class="resources"><span>✦ <b id="mana">30</b></span><span><b id="souls">0</b> / <span id="goal">60</span> 魂　 <b id="timer">05:00</b></span><button id="resetView" aria-label="复位视角">↺</button></div></header><div id="countries"></div><div id="paused" hidden>时间停驻 <button id="resume">继续</button></div><aside id="detail" hidden></aside><aside id="skillNote" hidden></aside><div id="aimHint" hidden></div><div id="weather" hidden></div><footer><div id="gods"></div><span class="linkmark">›</span><div id="skills"></div></footer></div>
+<main id="home" class="overlay"></main><div id="dialog" class="overlay" hidden role="dialog" aria-modal="true"><section id="dialogCard"><div id="dialogBody"></div><div id="dialogActions"></div></section></div>
+<div id="portrait"><b>▱ ↻</b><h2>横过来，看见人间</h2><p>游戏已暂停</p></div><div id="assetLoading" class="overlay"><section class="paper"><h2>人间牧场</h2><p id="assetStatus" role="status">正在载入岛屿…</p><button id="assetRetry" hidden>重新加载</button></section></div><div id="toast" role="status" hidden></div><script type="module" src="app.js"></script></body></html>

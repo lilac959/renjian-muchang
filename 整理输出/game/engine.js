@@ -5,7 +5,7 @@ export const distance = (a,b) => Math.hypot(a.x-b.x,a.y-b.y);
 export class World {
  constructor(seed=Date.now()) {
   Object.assign(this,{seed:seed>>>0,time:0,mana:C.mana,souls:0,paused:true,result:null,serial:0,
-   cooldowns:{},entities:[],corpses:[],effects:[],events:[],islands:[],pending:[],fires:[],
+   visualEvents:[],cooldowns:{},entities:[],corpses:[],effects:[],events:[],islands:[],pending:[],fires:[],
    truce:0,births:0,milestones:{},saveRequested:false});
   for(let id=0;id<2;id++) this.createIsland(id);
  }
@@ -97,6 +97,7 @@ export class World {
  cast(id,p,weather='rain'){
   const error=this.validate(id,p,weather);if(error)return {ok:false,message:error};
   const s=SKILLS.find(s=>s.id===id),c=this.islandAt(p),targets=this.legalTargets(id,p,s.r);
+  this.visualEvents??=[];this.visualEvents.push({id,x:p.x,y:p.y,time:this.time,weather,targets:targets.map(e=>({id:e.id,x:e.x,y:e.y})),corpses:id==='undead'?this.corpses.filter(b=>b.life>0&&distance(b,p)<=s.r).slice(0,C.undeadLimit).map(b=>({x:b.x,y:b.y})):[]});
   this.mana-=s.cost;this.cooldowns[id]=s.cd;
   if(id==='peace')this.peace();
   if(id==='bless')for(const e of targets)e.bless=C.blessSeconds;
@@ -109,7 +110,7 @@ export class World {
   if(id==='meteor')this.pending.push({x:p.x,y:p.y,left:.7});
   this.fx(p.x,p.y,`－${s.cost}灵力`);this.judge();return {ok:true,message:id==='peace'?'双方停止交战，正在返乡':`${s.name}已施放`};
  }
- impact(p){const before=this.souls;for(const e of this.targets(p,SKILLS.find(s=>s.id==='meteor').r))this.damage(e,C.meteorDamage);const c=this.islandAt(p);if(!c||c.weather.kind!=='rain'||c.weather.left<=0)this.fires.push({...p,left:C.fireSeconds});this.message(`陨石：实际死亡${this.souls-before}人，＋${this.souls-before}魂，＋${(this.souls-before)*C.soulMana}灵力`);}
+ impact(p){this.visualEvents??=[];this.visualEvents.push({id:'impact',x:p.x,y:p.y,time:this.time});const before=this.souls;for(const e of this.targets(p,SKILLS.find(s=>s.id==='meteor').r))this.damage(e,C.meteorDamage);const c=this.islandAt(p);if(!c||c.weather.kind!=='rain'||c.weather.left<=0)this.fires.push({...p,left:C.fireSeconds});this.message(`陨石：实际死亡${this.souls-before}人，＋${this.souls-before}魂，＋${(this.souls-before)*C.soulMana}灵力`);}
  economy(c,dt){
   c.food=Math.max(0,Math.min(C.foodLimit,c.food+this.netFood(c)*dt));
   c.birthProgress+=dt*this.birthRate(c);
@@ -146,9 +147,9 @@ export class World {
   this.entities=this.entities.filter(e=>!e.dead);this.judge();
  }
  judge(){if(this.result)return;if(this.souls>=C.goal)this.result='success';else if(!this.humans().length)this.result='extinct';else if(this.time+1e-8>=C.duration)this.result='timeout';if(this.result)this.paused=true;}
- serialize(){if(this.result)throw Error('本局已结束');if(this.pending.length){this.saveRequested=true;throw Error('陨石落地后补存');}return JSON.stringify({version:C.version,state:{...this,effects:[],events:[],saveRequested:false}});}
+ serialize(){if(this.result)throw Error('本局已结束');if(this.pending.length){this.saveRequested=true;throw Error('陨石落地后补存');}return JSON.stringify({version:C.version,state:{...this,effects:[],events:[],visualEvents:[],saveRequested:false}});}
  static restore(json){const d=JSON.parse(json);if(d.version!==C.version)throw Error('旧版存档不兼容，请开始新局');const s=d.state;
   if(!s||s.result||!Number.isFinite(s.time)||s.time<0||s.time>=C.duration||!Number.isFinite(s.mana)||s.mana<0||!Number.isInteger(s.souls)||s.souls<0||!Array.isArray(s.islands)||s.islands.length!==2||!Array.isArray(s.entities)||!Array.isArray(s.corpses)||!Array.isArray(s.fires)||!Array.isArray(s.pending)||s.pending.length||new Set(s.entities.map(e=>e.id)).size!==s.entities.length||s.entities.some(e=>!s.islands[e.country]||!Number.isFinite(e.hp)||!Number.isFinite(e.x)||!Number.isFinite(e.y)||!walkable(e)||!e.destination||!walkable(e.destination))||s.islands.some(c=>!Number.isFinite(c.food)||c.food<0))throw Error('存档损坏，无法恢复');
-  return Object.assign(Object.create(World.prototype),s,{paused:true});
+  return Object.assign(Object.create(World.prototype),s,{paused:true,visualEvents:[]});
  }
 }

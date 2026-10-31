@@ -1,0 +1,62 @@
+Browser tab: 2, Title: "人间牧场", URL: "http://127.0.0.1:5173/".
+1 AXWebArea 人间牧场, URL: 127.0.0.1:5173/
+	2 image Description: 双岛世界：选择技能，瞄准后释放；未选技能时可拖动镜头与查看居民, ID: world
+	77 container
+		97 text ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧ ✧
+	16 container hud
+		17 container
+			18 button Description: 游戏菜单, ID: menu
+			19 container countries
+				20 button 农耕岛 人口 47 口粮 47秒 · +6.0/秒
+					21 text 农耕岛
+					75 text 人口 47
+					23 container
+						76 text 口粮 47秒  · +6.0/秒
+				25 button 畜牧岛 人口 21 口粮 70秒 · +11.8/秒
+					26 text 畜牧岛
+					79 text 人口 21
+					28 container
+						80 text 口粮 70秒  · +11.8/秒
+			30 container 灵力 · 释放技能时消耗
+				31 text 灵力
+				98 text 156
+			33 container 灵魂 · 收集至目标获胜
+				34 text 灵魂
+				99 text 78
+				36 text  /
+				100 text 60
+				101 text 02:05
+		39 container
+			40 container gods
+				56 button 选择生命神明
+					57 text 生命
+				58 button 选择天气神明
+					59 text 天气
+				60 button 选择死亡神明
+					61 text 死亡
+			47 container skills
+				62 text 天气 · 神谕
+				63 button 气候控制，5灵力
+					64 text 5✦
+					65 text 气候控制
+				66 button 闪电，3灵力
+					67 text 3✦
+					68 text 闪电
+				69 button 陨石，12灵力
+					70 text 12✦
+					71 text 陨石
+					102 text 25s
+	86 container dialogBody
+		87 image 生命神牌
+		88 text 挑战成功
+		89 heading 灵魂集齐, Value: 2
+			90 text 灵魂集齐
+		91 text 收集目标已达成。
+		92 container
+			93 text 78  / 60 魂
+		94 text 用时 175 秒
+		95 button 再玩一局, ID: retryGame
+		96 button 返回主界面, ID: endHome
+	15 image
+
+The focused UI element is 95 button 再玩一局, ID: retryGame

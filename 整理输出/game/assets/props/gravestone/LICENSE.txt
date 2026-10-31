@@ -1,0 +1,7 @@
+Gravestone by Kay Lousberg
+Source: https://poly.pizza/m/ErfdU1GJSD
+License: CC0 1.0 Universal (Public Domain)
+License URL: https://creativecommons.org/publicdomain/zero/1.0/
+Downloaded: 2026-10-31
+Original asset: https://static.poly.pizza/de5a3cc5-03f3-4c26-a904-9f9d9787b67c.glb
+271 triangles. Original GLB preserved; normalized scale and ground placement at runtime.

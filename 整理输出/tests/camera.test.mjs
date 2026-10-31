@@ -10,3 +10,17 @@ import * as T from '../game/vendor/three.module.js';
 import {WorldView} from '../game/scene.js';
 test('rotated low and high views retain projection/pan-plane correspondence',()=>{const view=Object.create(WorldView.prototype);Object.assign(view,{w:960,h:540,camera:new T.OrthographicCamera(-55,55,35,-35,.1,250),ray:new T.Raycaster(),plane:new T.Plane(new T.Vector3(0,1,0),0),renderer:{domElement:{dataset:{}}}});for(const yaw of [0,Math.PI/2,Math.PI,-2])for(const pitch of [25,80]){view.cameraAt({...DEFAULT_CAMERA,yaw,pitch:pitch*Math.PI/180,zoom:3});const world=new T.Vector3(40,0,30),screen=world.clone().project(view.camera),hit=view.panPoint({x:(screen.x+1)*480,y:(1-screen.y)*270});assert.ok(Math.abs(hit.x-world.x)<1e-8);assert.ok(Math.abs(hit.y-world.z)<1e-8);}});
 test('horizon preview entered first can return to gameplay projection',()=>{const camera=new T.OrthographicCamera(-55,55,35,-35,.1,4000),view=Object.create(WorldView.prototype);Object.assign(view,{w:960,h:540,camera,previewCamera:new T.PerspectiveCamera(),renderer:{domElement:{dataset:{}}}});view.previewCamera.userData.horizontalFov=Math.PI/3;view.cameraAt(DEFAULT_CAMERA);assert.ok(view.camera.isPerspectiveCamera);view.previewCamera=null;view.cameraAt(DEFAULT_CAMERA);assert.equal(view.camera,camera);assert.ok(view.camera.projectionMatrix.elements.every(Number.isFinite));});
+test('sea stays inside clipping planes at every viewport corner in tall and low-angle views',()=>{
+ const view=Object.create(WorldView.prototype);
+ Object.assign(view,{camera:new T.OrthographicCamera(-55,55,35,-35,.1,250),renderer:{domElement:{dataset:{}}}});
+ for(const [w,h] of [[1168,965],[960,1600],[1920,1080]])for(const pitch of [25,35,52,80])for(const zoom of [1,3,7])for(const yaw of [0,1.5,3]){
+  Object.assign(view,{w,h,safeRegion:{top:120,bottom:h-280}});
+  view.cameraAt({...DEFAULT_CAMERA,pitch:pitch*Math.PI/180,zoom,yaw});
+  const direction=new T.Vector3();view.camera.getWorldDirection(direction);
+  for(const x of [-1,1])for(const y of [-1,1]){
+   const origin=new T.Vector3(x,y,-1).unproject(view.camera),distance=(-.5-origin.y)/direction.y;
+   assert.ok(distance>0,`sea clipped near: ${w}x${h}, pitch ${pitch}, zoom ${zoom}, corner ${x},${y}`);
+   assert.ok(distance<view.camera.far-view.camera.near,'sea clipped far');
+  }
+ }
+});

@@ -17,7 +17,6 @@ export class SpellEffects{
  if(e.id==='undead')for(const b of e.corpses||[]){const q=v.project(b);image('spirit',q.x,q.y-Math.min(1,t)*s,s*2.4,s*4*Math.min(1,t*2),fade);}
  if(e.id==='peace'){for(let j=0;j<3;j++){g.strokeStyle=['#e0d1a1','#bda572','#f0e2bb'][j];g.lineWidth=s*.12;g.beginPath();for(let k=0;k<40;k++){const a=k/39*6-3,x=p.x+a*s*(1+t),y=p.y+Math.sin(a*2+t*3+j)*s*.6-t*s;k?g.lineTo(x,y):g.moveTo(x,y);}g.globalAlpha=fade;g.stroke();}}
  if(e.id==='joy')for(let j=0;j<18;j++){const a=j*2.4;g.save();g.translate(p.x+Math.sin(a)*s*4,p.y+Math.cos(a)*s*2-t*s*1.5);g.rotate(t+j);g.globalAlpha=fade;g.fillStyle=j%2?'#cf9f9e':'#ead3be';g.beginPath();g.moveTo(0,0);g.bezierCurveTo(-s*.5,-s*.5,s*.6,-s*.9,s*.4,0);g.bezierCurveTo(s*.2,s*.4,0,s*.2,0,0);g.fill();g.restore();}
- if(e.id==='rage')for(const a of e.targets||[]){const actor=world.get(a.id);if(!actor?.soldier)continue;const q=v.project(actor);g.fillStyle='#ba746455';g.beginPath();g.moveTo(q.x-s*.5,q.y);g.quadraticCurveTo(q.x-s,q.y-s*2,q.x,q.y-s*3);g.quadraticCurveTo(q.x+s,q.y-s,q.x+s*.5,q.y);g.fill();}
  if(e.id==='plague')for(let j=0;j<12;j++){const q=v.project({x:e.x+Math.sin(j*7+t*.2)*3,y:e.y+Math.cos(j*4)*3});g.globalAlpha=fade*.18;g.fillStyle=j%2?'#84916d':'#697b65';g.beginPath();g.ellipse(q.x,q.y-t*s*.3,s*(.6+j%3*.2),s*.65,-.3,0,7);g.fill();}
  g.restore();}
  // Persistent conditions follow engine lifetime, not an independent visual timer.

@@ -44,7 +44,7 @@ export class CharacterView {
   // Subtle body responses use game time, so pausing freezes every pose.
   const phase=time*3+e.id;
   this.model.rotation.z=e.sick>0?Math.sin(phase)*.055:0;
-  this.model.rotation.x=e.sick>0?.10:0;
+  this.model.rotation.x=e.sick>0?.10:e.soldier&&!e.returning?.08:0;
   this.model.position.y=e.joy>0&&!e.sick&&!e.soldier?Math.max(0,Math.sin(phase))*.045:0;
   this.crown.visible=!!e.king;if(e.king&&this.head){this.root.updateMatrixWorld(true);this.head.getWorldPosition(this.headPoint);this.root.worldToLocal(this.headPoint);this.crown.position.copy(this.headPoint);this.crown.position.y+=.32;this.crown.rotation.z=this.model.rotation.z;updateCrown(this.crown,e.commanding,time);}
   this.root.scale.setScalar(e.adult?.65:.4);this.previous={x:e.x,y:e.y};this.hp=e.hp;this.time=time;

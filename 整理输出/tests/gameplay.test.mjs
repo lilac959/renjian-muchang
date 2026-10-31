@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {World} from '../game/engine.js';
 import {CONFIG as C,SETTLEMENT as S,HUSBANDRY as H,SOCIETY as R,WILDLIFE as B} from '../game/config.js';
 import {QINGHE,walkable,islandId,groundHeight,nearestWalkable,route,segmentClear} from '../game/island-layout.js';
-import {FARM_LOTS,nextLot,housing,advanceSettlement} from '../game/settlement.js';
+import {FARM_LOTS,authoredRoad,nextLot,housing,advanceSettlement} from '../game/settlement.js';
 import {advanceHusbandry,advanceAnimals,spawnAnimal} from '../game/husbandry.js';
 import {advanceSociety,residentAction} from '../game/society.js';
 const active=seed=>{const w=new World(seed??42);w.paused=false;return w;};
@@ -13,7 +13,7 @@ const allComplete=c=>{for(const b of c.buildings)b.state='complete';};
 
 test('authored homes, special placeholders and wheat plots keep exact source transforms',()=>{
  const w=active(),c=w.islands[0],fixed=c.buildings.filter(b=>b.source==='authored');
- assert.equal(fixed.filter(b=>b.zone==='house').length,10);assert.equal(fixed.filter(b=>b.zone==='field').length,4);
+ assert.equal(fixed.filter(b=>b.zone==='house').length,9);assert.equal(fixed.filter(b=>b.zone==='field').length,4);
  for(const b of fixed){const o=QINGHE.objects.find(o=>o.name===b.sourceNames[0]);assert.ok(o);assert.equal(b.x,(o.bounds[0][0]+o.bounds[1][0])/2);assert.equal(b.y,(o.bounds[0][1]+o.bounds[1][1])/2);assert.deepEqual(b.footprint.min,o.bounds[0].slice(0,2));}
  assert.equal(housing(c),10);assert.equal(c.buildings.filter(b=>b.state==='complete'&&b.kind==='field').length,2);
  for(const b of fixed.filter(b=>b.special))assert.equal(b.kind,'house');
@@ -32,7 +32,7 @@ test('extension capacity fits max population, separates directions and avoids au
  assert.ok(homes.every(b=>b.y<=S.expansion.house.maxY));assert.ok(fields.every(b=>b.y>=S.expansion.field.minY));
  for(const b of [...homes,...fields])for(const x of [b.footprint.min[0],b.footprint.max[0]])for(const y of [b.footprint.min[1],b.footprint.max[1]]){assert.equal(islandId({x,y}),0);assert.ok(groundHeight({x,y})>=-.12);}
  const intersects=(a,b)=>a.min[0]<b.max[0]&&a.max[0]>b.min[0]&&a.min[1]<b.max[1]&&a.max[1]>b.min[1];
- const roads=QINGHE.objects.filter(o=>o.collections.some(c=>c.startsWith('02 |'))).map(o=>({min:o.bounds[0],max:o.bounds[1]}));
+ const roads=QINGHE.objects.filter(authoredRoad).map(o=>({min:o.bounds[0],max:o.bounds[1]}));
  for(const b of [...homes,...fields])for(const r of [...QINGHE.obstacles,...roads])assert.equal(intersects(b.footprint,r),false,b.id);
 });
 test('construction spends real food once and occupied builders stop producing',()=>{

@@ -4,18 +4,20 @@ import {CONFIG as C,SETTLEMENT as S} from './config.js';
 const center = bounds => ({x:(bounds[0][0]+bounds[1][0])/2,y:(bounds[0][1]+bounds[1][1])/2});
 const rect = (p,w,h) => ({min:[p.x-w/2,p.y-h/2],max:[p.x+w/2,p.y+h/2]});
 const overlaps=(a,b,gap=0)=>a.min[0]<b.max[0]+gap&&a.max[0]>b.min[0]-gap&&a.min[1]<b.max[1]+gap&&a.max[1]>b.min[1]-gap;
+const sourceName=o=>o.name.replace(/\.\d{3}$/, '');
+export const authoredRoad=o=>/^Path(?: Edge| \|)/.test(o.name)||(o.collections||[]).some(c=>c.startsWith('02 |'));
 function fixedLots(){
  const homes=QINGHE.objects.filter(o=>o.name.startsWith('Cottage '));
  const specials=[['Village Hall | MH_Church_01','hall'],['Academy | MH_School_01','academy'],['Granary | MH_Granary_01','granary'],['Windmill | MH_Windmill_02','windmill']];
- const definitions=[...homes.map(o=>[o,'house']),...specials.map(([name,kind])=>[QINGHE.objects.find(o=>o.name===name),kind]),...QINGHE.objects.filter(o=>/^Wheat Plot \d+$/.test(o.name)).map(o=>[o,'field'])];
+ const definitions=[...homes.map(o=>[o,'house']),...specials.map(([name,kind])=>[QINGHE.objects.find(o=>sourceName(o)===name),kind]),...QINGHE.objects.filter(o=>/^Wheat Plot \d+$/.test(sourceName(o))).map(o=>[o,'field'])];
  return definitions.filter(([o])=>o).map(([o,kind],i)=>({id:'farm-fixed-'+i,zone:kind==='field'?'field':'house',special:kind==='house'||kind==='field'?null:kind,
-  kind:kind==='field'?'field':'house',source:'authored',sourceNames:QINGHE.objects.filter(p=>p.name===o.name||p.name.startsWith(o.name+'_')||(kind==='field'&&p.name.startsWith('Wheat '+String(Number(o.name.slice(-2))+1).padStart(2,'0')+' |'))).map(p=>p.name),
+  kind:kind==='field'?'field':'house',source:'authored',sourceNames:QINGHE.objects.filter(p=>p.name===o.name||sourceName(p).startsWith(sourceName(o)+'_')||(kind==='field'&&p.name.startsWith('Wheat '+String(Number(sourceName(o).slice(-2))+1).padStart(2,'0')+' |'))).map(p=>p.name),
   ...center(o.bounds),footprint:{min:o.bounds[0].slice(0,2),max:o.bounds[1].slice(0,2)},state:'planned',progress:0,clearProgress:0,workers:[],upgradeProgress:0}));
 }
 // Source scene coordinates are read-only. Houses extend north; fields extend south.
 // All authored footprints and roads stay reserved even before their buildings exist.
 function extensionLots(authored){
- const reserved=[...QINGHE.obstacles,...QINGHE.objects.filter(o=>o.collections.some(c=>c.startsWith('02 |'))).map(o=>({min:o.bounds[0].slice(0,2),max:o.bounds[1].slice(0,2)})),...authored.map(l=>l.footprint)];
+ const reserved=[...QINGHE.obstacles,...QINGHE.objects.filter(authoredRoad).map(o=>({min:o.bounds[0].slice(0,2),max:o.bounds[1].slice(0,2)})),...authored.map(l=>l.footprint)];
  const lots=[];
  for(const [zone,area] of Object.entries(S.expansion)){
   let serial=0;

@@ -1,0 +1,62 @@
+REFERENCE EXCERPTS ONLY; not a standalone executable module.
+Source: scripts/conflict_system.gd
+
+
+# scripts/conflict_system.gd:1208 negotiate_tutorial_peace
+func negotiate_tutorial_peace() -> Dictionary:
+	return negotiate_peace(18.0,true)
+
+
+# scripts/conflict_system.gd:1211 negotiate_peace
+func negotiate_peace(duration: float = 18.0, tutorial_treaty: bool = false) -> Dictionary:
+	# Only the tutorial's accepted royal negotiation can recall both sides.
+	# Keep the battle ledger open until the last actual carrier reaches home:
+	# finish_conflict deliberately forfeits any cargo still in transit.
+	if _sim == null or not is_instance_valid(_citizens): return {"ok":false,"reason":"当前没有可撤回的部队"}
+	if tutorial_treaty and str(_sim._config.get("game_mode", "")) != "tutorial": return {"ok":false,"reason":"这不是新手引导"}
+	if tutorial_treaty:
+		_sim.set_tutorial_armistice(true)
+		_sim._config["tutorial_treaty_signed"] = true
+	_sim.war_request = -1
+	_muster.reset()
+	var recalled: Array[int] = [0, 0]
+	for nation: int in range(2):
+		var king: int = int(_sim.nations[nation].get("leader_id", -1))
+		if king >= 0:
+			_sim.reconcile_leader(nation, king,duration)
+			_citizens.apply_reconciliation_mood(king,duration)
+		for id: int in _citizens.get_military_ids(nation):
+			_peace_returns[id] = nation
+			_citizens.apply_reconciliation_mood(id,duration)
+			_citizens.set_military_target(id, _return_target(id, nation))
+			recalled[nation] += 1
+	_troops = [[], []]
+	_stop_reason = "tutorial_peace" if tutorial_treaty else "divine_peace"
+	_retreating_nation = -1
+	_set_phase("return" if not _peace_returns.is_empty() or bool(_sim.war_active) else "idle")
+	if tutorial_treaty: _sim.relation = maxf(85.0, float(_sim.relation))
+	_sim.diplomacy = "双边停火"
+	_sim.clear_invasion_pressure()
+	advance_peace_returns()
+	_report_mobilized()
+	return {"ok":true, "recalled":recalled, "returning":_peace_returns.size(), "reason":"两国接受停火，士兵停止攻击并真实返乡"}
+
+
+# scripts/conflict_system.gd:1245 advance_peace_returns
+func advance_peace_returns() -> void:
+	for value: Variant in _peace_returns.keys():
+		var id: int=int(value)
+		var nation: int=int(_peace_returns[id])
+		var info: Dictionary=_citizens.get_combat_info(id)
+		if info.is_empty() or not bool(info.get("alive",false)):
+			_sim.lose_raid_cargo(id,"和解返乡者途中死亡")
+			_peace_returns.erase(id)
+			continue
+		if not bool(info.get("is_military",false)):
+			_peace_returns.erase(id)
+			continue
+		_citizens.set_military_target(id,_return_target(id,nation))
+		if _flat_distance(info.position,_citizens.get_home_position(id))<0.65:
+			_demobilize_at_home(id,nation)
+			_peace_returns.erase(id)
+	_report_mobilized()

@@ -1,0 +1,123 @@
+{
+  "version": 1,
+  "title": "神明也疯狂",
+  "conversations": {
+    "intro": [
+      {
+        "speaker": "love",
+        "left": "love",
+        "right": "",
+        "text": "欢迎上任，见习上帝。我是生命之神，先教你让人平安回家。"
+      },
+      {
+        "speaker": "love",
+        "text": "两国正在备战。选择「和解」，点击任意一位国王，促成双方停火。"
+      }
+    ],
+    "peace_done": [
+      {
+        "speaker": "love",
+        "left": "love",
+        "text": "刀剑放下了，双方正在返乡。我请天气之神来帮忙。"
+      }
+    ],
+    "weather_intro": [
+      {
+        "speaker": "weather",
+        "left": "love",
+        "right": "weather",
+        "text": "选择「气候控制」，选恒温、多云，再点岛屿。下雨能帮助生产；低温加多云则会下雪。"
+      }
+    ],
+    "rain_done": [
+      {
+        "speaker": "love",
+        "left": "love",
+        "right": "weather",
+        "text": "雨来了。粮食、房屋和学士，接下来都要照顾好。"
+      }
+    ],
+    "stewardship": [
+      {
+        "speaker": "love",
+        "left": "love",
+        "right": "weather",
+        "text": "让总人口达到300，双方进入现代。默认3倍速，教学祝福会加快发展。"
+      },
+      {
+        "speaker": "love",
+        "text": "欢愉能促进生育，却会让人停工、吃得更多。先备粮，再赐福。"
+      }
+    ],
+    "harvest_reveal": [
+      {
+        "speaker": "love",
+        "left": "love",
+        "right": "",
+        "text": "街灯亮起来了。你照顾的每一户，都有了明天。"
+      },
+      {
+        "speaker": "death",
+        "left": "love",
+        "right": "death",
+        "text": "死亡之神，灵魂归档科。养育完成，接下来是收魂考核。"
+      },
+      {
+        "speaker": "love",
+        "text": "等等，他们才刚安定下来。"
+      },
+      {
+        "speaker": "death",
+        "text": "选择「天气之神 → 闪电」，点一位居民。灵魂入账，就会获得灵力。"
+      }
+    ],
+    "first_soul": [
+      {
+        "speaker": "death",
+        "left": "love",
+        "right": "death",
+        "text": "一魂已归档，灵力到账。流程就是这样。"
+      },
+      {
+        "speaker": "love",
+        "text": "……我还记得他们等第一场雨的样子。"
+      }
+    ],
+    "catastrophe": [
+      {
+        "speaker": "death",
+        "left": "love",
+        "right": "death",
+        "text": "用陨石等技能，新增收集50魂。亡灵能复苏尸体继续收割；自然死亡不算考核。"
+      },
+      {
+        "speaker": "love",
+        "text": "这些人，是刚才亲手养大的。"
+      }
+    ],
+    "before_finale": [
+      {
+        "speaker": "weather",
+        "left": "love",
+        "right": "weather",
+        "text": "指标已满。陨石已获满级祝福，选择「天气之神 → 陨石」，点击城镇，降下流星雨。"
+      },
+      {
+        "speaker": "weather",
+        "text": "把谢幕交给我。"
+      },
+      {
+        "speaker": "love",
+        "text": "……"
+      }
+    ],
+    "epilogue": [
+      {
+        "speaker": "love",
+        "left": "love",
+        "right": "",
+        "text": "……"
+      }
+    ]
+  }
+}

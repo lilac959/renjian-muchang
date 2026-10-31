@@ -1,0 +1,22 @@
+REFERENCE EXCERPTS ONLY; not a standalone executable module.
+Source: scripts/app.gd
+
+
+# scripts/app.gd:215 _start_after_tutorial
+func _start_after_tutorial() -> void:
+	if _transitioning or not is_instance_valid(game) or game.game_mode!="tutorial": return
+	_transitioning=true
+	# The completion button belongs to this scene. Finish its signal stack
+	# before releasing the world and its camera.
+	_start_after_tutorial_now.call_deferred()
+
+
+# scripts/app.gd:222 _start_after_tutorial_now
+func _start_after_tutorial_now() -> void:
+	if not is_instance_valid(game) or game.game_mode!="tutorial":
+		_transitioning=false
+		return
+	game.prepare_to_leave()
+	game.free()
+	game=null
+	_start_game_now.call_deferred("challenge")

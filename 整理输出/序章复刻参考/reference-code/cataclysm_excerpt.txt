@@ -1,0 +1,204 @@
+REFERENCE EXCERPTS ONLY; not a standalone executable module.
+Source: scripts/cataclysm_system.gd
+
+
+# scripts/cataclysm_system.gd:154 start_tutorial_finale
+func start_tutorial_finale(trigger_event_id: int) -> Dictionary:
+	var denied := {"ok":false,"reason":"此扩张只属于序章最后一次流星雨","event_ids":[]}
+	if _sim==null or str(_sim.get_config().get("game_mode",""))!="tutorial" or _ended(): return denied
+	if _tutorial_finale_started:
+		denied.reason = "这次序章灾变已经触发"
+		return denied
+	var trigger: Dictionary = {}
+	for event: Dictionary in _events:
+		if int(event.id)==trigger_event_id: trigger=event
+	if trigger.is_empty() or str(trigger.skill)!="meteor_shower" or bool(trigger.get("story",false)) or int(trigger.strikes_left)<=0: return denied
+	# Main invokes this from the first actual_impact callback. Support that
+	# exact in-flight impact and the stable frame immediately after it, never
+	# an uncast spell, a stale ID or an already progressed old shower.
+	var in_first_impact: bool = _executing_event_id==trigger_event_id and int(trigger.strikes_done)==0
+	if not in_first_impact and int(trigger.strikes_done)!=1:
+		denied.reason = "请等待玩家刚投下的首颗陨石实际落地"
+		return denied
+	var nation: int = int(trigger.nation)
+	if nation not in [0,1]: nation = 0 if float(trigger.position.x)<0.0 else 1
+	var other: Dictionary = {}
+	for event: Dictionary in _events:
+		if int(event.id)!=trigger_event_id and str(event.skill)=="meteor_shower" and int(event.nation)==1-nation and not bool(event.get("story",false)):
+			other = event
+			break
+	if other.is_empty() and _events.size()>=MAX_EVENTS:
+		denied.reason = "当前灾难容量已满，不能扩张序章灾变"
+		return denied
+	# Set the receipt before mutating or emitting any later impact. The first
+	# callback cannot recursively expand itself into unbounded new events.
+	_tutorial_finale_started = true
+	_tutorial_finale_trigger_id = trigger_event_id
+	_configure_story_event(trigger,nation,trigger_event_id,0 if in_first_impact else 1)
+	if in_first_impact:
+		# The caller's current pulse increments this event after the signal
+		# returns. It is the first of the 36 total strikes on this island.
+		trigger.next_strike = 0.0
+	if other.is_empty():
+		other = trigger.duplicate(true)
+		other.id = _next_id
+		_next_id += 1
+		_events.append(other)
+	_configure_story_event(other,1-nation,trigger_event_id,0)
+	other.citizen_deaths = 0
+	# The added island is part of the same paid player action, not a second
+	# achievement action or an independently charged spell.
+	other.cooperation_recorded = true
+	_tutorial_story_ids.assign([int(trigger.id),int(other.id)])
+	_stats.peak_active = maxi(int(_stats.peak_active),_events.size())
+	return {"ok":true,"reason":"天气之神把选区流星雨扩大为双岛灾变","trigger_event_id":trigger_event_id,
+		"event_ids":_tutorial_story_ids.duplicate(),"duration":STORY_SECONDS,"strikes_per_island":STORY_STRIKES,
+		"impact_radius":STORY_IMPACT_RADIUS,"story":true,"extra_paid_casts":0}
+
+
+# scripts/cataclysm_system.gd:209 _configure_story_event
+func _configure_story_event(event: Dictionary, nation: int, trigger_id: int, completed: int) -> void:
+	event.skill = "meteor_shower"
+	event.nation = nation
+	event.volcano_id = -1
+	event.position = Vector3(-30.0 if nation==0 else 30.0,0.38,0)
+	event.radius = float(_finale_values().get("area_radius",20.0))
+	event.impact_radius = float(_finale_values().get("impact_radius",STORY_IMPACT_RADIUS))
+	event.duration = float(_finale_values().get("duration",STORY_SECONDS))
+	event.remaining = float(event.duration)
+	event.next_strike = 0.05 if completed==0 else float(event.duration)/float(_finale_values().get("strikes",STORY_STRIKES))
+	event.interval = float(event.duration)/float(_finale_values().get("strikes",STORY_STRIKES))
+	event.strikes_done = completed
+	event.strikes_left = int(_finale_values().get("strikes",STORY_STRIKES))-completed
+	event.structure_damage = float(_finale_values().get("structure_damage",1.2))
+	event.story = true
+	event.story_trigger_id = trigger_id
+
+
+# scripts/cataclysm_system.gd:226 advance
+func advance(delta: float, speed: float, paused: bool) -> void:
+	if paused or _ended() or not is_finite(delta) or not is_finite(speed) or delta <= 0.0 or speed <= 0.0: return
+	var seconds: float = delta*speed
+	if not is_finite(seconds): return
+	_time += seconds
+	for event: Dictionary in _events.duplicate():
+		event.remaining = maxf(0.0,float(event.remaining)-seconds)
+		event.next_strike = float(event.next_strike)-seconds
+		# Both per-event count and total events are bounded, even after a hitch.
+		while float(event.next_strike) <= 0.0 and int(event.strikes_left)>0 and not _ended():
+			var point: Vector3 = _impact_point(event)
+			_executing_event_id = int(event.id)
+			strike_requested.emit(str(event.skill),point,float(event.impact_radius))
+			var hit: Dictionary = _strike(str(event.skill),point,float(event.impact_radius),float(event.structure_damage),int(event.id))
+			_executing_event_id = -1
+			var affected: int = int(hit.citizen_deaths)+int(hit.animals_killed)+int(hit.trees_cleared)+int(hit.structures_hit)
+			if affected>0 and not bool(event.cooperation_recorded):
+				event.cooperation_recorded = true
+				# A shower is the public meteor skill's advanced form. Crater
+				# combos are already marked recorded and never split the original
+				# climate/meteor action into a second cooperation achievement.
+				if str(event.skill)=="meteor_shower" and _sim.has_method("record_god_cooperation"):
+					_sim.record_god_cooperation("meteor",affected)
+			event.citizen_deaths = int(event.citizen_deaths)+int(hit.citizen_deaths)
+			if bool(event.get("story",false)):
+				_stats.story_strikes = int(_stats.story_strikes)+1
+				_stats.story_deaths = int(_stats.story_deaths)+int(hit.citizen_deaths)
+				_stats.story_destroyed = int(_stats.story_destroyed)+int(hit.structures_destroyed)
+			event.strikes_left = int(event.strikes_left)-1
+			event.strikes_done = int(event.strikes_done)+1
+			event.next_strike = float(event.next_strike)+float(event.interval)
+		if int(event.strikes_left) == 0 or float(event.remaining)<=0.0: _events.erase(event)
+
+
+# scripts/cataclysm_system.gd:270 _story_impact_point
+func _story_impact_point(event: Dictionary) -> Vector3:
+	var nation: int = int(event.nation)
+	var buildings: Array[Vector3] = []
+	for structure: Dictionary in _sim.nations[nation].structures:
+		if str(structure.get("state","ruined"))=="ruined" or float(structure.get("health",0.0))<=0.0: continue
+		buildings.append(structure.position)
+	var people: Array[Vector3] = []
+	if is_instance_valid(_citizens):
+		for id: int in _citizens.get_alive_ids(nation):
+			var info: Dictionary = _citizens.get_spatial_info(id)
+			if info.is_empty() or bool(info.get("pending",false)): continue
+			var position: Vector3 = info.position
+			var center: Vector3 = event.position
+			if Vector2(position.x-center.x,(position.z-center.z)/0.88).length()<=24.0: people.append(position)
+	# All choices are current real locations. Dead/ruined targets disappear
+	# before the next pulse; no victims are reserved for a future cinematic.
+	var pool: Array[Vector3] = buildings if int(event.strikes_done)%3!=1 and not buildings.is_empty() else people
+	if pool.is_empty(): pool = buildings
+	if not pool.is_empty():
+		var point: Vector3 = pool[_rng.randi_range(0,pool.size()-1)]
+		point.y = 0.38
+		return point
+	var angle: float = _rng.randf_range(-PI,PI)
+	var distance: float = sqrt(_rng.randf())*20.0
+	return event.position+Vector3(cos(angle)*distance,0.0,sin(angle)*distance*0.88)
+
+
+# scripts/cataclysm_system.gd:296 _strike
+func _strike(skill: String, point: Vector3, radius: float, structure_damage: float, event_id: int = -1) -> Dictionary:
+	var house_hits: Array[Dictionary] = []
+	var ids: Array[int] = []
+	if is_instance_valid(_citizens):
+		ids.assign(_citizens.get_ids_near(point,radius,-1,true))
+		# Roof intersections use the same footprint as damage_structures. Only
+		# people actually indoors in that home are added; housing capacity is not
+		# a substitute for census, and workers outdoors are never teleported in.
+		for nation: int in range(2):
+			var homes: Dictionary = {}
+			for house: Dictionary in _sim.nations[nation].structures:
+				if not StructureFootprint.is_house(str(house.kind)) or str(house.state)!="complete" or float(house.health)<=0.0: continue
+				if StructureFootprint.intersects(point,radius,house,true,int(_sim.nations[nation].get("era",0))):
+					homes[int(house.id)] = true
+					house_hits.append({"nation":nation,"id":int(house.id)})
+			if homes.is_empty(): continue
+			# The normal five-meter query is only a conservative candidate scan
+			# for house occupants. Each roof is rechecked above with our radius.
+			var broad: Dictionary = _citizens.query_attack("meteor",point,nation,radius)
+			for id: int in broad.ids:
+				if ids.has(id): continue
+				var person: Dictionary = _citizens.get_person_info(id)
+				if bool(person.get("indoors",false)) and homes.has(int(person.get("house_id",-1))): ids.append(id)
+	var killed: Dictionary = {"killed":0,"by_nation":[0,0]}
+	if is_instance_valid(_citizens):
+		killed = _citizens.kill_ids(ids,skill)
+		for nation: int in range(2): _citizens.react_to_threat(point,nation,radius+3.5)
+	var animals: int = 0
+	if is_instance_valid(_livestock):
+		for nation: int in range(2):
+			var plan: Dictionary = _exact_plan(_livestock.query_attack("meteor",point,nation,radius),point,radius)
+			var sheep_hit: Dictionary = _livestock.apply_attack(plan)
+			animals += int(_sim.kill_livestock(sheep_hit.get("ids",[]),"divine"))
+	if is_instance_valid(_wildlife):
+		animals += int(_wildlife.apply_attack(_exact_plan(_wildlife.query_attack("meteor",point,radius),point,radius)).get("killed",0))
+	if is_instance_valid(_dinosaurs):
+		animals += int(_dinosaurs.apply_attack(_exact_plan(_dinosaurs.query_attack("meteor",point,radius),point,radius)).get("killed",0))
+	var trees: Dictionary = _exact_plan(_sim.query_trees("meteor",point,radius),point,radius)
+	var cleared: int = _sim.clear_trees(trees.ids,"divine")
+	var damage: Dictionary = _sim.damage_structures(point,radius,structure_damage,true,house_hits)
+	var fire_count: int = 0
+	if is_instance_valid(_fires):
+		# Surviving fuel around the impact can catch fire. FireSystem owns its
+		# capped spreading patches and separately accounts later fire deaths.
+		fire_count = int(_fires.ignite(point,radius+1.0,skill,-1).get("ignited",0))
+	var committed: Dictionary = _sim.commit_citizen_deaths(killed.get("by_nation",[0,0]),skill)
+	var count: int = int(committed.get("killed",0))
+	_stats.strikes = int(_stats.strikes)+1
+	_stats.citizen_deaths = int(_stats.citizen_deaths)+count
+	_stats.animals_killed = int(_stats.animals_killed)+animals
+	_stats.trees_cleared = int(_stats.trees_cleared)+cleared
+	_stats.structures_hit = int(_stats.structures_hit)+int(damage.get("hit",0))
+	_stats.structures_destroyed = int(_stats.structures_destroyed)+int(damage.get("destroyed",0))
+	_stats.fires_ignited = int(_stats.fires_ignited)+fire_count
+	var result := {"skill":skill,"point":point,"radius":radius,"event_id":event_id,"citizen_deaths":count,
+		"by_nation":committed.get("by_nation",[0,0]),"animals_killed":animals,
+		"trees_cleared":cleared,"structures_hit":int(damage.get("hit",0)),
+		"structures_destroyed":int(damage.get("destroyed",0)),"fires_ignited":fire_count}
+	if skill == "meteor_shower":
+		var eruption: Dictionary = trigger_volcano_at(point,radius,skill)
+		result["volcano_triggered"] = bool(eruption.get("ok",false))
+	actual_impact.emit(result.duplicate(true))
+	return result

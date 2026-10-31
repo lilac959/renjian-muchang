@@ -1,0 +1,440 @@
+{
+  "schema_version": 1,
+  "document_kind": "reference specification, not installed runtime config",
+  "baseline": "Godot three-god prologue at C:/god, 2026-10-31",
+  "title": "神明也疯狂",
+  "playerHasDialogue": false,
+  "randomEncounterLesson": false,
+  "independentMeteorShowerButton": false,
+  "scenarioOverrides": {
+    "game_mode": "tutorial",
+    "max_years": 0.0,
+    "target_souls": 0,
+    "science_ending": false,
+    "initial_population": 60,
+    "initial_spirit": 120.0,
+    "initial_food_years": 3.0,
+    "house_capacity": 15,
+    "birth_rate": 0.5,
+    "construction_seconds": 2.0,
+    "civilization_research_per_scholar": 8.0,
+    "scholar_research_per_year": 8.0,
+    "field_food_per_year": 100.0,
+    "livestock_meat_food": 40.0,
+    "livestock_breeding_years": 0.5
+  },
+  "initial": {
+    "peoplePerCountry": 60,
+    "countries": 2,
+    "foodPerCountry": 360,
+    "housesPerCountry": 5,
+    "housingPerCountry": 75,
+    "farmFields": 4,
+    "pasturePens": 6,
+    "sheepPerPen": 4,
+    "schoolsPerCountry": 1,
+    "era": 0,
+    "science": 0,
+    "relation": 25,
+    "realPendingCampaign": true
+  },
+  "clocks": {
+    "secondsPerGameYear": 30,
+    "defaultSimulationSpeed": 3,
+    "dialogueUsesRealTime": true,
+    "maxRealFrameSeconds": 0.25,
+    "maxSimulationStepSeconds": 0.1,
+    "finaleSpeed": 1
+  },
+  "gates": {
+    "population": 300,
+    "modernEraMin": 1,
+    "requiredModernCountries": 2,
+    "modernResearchThreshold": 30,
+    "qualifyingHumanDeaths": 50,
+    "firstDeathIncluded": true,
+    "soulSpiritDisplayedTarget": 25,
+    "soulSpiritDefaultPerDeath": 0.5,
+    "spiritBalanceIsGate": false,
+    "cumulativeSpiritIncomeIsGate": false,
+    "qualifyingCauses": [
+      "meteor",
+      "plague",
+      "disease",
+      "rage",
+      "undead",
+      "transformation",
+      "halloween",
+      "ghost_parade",
+      "fire",
+      "volcano",
+      "lightning",
+      "meteor_shower"
+    ],
+    "otherDeathsDoNotAdvance": true
+  },
+  "phases": [
+    {
+      "id": "intro",
+      "conversationsInOrder": [
+        "intro"
+      ],
+      "next": "peace",
+      "advanceGuard": "conversation intro finished",
+      "visibleGods": [
+        "love"
+      ],
+      "allowedSkills": [
+        "reconcile",
+        "prosperity",
+        "joy"
+      ]
+    },
+    {
+      "id": "peace",
+      "conversationsInOrder": [],
+      "next": "weather",
+      "advanceGuard": "successful paid reconcile on a living reigning king with actual reconciliation effect",
+      "visibleGods": [
+        "love"
+      ],
+      "allowedSkills": [
+        "reconcile",
+        "prosperity",
+        "joy"
+      ]
+    },
+    {
+      "id": "weather",
+      "conversationsInOrder": [
+        "peace_done",
+        "weather_intro"
+      ],
+      "next": "rain",
+      "advanceGuard": "conversation weather_intro finished after peace_done",
+      "visibleGods": [
+        "love",
+        "weather"
+      ],
+      "allowedSkills": [
+        "reconcile",
+        "prosperity",
+        "joy"
+      ]
+    },
+    {
+      "id": "rain",
+      "conversationsInOrder": [],
+      "next": "stewardship",
+      "advanceGuard": "successful paid climate effect committed on valid island; precipitation rain; rain > 0.220001",
+      "visibleGods": [
+        "love",
+        "weather"
+      ],
+      "allowedSkills": [
+        "reconcile",
+        "prosperity",
+        "joy",
+        "climate"
+      ]
+    },
+    {
+      "id": "stewardship",
+      "conversationsInOrder": [
+        "rain_done",
+        "stewardship"
+      ],
+      "next": "harvest",
+      "advanceGuard": "no active conversation AND floor(pop0)+floor(pop1)>=300 AND era0>=1 AND era1>=1",
+      "visibleGods": [
+        "love",
+        "weather"
+      ],
+      "allowedSkills": [
+        "reconcile",
+        "prosperity",
+        "joy",
+        "climate"
+      ]
+    },
+    {
+      "id": "harvest",
+      "conversationsInOrder": [
+        "harvest_reveal"
+      ],
+      "next": "first_soul",
+      "advanceGuard": "committed qualifying human death count >= 1; queue first_soul when dialogue is closed",
+      "visibleGods": [
+        "love",
+        "weather",
+        "death"
+      ],
+      "allowedSkills": [
+        "reconcile",
+        "prosperity",
+        "joy",
+        "climate",
+        "lightning",
+        "meteor",
+        "rage",
+        "plague",
+        "undead"
+      ]
+    },
+    {
+      "id": "first_soul",
+      "conversationsInOrder": [
+        "first_soul"
+      ],
+      "next": "catastrophe",
+      "advanceGuard": "conversation first_soul finished",
+      "visibleGods": [
+        "love",
+        "weather",
+        "death"
+      ],
+      "allowedSkills": [
+        "reconcile",
+        "prosperity",
+        "joy",
+        "climate",
+        "lightning",
+        "meteor",
+        "rage",
+        "plague",
+        "undead"
+      ]
+    },
+    {
+      "id": "catastrophe",
+      "conversationsInOrder": [
+        "catastrophe"
+      ],
+      "next": "final_cast",
+      "advanceGuard": "no active conversation AND harvestDeaths>=50",
+      "visibleGods": [
+        "love",
+        "weather",
+        "death"
+      ],
+      "allowedSkills": [
+        "reconcile",
+        "prosperity",
+        "joy",
+        "climate",
+        "lightning",
+        "meteor",
+        "rage",
+        "plague",
+        "undead"
+      ]
+    },
+    {
+      "id": "final_cast",
+      "conversationsInOrder": [
+        "before_finale"
+      ],
+      "next": "finale",
+      "advanceGuard": "no active conversation AND paid continuous meteor event armed AND matching real meteor_shower impact with positive radius and finite point",
+      "visibleGods": [
+        "love",
+        "weather",
+        "death"
+      ],
+      "allowedSkills": [
+        "reconcile",
+        "prosperity",
+        "joy",
+        "climate",
+        "lightning",
+        "meteor",
+        "rage",
+        "plague",
+        "undead"
+      ]
+    },
+    {
+      "id": "finale",
+      "conversationsInOrder": [],
+      "next": "complete",
+      "advanceGuard": "presentation elapsed >= 10 real seconds AND no active story cataclysm events",
+      "visibleGods": [
+        "love",
+        "weather",
+        "death"
+      ],
+      "allowedSkills": [
+        "reconcile",
+        "prosperity",
+        "joy",
+        "climate",
+        "lightning",
+        "meteor",
+        "rage",
+        "plague",
+        "undead"
+      ]
+    },
+    {
+      "id": "complete",
+      "conversationsInOrder": [],
+      "next": null,
+      "advanceGuard": "explicit user choice to new challenge or main menu",
+      "visibleGods": [
+        "love",
+        "weather",
+        "death"
+      ],
+      "allowedSkills": [
+        "reconcile",
+        "prosperity",
+        "joy",
+        "climate",
+        "lightning",
+        "meteor",
+        "rage",
+        "plague",
+        "undead"
+      ]
+    }
+  ],
+  "dialogue": {
+    "file": "tutorial_story.json",
+    "activeLines": 18,
+    "activeCharacters": 424,
+    "allLines": 19,
+    "allCharacters": 426,
+    "reservedUnplayedConversations": [
+      "epilogue"
+    ],
+    "omittedSlotMeans": "inherit within conversation",
+    "emptySlotMeans": "clear",
+    "newConversationClearsSlots": true,
+    "typewriter": {
+      "dialogue_characters_per_second": 38.0,
+      "dialogue_punctuation_pause_seconds": 0.1,
+      "dialogue_comma_pause_seconds": 0.045,
+      "dialogue_click_reveals_first": true,
+      "dialogue_mouse_advance": true,
+      "portrait_transition_seconds": 0.26,
+      "portrait_listener_modulate": "#c7ccd6f5"
+    },
+    "keys": [
+      "ENTER",
+      "KP_ENTER",
+      "SPACE"
+    ],
+    "escape": "exit tutorial",
+    "sameFrameAdvanceGuard": true,
+    "guardWorldInputOnClosingFrame": true
+  },
+  "presentation": {
+    "layer": 30,
+    "windowReference": [
+      1440,
+      900
+    ],
+    "windowMinimum": [
+      1280,
+      800
+    ],
+    "dim": [
+      0.012,
+      0.024,
+      0.04,
+      0.23
+    ],
+    "dialoguePanel": {
+      "left": 26,
+      "right": 26,
+      "bottom": 18,
+      "heightBelow850": 238,
+      "heightOtherwise": 248,
+      "background": [
+        0.025,
+        0.055,
+        0.085,
+        0.94
+      ],
+      "radius": 9,
+      "borderWidth": 1,
+      "padding": [
+        23,
+        16
+      ]
+    },
+    "portrait": {
+      "width": "min(360,screenWidth*0.27)",
+      "height": "min(464,screenHeight*0.53)",
+      "sideMargin": 40,
+      "abovePanel": 8,
+      "fit": "contain"
+    },
+    "titleEyebrow": "入 职 培 训  ·  结 束",
+    "subtitleBelowTitle": null
+  },
+  "finale": {
+    "publicSkill": "meteor",
+    "levelGranted": 3,
+    "internalEventSkill": "meteor_shower",
+    "paidSpellLevel": {
+      "cost": 18,
+      "cooldown": 18,
+      "continuous_shower": true,
+      "radius": 6,
+      "area_radius": 6,
+      "duration": 9,
+      "strikes": 24,
+      "impact_radius": 1.6,
+      "structure_damage": 0.66
+    },
+    "requiresMatchingFirstActualImpact": true,
+    "zoomSeconds": 2.2,
+    "targetOrthographicSize": 8,
+    "blackFadeStart": 2.2,
+    "blackFadeDuration": 1.1,
+    "titleFadeStart": 3.3,
+    "titleFadeDuration": 1.4,
+    "completionMinimumRealSeconds": 10,
+    "waitForStoryEventsToFinish": true,
+    "killAllIsCompletionGate": false,
+    "storyPerIsland": {
+      "duration": 9,
+      "strikes": 36,
+      "area_radius": 20,
+      "impact_radius": 2.4,
+      "structure_damage": 1.2
+    },
+    "extraPaidCasts": 0,
+    "expandOnlyOnce": true
+  },
+  "save": {
+    "blockedDuring": [
+      "dialogue",
+      "finale",
+      "complete",
+      "pending impacts",
+      "reserved unpaid/unresolved casts",
+      "normal end state"
+    ],
+    "milestonesAreHistorical": true,
+    "noWorldOrUiObjectReferences": true,
+    "resetTutorialEffectsOnNewChallenge": true
+  },
+  "mobileAdapter": {
+    "skillIds": {
+      "reconcile": "peace",
+      "prosperity": "bless",
+      "climate": "weather"
+    },
+    "mustAddress": [
+      "80-per-country cap cannot reach 300",
+      "both countries need actual research and era state",
+      "initial housing and food must support 60 each",
+      "time and economy units differ",
+      "continuous meteor event and first-impact receipt missing",
+      "separate tutorial end rules from 300sec/60soul challenge",
+      "portrait/dialogue renderer integration owned by presentation team"
+    ]
+  }
+}

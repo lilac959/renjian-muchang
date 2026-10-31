@@ -1,0 +1,246 @@
+{
+  "version": 1,
+  "skills": {
+    "reconcile": {
+      "cost": 4,
+      "cooldown": 6,
+      "unlock_spirit": 0,
+      "upgrade_costs": [],
+      "effects": {
+        "radius": 1.65,
+        "duration": 18
+      },
+      "levels": [
+        {}
+      ]
+    },
+    "prosperity": {
+      "cost": 8,
+      "cooldown": 12,
+      "unlock_spirit": 20,
+      "upgrade_costs": [],
+      "effects": {
+        "radius": 6,
+        "duration": 20,
+        "work_bonus": 0.25
+      },
+      "levels": [
+        {}
+      ]
+    },
+    "joy": {
+      "cost": 10,
+      "cooldown": 24,
+      "unlock_spirit": 0,
+      "upgrade_costs": [
+        12,
+        20
+      ],
+      "effects": {
+        "radius": 5,
+        "duration": 12,
+        "birth_rate": 1.1,
+        "livestock_multiplier": 4,
+        "appetite_duration": 36,
+        "appetite_multiplier": 2
+      },
+      "levels": [
+        {},
+        {
+          "birth_rate": 1.25,
+          "livestock_multiplier": 5
+        },
+        {
+          "birth_rate": 1.4,
+          "livestock_multiplier": 6
+        }
+      ]
+    },
+    "climate": {
+      "cost": 4,
+      "cooldown": 4,
+      "unlock_spirit": 0,
+      "upgrade_costs": [
+        10,
+        18
+      ],
+      "effects": {
+        "radius": 24,
+        "duration": 60,
+        "breeding_multiplier": 1.5,
+        "hot_food_multiplier": 0.65,
+        "hot_birth_multiplier": 0.6,
+        "eruption_threshold": 45,
+        "field_multiplier": 0.65,
+        "pasture_multiplier": 0.8,
+        "high_temperature": 40,
+        "normal_temperature": 22,
+        "low_temperature": -5
+      },
+      "levels": [
+        {},
+        {
+          "duration": 75,
+          "breeding_multiplier": 1.75
+        },
+        {
+          "duration": 90,
+          "breeding_multiplier": 2
+        }
+      ]
+    },
+    "lightning": {
+      "cost": 1,
+      "cooldown": 1,
+      "unlock_spirit": 0,
+      "upgrade_costs": [
+        8,
+        14
+      ],
+      "effects": {
+        "radius": 0.8,
+        "structure_damage": 0.28,
+        "ignite_radius": 1.1
+      },
+      "levels": [
+        {},
+        {
+          "cooldown_multiplier": 0.8
+        },
+        {
+          "cooldown_multiplier": 0.6
+        }
+      ]
+    },
+    "meteor": {
+      "cost": 12,
+      "cooldown": 12,
+      "unlock_spirit": 0,
+      "upgrade_costs": [
+        22,
+        36
+      ],
+      "effects": {
+        "radius": 5,
+        "structure_damage": 1,
+        "ignite_radius": 5,
+        "continuous_shower": false
+      },
+      "levels": [
+        {},
+        {
+          "cost_multiplier": 0.8333333333333334,
+          "cooldown_multiplier": 0.8333333333333334
+        },
+        {
+          "cost": 18,
+          "cooldown": 18,
+          "continuous_shower": true,
+          "radius": 6,
+          "area_radius": 6,
+          "duration": 9,
+          "strikes": 24,
+          "impact_radius": 1.6,
+          "structure_damage": 0.66
+        }
+      ]
+    },
+    "rage": {
+      "cost": 6,
+      "cooldown": 8,
+      "unlock_spirit": 0,
+      "upgrade_costs": [
+        10,
+        18
+      ],
+      "effects": {
+        "radius": 0.8,
+        "duration": 30
+      },
+      "levels": [
+        {},
+        {
+          "duration": 40
+        },
+        {
+          "duration": 50
+        }
+      ]
+    },
+    "plague": {
+      "cost": 10,
+      "cooldown": 15,
+      "unlock_spirit": 18,
+      "upgrade_costs": [
+        18,
+        30
+      ],
+      "effects": {
+        "radius": 3
+      },
+      "levels": [
+        {},
+        {
+          "cost_multiplier": 0.9,
+          "cooldown_multiplier": 0.8666666666666667
+        },
+        {
+          "cost_multiplier": 0.8,
+          "cooldown_multiplier": 0.7333333333333333
+        }
+      ]
+    },
+    "undead": {
+      "cost": 8,
+      "cooldown": 8,
+      "unlock_spirit": 18,
+      "upgrade_costs": [],
+      "effects": {
+        "radius": 6,
+        "max_summons": 12,
+        "lifetime": 65,
+        "hp": 3,
+        "damage": 1.15,
+        "attack_interval": 1.2,
+        "move_speed": 1.55,
+        "attack_range": 0.85,
+        "search_radius": 13
+      },
+      "levels": [
+        {}
+      ]
+    }
+  },
+  "events": {
+    "volcano": {
+      "cooldown": 45,
+      "effects": {
+        "duration": 11,
+        "strikes": 18,
+        "area_radius": 10,
+        "impact_radius": 2.7,
+        "structure_damage": 1.05
+      }
+    },
+    "plague": {
+      "duration_min": 12,
+      "duration_max": 18,
+      "spread_interval": 2,
+      "spread_radius": 1,
+      "contacts_per_spread": 2,
+      "fatality": 0.25,
+      "immunity_seconds": 10
+    },
+    "dinosaur_egg": {
+      "chance": 0.12,
+      "cooldown": 90
+    },
+    "tutorial_finale": {
+      "duration": 9,
+      "strikes": 36,
+      "area_radius": 20,
+      "impact_radius": 2.4,
+      "structure_damage": 1.2
+    }
+  }
+}

@@ -26,8 +26,8 @@
     "healRate": 1,
     "starveDelay": 8,
     "starveDamage": 8,
-    "warSize": 4,
-    "minArmy": 2,
+    "warSize": 1,
+    "minArmy": 1,
     "warSeconds": 28,
     "armyInterval": 35,
     "soldierDamage": 24,
@@ -58,7 +58,8 @@
     "saveInterval": 30,
     "longPress": 400,
     "dragPixels": 10,
-    "toastMs": 2400
+    "toastMs": 2400,
+    "kingWarSize": 4
   },
   "skills": [
     {
@@ -70,7 +71,7 @@
       "cd": 10,
       "r": 7,
       "unlock": 0,
-      "desc": "范围内有出征居民即可使双方停战返乡，12秒内不能再次出征。",
+      "desc": "选中出征者或正在号令的国王，使双方停止号令、停战返乡，12秒内不能再次出征。",
       "number": 1
     },
     {
@@ -140,9 +141,9 @@
       "icon": "♨",
       "cost": 8,
       "cd": 22,
-      "r": 9,
+      "r": 2.5,
       "unlock": 0,
-      "desc": "范围内2至4名健康成年人跨桥出征，保留至少2名劳动力；最多持续28秒，伤亡过半撤退。",
+      "desc": "单体施法：普通居民独自出征；国王留守号令，征召最多4名成年人出征。至少保留2名劳动力，最多持续28秒。",
       "number": 7
     },
     {

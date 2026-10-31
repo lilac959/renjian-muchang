@@ -1,16 +1,18 @@
 import {World} from '../game/engine.js';
 import {CONFIG as C} from '../game/config.js';
 const reports=[];
-for(const strategy of ['observe','war','cycles'])for(const seed of [11,22,33,44,55]){
+const strategies=process.argv.includes('--cycles-only')?['cycles']:['observe','war','cycles'];
+for(const strategy of strategies)for(const seed of [11,22,33,44,55]){
  const w=new World(seed);w.paused=false;let decision=0,peak=C.initialAdults*2,casts={};
  const cast=(id,p,arg)=>{if(w.cast(id,p,arg).ok)casts[id]=(casts[id]||0)+1;};
  for(let i=0;i<6001&&!w.result;i++){
   w.step(.05);peak=Math.max(peak,w.humans().length);if(w.time<decision)continue;decision=w.time+1;
   if(strategy==='observe')continue;
   for(const c of w.islands){
-   if(w.mana>14&&c.weather.left<1)cast('weather',c,'rain');
-   if(strategy==='cycles'&&w.time<220&&w.mana>18&&w.supply(c)>20)cast('joy',c);
-   if(w.time>25&&w.adults(c).length>=10&&!c.army)cast('rage',c);
+   if(w.mana>(strategy==='cycles'?26:14)&&c.weather.left<1)cast('weather',c,'rain');
+   if(strategy==='cycles'&&w.time<220&&w.mana>30&&w.supply(c)>20)cast('joy',c);
+   const leader=w.workers(c).find(e=>e.king)||w.workers(c)[0];
+   if(leader&&w.time>25&&w.adults(c).length>=10&&!c.army&&w.mana>(strategy==='cycles'?24:8))cast('rage',leader);
   }
   if(strategy==='cycles'&&w.time>50&&w.humans().length>30&&w.mana>=12){
    const candidates=w.humans().filter(e=>w.adults(w.islands[e.country]).length>10);

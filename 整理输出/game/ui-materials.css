@@ -74,3 +74,38 @@ button.x{box-shadow:none;border-radius:3px}
 .altar-bar .resources #timer{position:absolute;left:0;right:0;bottom:5px;margin:0;text-align:center;font-size:10px;line-height:12px;letter-spacing:1.5px;font-variant-numeric:tabular-nums}
 @media(max-width:900px){.altar-bar .resources{padding:6px 7px 18px;column-gap:5px;min-height:62px}.altar-bar .mana-resource,.altar-bar .soul-resource{grid-template-columns:19px minmax(0,1fr);column-gap:4px}.altar-bar .resources svg,.altar-bar .soul-resource svg{width:19px;height:34px}.altar-bar .resources b{font-size:16px}.altar-bar .resources .goal-label{font-size:9px}}
 @media(max-width:740px){.altar-bar .resources{padding-inline:6px;column-gap:4px}.altar-bar .mana-resource,.altar-bar .soul-resource{grid-template-columns:17px minmax(0,1fr);column-gap:3px}.altar-bar .resources svg,.altar-bar .soul-resource svg{width:17px}.altar-bar .resources b{font-size:15px}.altar-bar .resources small{font-size:9px}.altar-bar .soul-resource>div>span{gap:2px}}
+/* Orderly menu and guide, sized for landscape play. */
+.game-menu #dialogCard{width:min(440px,calc(100vw - 28px));padding:22px;max-height:calc(100dvh - 28px)}
+.menu-heading{display:flex;align-items:center;gap:16px;padding-bottom:16px;border-bottom:1px solid #ad97724d}
+.game-menu .menu-portrait{width:42px;height:70px;object-fit:cover;display:block;flex:none;transform:none;margin:0;border:2px solid #af9569;border-radius:4px}
+.menu-heading small,.guide-heading small{font-size:11px;letter-spacing:2px;color:#817054}
+.game-menu #dialogBody h2{font-size:26px;letter-spacing:3px;line-height:1.2;margin:5px 0}
+.menu-heading p{font-size:12px;color:#827359;line-height:1.4;margin:0}
+.game-menu #dialogActions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:16px}
+.game-menu #dialogActions button{width:100%;min-height:44px;padding:9px 10px;font-size:15px;line-height:1.3}
+.game-menu #dialogActions button:first-child,.game-menu #dialogActions button:last-child{grid-column:1/-1}
+.game-menu #dialogActions button:last-child{background:var(--ui-grain),#d1c2a7;color:#5a4d3b;border-color:#a58d67;box-shadow:inset 0 0 0 2px #f1dfb844}
+.guide #dialogCard{width:min(740px,calc(100vw - 28px));padding:22px;max-height:calc(100dvh - 28px);border:2px solid transparent;border-radius:8px;outline:0;background:var(--ui-grain) padding-box,linear-gradient(130deg,#e2d4ba,#cdbb9e) padding-box,var(--ui-rim) border-box;color:#413b32;box-shadow:0 12px 28px #12222c77,inset 0 0 0 4px #efdfbe66}
+.guide-heading{position:static;inset:auto;display:flex;justify-content:space-between;align-items:center;gap:16px;margin:0 0 16px;padding:0 0 13px;border-bottom:1px solid #ad97724d}
+.guide .guide-heading h2{font-size:26px;line-height:1.2;text-align:left;letter-spacing:2px;margin:5px 0 0}
+.guide-target{flex:none;display:flex;flex-direction:column;gap:4px;align-items:center;min-width:94px;padding:8px 12px;border:1px solid #ad956d;border-radius:5px;background:var(--ui-grain),#344145;color:#e9d7b5}
+.guide-target b{font-weight:normal;font-size:17px}.guide-target span{font-size:12px}
+.guide-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.guide .guide-steps article{min-width:0;padding:10px;outline:0;border:1px solid #ae9774;border-radius:5px;background:var(--ui-grain),#dac8b7;box-shadow:inset 0 0 0 2px #f0dfbd66;text-align:left}
+.guide .guide-steps article:nth-child(2){background:var(--ui-grain),#cbd2c1}.guide .guide-steps article:nth-child(3){background:var(--ui-grain),#cec6d0}
+.guide-picture{height:102px;border:1px solid #b59c73;border-radius:4px;overflow:hidden;background-color:#433b39}
+.guide .guide-god img{height:100%;width:100%;max-width:none;object-fit:cover;object-position:center 17%;display:block}
+.guide-spell,.guide-cast{background-image:url('assets/ui/skill-colorblock-atlas.png');background-size:300% 300%}.guide-spell{background-position:50% 0}.guide-cast{background-position:50% 50%}
+.guide-step-title{display:flex;align-items:center;gap:7px;margin:11px 0 6px}.guide-step-title>span{font:12px Georgia;color:#8c7453;border-right:1px solid #9a866655;padding-right:7px}
+.guide .guide-steps h3{font-size:17px;line-height:1.25;margin:0;letter-spacing:1px}
+.guide .guide-steps p{font-size:12px;line-height:1.65;margin:0}
+.guide-footnote{margin-top:13px;padding-top:10px;border-top:1px solid #ad97724d}
+.guide .guide-footnote p{font-size:11px;line-height:1.5;margin:3px 0;text-align:center;color:#75664e}.guide-footnote strong{font-weight:normal;color:#504733}
+.guide #dialogActions{display:flex;justify-content:center;margin-top:12px;gap:0}.guide #dialogActions button{min-width:150px;min-height:40px;padding:8px 20px;font-size:14px}
+@media(max-height:600px){.game-menu #dialogCard{padding:16px}.menu-heading{gap:12px;padding-bottom:10px}.game-menu .menu-portrait{width:32px;height:54px}.game-menu #dialogBody h2{font-size:22px}.game-menu #dialogActions{gap:7px;margin-top:11px}.game-menu #dialogActions button{padding:7px 10px;min-height:40px;font-size:14px}.guide #dialogCard{padding:13px}.guide-heading{margin-bottom:10px;padding-bottom:8px}.guide .guide-heading h2{font-size:22px}.guide-target{padding:5px 10px;gap:2px}.guide-target b{font-size:15px}.guide-picture{height:72px}.guide .guide-steps article{padding:8px}.guide-step-title{margin:8px 0 4px}.guide .guide-steps h3{font-size:15px}.guide .guide-steps p{font-size:11px;line-height:1.5}.guide-footnote{margin-top:9px;padding-top:6px}.guide #dialogActions{margin-top:8px}.guide #dialogActions button{min-height:36px;padding:6px 18px}}
+@media(max-height:380px){.game-menu #dialogCard{padding:12px;max-height:calc(100dvh - 20px)}.menu-heading p{display:none}.game-menu .menu-portrait{height:44px;width:28px}.menu-heading{padding-bottom:8px}.game-menu #dialogActions{gap:6px;margin-top:8px}.game-menu #dialogActions button{min-height:38px}.guide #dialogCard{padding:10px;max-height:calc(100dvh - 20px)}.guide-picture{height:52px}.guide .guide-heading h2{font-size:19px}.guide-heading small{font-size:10px}.guide-footnote{margin-top:6px;padding-top:4px}.guide .guide-footnote p{font-size:10px}.guide-steps{gap:8px}}
+
+/* Camera reset is the second control from the right. */
+.altar-bar #resetView{position:fixed;top:max(12px,env(safe-area-inset-top));right:max(64px,calc(env(safe-area-inset-right) + 52px));width:44px;height:44px;display:grid;place-items:center;z-index:7}
+.game-menu #dialogActions button:nth-last-child(2){grid-column:1/-1}
+@media(max-width:900px){.altar-bar{left:60px;right:116px;width:calc(100vw - 176px);max-width:calc(100vw - 176px);grid-template-columns:minmax(0,1fr) 138px minmax(0,1fr)}.altar-bar .resources{width:138px}.altar-bar .country .stats{white-space:normal}.altar-bar .country .country-title{flex-wrap:wrap}}

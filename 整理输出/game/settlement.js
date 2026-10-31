@@ -55,7 +55,7 @@ export function advanceSettlement(w,c,dt){
   const threat=w.animals.find(a=>!a.dead&&a.kind==='beast'&&Math.hypot(a.x-job.x,a.y-job.y)<S.beastBlockRadius);
   if(threat)for(const id of job.workers){const worker=w.get(id);w.move(worker,threat,dt,2);if(Math.hypot(worker.x-threat.x,worker.y-threat.y)<1.4&&worker.attack<=0){w.damage(threat,S.huntDamage,'hunting');worker.attack=S.huntInterval;}}
   if(job.upgrading){
-   if(job.workers.length&&housing(c)>=w.humans(c.id).length)job.upgradeProgress+=dt;
+   if(job.workers.length&&w.housing(c)>=w.humans(c.id).length)job.upgradeProgress+=dt;
    if(job.upgradeProgress>=S.upgradeSeconds){job.kind=job.special;job.upgrading=false;job.workers=[];w.change('building-promoted',{country:0,buildingId:job.id,kind:job.kind,placeholder:'house'});job=null;}
   }else if(job.workers.length&&!threat){
    const key=job.state==='clearing'?'clearProgress':'progress';job[key]+=dt*job.workers.length/S.builders;
@@ -66,9 +66,9 @@ export function advanceSettlement(w,c,dt){
  }
  for(const e of w.humans(c.id))if(e.workSite&&!job?.workers.includes(e.id))e.workSite=null;
  c.buildCheck-=dt;if(c.buildCheck>0||job||!w.humans(c.id).length)return;c.buildCheck=S.planInterval;
- const pop=w.humans(c.id).length,capacity=housing(c),workers=w.workers(c).length;
+ const pop=w.humans(c.id).length,capacity=w.housing(c),workers=w.workers(c).length;
  const spareForSpecial=c.buildings.some(b=>b.state==='complete'&&b.kind==='house'&&b.special&&pop>=S.specials[b.special].population&&w.production(c)>=w.consumption(c)*S.specials[b.special].productionMargin&&w.supply(c)>=S.specials[b.special].reserveSeconds&&capacity-S.houseCapacity<pop);
- const needsHomes=pop>=capacity*S.houseBuildOccupancy&&(capacity<C.populationLimit||spareForSpecial&&capacity<pop+S.houseCapacity);
+ const needsHomes=pop>=capacity*S.houseBuildOccupancy&&(capacity<w.populationLimit||spareForSpecial&&capacity<pop+S.houseCapacity);
  const fieldCapacity=complete(c,'field').length*S.workersPerField;
  const needsFields=fieldCapacity<workers&&(fieldCapacity*C.foodRate*w.climate(c).field<w.consumption(c)*S.foodMargin||w.supply(c)<S.foodReserveSeconds);
  // Replace a reserved placeholder in place only when its beds can be spared.

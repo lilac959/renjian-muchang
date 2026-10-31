@@ -1,0 +1,140 @@
+{
+  "death": {
+    "size": [
+      1024,
+      1536
+    ],
+    "mode": "RGBA",
+    "alphaMinMax": [
+      0,
+      254
+    ],
+    "fullyTransparentPixels": 516652,
+    "nearOpaquePixels": 1020098,
+    "edgePixels": 36114,
+    "corners": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        10,
+        9,
+        9,
+        0
+      ],
+      [
+        96,
+        80,
+        80,
+        0
+      ]
+    ],
+    "alphaBounds": [
+      25,
+      9,
+      989,
+      1536
+    ]
+  },
+  "life": {
+    "size": [
+      1024,
+      1536
+    ],
+    "mode": "RGBA",
+    "alphaMinMax": [
+      0,
+      254
+    ],
+    "fullyTransparentPixels": 401764,
+    "nearOpaquePixels": 1108267,
+    "edgePixels": 62833,
+    "corners": [
+      [
+        1,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        183,
+        106,
+        107,
+        1
+      ],
+      [
+        59,
+        30,
+        29,
+        0
+      ]
+    ],
+    "alphaBounds": [
+      0,
+      14,
+      1024,
+      1536
+    ]
+  },
+  "weather": {
+    "size": [
+      1024,
+      1536
+    ],
+    "mode": "RGBA",
+    "alphaMinMax": [
+      0,
+      254
+    ],
+    "fullyTransparentPixels": 575735,
+    "nearOpaquePixels": 945160,
+    "edgePixels": 51969,
+    "corners": [
+      [
+        31,
+        29,
+        15,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        0
+      ],
+      [
+        54,
+        59,
+        68,
+        1
+      ],
+      [
+        44,
+        48,
+        54,
+        0
+      ]
+    ],
+    "alphaBounds": [
+      0,
+      0,
+      1010,
+      1536
+    ]
+  }
+}

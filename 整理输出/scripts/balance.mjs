@@ -1,19 +1,24 @@
 import {World} from '../game/engine.js';
-import {CONFIG} from '../game/config.js';
-import {writeFile,mkdir} from 'node:fs/promises';
+import {CONFIG as C} from '../game/config.js';
 const reports=[];
-for(const strategy of ['observe','rain','growth-and-harvest'])for(const seed of [11,22,33]){
- const w=new World(seed);w.paused=false;let decision=0,peak=4,firstMeat=null;
+for(const strategy of ['observe','war','cycles'])for(const seed of [11,22,33,44,55]){
+ const w=new World(seed);w.paused=false;let decision=0,peak=C.initialAdults*2,casts={};
+ const cast=(id,p,arg)=>{if(w.cast(id,p,arg).ok)casts[id]=(casts[id]||0)+1;};
  for(let i=0;i<6001&&!w.result;i++){
-  w.step(.05);peak=Math.max(peak,w.humans().length);
-  if(!firstMeat&&w.entities.some(e=>e.cargo===CONFIG.meat))firstMeat=w.time;
-  if(w.time<decision)continue;decision=w.time+1;
-  if(strategy!=='observe'&&w.time<230){for(const c of w.islands){if(c.weather.left<1)w.cast('weather',c,{temp:'normal',cloud:true});
-    if(strategy==='growth-and-harvest'&&w.supply(c)>30){const people=w.humans(c.id).filter(e=>e.adult&&e.partnerId&&e.joy<=0);const best=people.sort((a,b)=>w.legalTargets('joy',b,5).length-w.legalTargets('joy',a,5).length)[0];if(best)w.cast('joy',best);}
-  }}
-  if(strategy==='growth-and-harvest'&&w.time>235){const people=w.humans();const cluster=people.sort((a,b)=>w.targets(b,5).filter(e=>e.kind==='human'&&!e.inside).length-w.targets(a,5).filter(e=>e.kind==='human'&&!e.inside).length)[0];if(cluster)w.cast('meteor',cluster);const victim=w.humans().find(e=>!e.inside);if(victim)w.cast('lightning',victim);}
+  w.step(.05);peak=Math.max(peak,w.humans().length);if(w.time<decision)continue;decision=w.time+1;
+  if(strategy==='observe')continue;
+  for(const c of w.islands){
+   if(w.mana>14&&c.weather.left<1)cast('weather',c,'rain');
+   if(strategy==='cycles'&&w.time<220&&w.mana>18&&w.supply(c)>20)cast('joy',c);
+   if(w.time>25&&w.adults(c).length>=10&&!c.army)cast('rage',c);
+  }
+  if(strategy==='cycles'&&w.time>50&&w.humans().length>30&&w.mana>=12){
+   const candidates=w.humans().filter(e=>w.adults(w.islands[e.country]).length>10);
+   const best=candidates.sort((a,b)=>w.targets(b,5).filter(e=>e.kind==='human').length-w.targets(a,5).filter(e=>e.kind==='human').length)[0];
+   if(best&&w.targets(best,5).length>=6)cast('meteor',best);
+  }
  }
- const report={strategy,seed,result:w.result,time:Math.round(w.time*100)/100,souls:w.souls,births:w.births,peak,population:w.humans().length,islands:w.islands.length,conflict:w.conflict,firstMeat:firstMeat&&Number(firstMeat.toFixed(2)),milestones:w.milestones};reports.push(report);console.log(JSON.stringify(report));
+ const r={strategy,seed,result:w.result,time:+w.time.toFixed(2),souls:w.souls,births:w.births,peak,population:w.humans().length,mana:+w.mana.toFixed(1),milestones:w.milestones,casts};reports.push(r);console.log(JSON.stringify(r));
 }
-await mkdir(new URL('../reports/',import.meta.url),{recursive:true});
-await writeFile(new URL('../reports/core-balance.json',import.meta.url),JSON.stringify({note:'真实模拟、合法施法，无强制补人。候选参数未证明300魂可达。',reports},null,2));
+console.log(JSON.stringify({goal:C.goal,successes:reports.filter(r=>r.result==='success').length,runs:reports.length}));
+if(reports.some(r=>r.strategy==='cycles'&&r.result!=='success'))process.exitCode=1;

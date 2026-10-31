@@ -42,3 +42,6 @@ footer:before,footer:after{content:"";position:absolute;top:0;bottom:0;width:44p
 #targetPanel{bottom:128px}#detail{bottom:124px}#weather{bottom:auto}#targetInfo{white-space:normal;width:max-content}
 @media(max-height:430px){footer{height:96px;min-height:96px;gap:18px;padding:7px 24px 7px 20px}.god{width:58px;height:103px}.god.active{width:69px;height:123px}.god b{font-size:11px}.skill{width:70px;height:75px;padding:4px 6px 16px}.skill .icon{width:49px;height:49px}#targetPanel{bottom:109px}#detail{bottom:106px}}
 @media(max-width:720px){footer{gap:12px;padding-right:20px}.skill-area{margin-left:auto}#skills{gap:6px}.skill{width:65px;min-width:60px}.mana{font-size:17px;min-width:42px;margin-left:0}#gods{padding-right:0}.god{width:52px;height:93px}.god.active{width:64px;height:114px}}
+
+/* Simplified loop: keep names, trends and a consistent casting instruction visible. */
+.country strong{display:block;font-size:13px;letter-spacing:1px}.country .climate{max-width:340px}#hint{display:block;font-size:11px;max-width:300px;margin-bottom:6px;color:#e0d0b0}.skill .label{display:block;position:static;font-size:10px;margin:0}.skill.active .label{position:static;border:0;padding:0;width:auto;background:none}.skill .icon{height:44px;width:44px}.skill-area{align-self:flex-end}#weather{top:150px}#targetPanel{z-index:6}.country .stats{flex-wrap:wrap}#warning{top:150px}

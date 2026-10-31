@@ -1,0 +1,126 @@
+/* Card treatment and content-safe layout. */
+:root{--cardh:min(25vh,23vw,240px);--skillh:max(100px,calc(var(--cardh)*.65))}
+.altar-bar{width:calc(100% - 120px);max-width:960px;left:60px;right:60px;display:grid;grid-template-columns:minmax(0,1fr) 190px minmax(0,1fr)}
+.altar-bar .country,.altar-bar .country.pasture{width:100%;min-width:0;grid-template-columns:36px minmax(0,1fr);height:auto;min-height:80px;grid-template-rows:auto auto;gap:7px 10px;padding:12px}
+.altar-bar .country.pasture{grid-template-columns:minmax(0,1fr) 36px}
+.altar-bar .country img,.altar-bar .country.pasture img{width:36px;height:40px}
+.altar-bar .country .country-title{white-space:normal;flex-wrap:wrap;gap:4px 10px;min-width:0}
+.altar-bar .country strong{font-size:17px;letter-spacing:1px}.altar-bar .country .population{white-space:nowrap}
+.altar-bar .country .stats{display:flex;flex-wrap:wrap;gap:3px 6px;white-space:normal;line-height:1.4;font-size:12px;min-width:0}
+.altar-bar .pasture .stats{justify-content:flex-end}.stats span{white-space:nowrap}
+.altar-bar .resources{width:190px;min-height:80px;height:100%;gap:7px}.resources>div{min-width:0}.resources small{white-space:nowrap}
+footer{gap:clamp(16px,3vw,44px);max-width:96vw}#gods{gap:12px;padding:14px 8px}#skills{gap:12px}
+button.god{--tilt:-5deg;transform:rotate(var(--tilt));border:2px solid #b29a70;border-radius:7px;padding:4px;background:linear-gradient(145deg,#e8d4a0,#695337 35%,#c6ac7c 65%,#564531);box-shadow:0 12px 22px #10252480,inset 0 0 0 1px #fff0c480;transition:transform .45s cubic-bezier(.2,.9,.25,1.3),box-shadow .35s,filter .35s;isolation:isolate}
+button.god:nth-child(2){--tilt:0deg;transform:translateY(-7px)}button.god:nth-child(3){--tilt:5deg}
+.god img{border-radius:3px;object-fit:cover}.god b{bottom:5px;left:5px;width:calc(100% - 10px);height:13%;min-height:22px;letter-spacing:3px;background:linear-gradient(#edddc4,#baa58b);border-color:#8d7758;box-shadow:inset 0 0 0 2px #efdec27a;font-size:clamp(12px,1.4vw,18px)}
+.god:before{content:'';position:absolute;inset:8px;border:1px solid #e4c98f88;border-radius:50% 50% 3px 3px / 24% 24% 3px 3px;pointer-events:none;z-index:1}
+.god:after{content:'';position:absolute;inset:-5px;border-radius:9px;pointer-events:none;background:linear-gradient(#f4dfac,#f4dfac) left top/16px 2px no-repeat,linear-gradient(#f4dfac,#f4dfac) left top/2px 16px no-repeat,linear-gradient(#f4dfac,#f4dfac) right bottom/16px 2px no-repeat,linear-gradient(#f4dfac,#f4dfac) right bottom/2px 16px no-repeat;opacity:.5;transition:opacity .3s}
+button.god.active{outline:0;transform:translateY(-15px) rotate(0deg);filter:brightness(1.05);box-shadow:0 16px 24px #10252499,0 0 22px color-mix(in srgb,var(--accent) 38%,transparent)}.god.active:after{opacity:1}
+.card-glint{position:absolute;inset:4px;overflow:hidden;border-radius:3px;pointer-events:none;z-index:2}.card-glint:after{content:'';position:absolute;inset:-40%;background:linear-gradient(110deg,transparent 35%,#fff4cb80 49%,transparent 62%);transform:translateX(-100%)}.god.invoked .card-glint:after{animation:card-shine .7s ease-out}.god.invoked{animation:god-invoke .55s cubic-bezier(.16,1,.3,1)}
+.skill{width:clamp(78px,8vw,114px);min-width:0;height:var(--skillh);padding:25px 9px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;border:2px solid #aa9170;border-radius:5px;outline:0;background:linear-gradient(145deg,#fff5df66,transparent 45%),var(--paper);box-shadow:0 7px 14px #10252470,inset 0 0 0 3px #f5e6cf77;transition:transform .3s cubic-bezier(.2,.9,.3,1.3),box-shadow .3s}
+.skill:before{inset:6px;border-color:var(--ink);border-radius:2px}.skill img{width:36px;height:36px;max-height:36%;object-fit:contain;flex-shrink:0;margin:0}.skill .label{display:block;white-space:normal;overflow-wrap:anywhere;font-size:clamp(12px,1.15vw,16px);line-height:1.35;max-width:100%;text-align:center;min-height:2.7em;align-content:center}.skill .cost{top:9px;right:10px;font-size:12px}.skill.active{outline:0;transform:translateY(-11px);box-shadow:0 12px 20px #10252488,0 0 0 2px var(--accent),0 0 24px color-mix(in srgb,var(--accent) 45%,transparent)}
+.skill.active img{animation:sigil-pop .4s ease-out}.skill.deal{animation:skill-deal .45s both;animation-delay:calc(var(--deal)*65ms)}.cooldown{border-radius:2px}.skill .cooldown:not(:empty){z-index:3}
+@media(hover:hover){button.god:hover{transform:translateY(-10px) rotate(0deg);filter:brightness(1.08)}button.god.active:hover{transform:translateY(-18px)}.skill:hover{transform:translateY(-5px)}.skill.active:hover{transform:translateY(-12px)}}
+#skillNote,#detail{max-width:calc(100vw - 24px);overflow-wrap:anywhere}#aimHint{max-width:80vw;white-space:normal;text-align:center}#skills:before{white-space:nowrap}
+@keyframes card-shine{to{transform:translateX(100%)}}@keyframes god-invoke{0%{transform:translateY(-5px) scale(.96)}45%{transform:translateY(-23px) scale(1.035)}100%{transform:translateY(-15px) scale(1)}}@keyframes skill-deal{from{opacity:0;translate:0 20px;rotate:4deg}to{opacity:1;translate:0 0;rotate:0deg}}@keyframes sigil-pop{50%{transform:scale(1.2);filter:brightness(1.4)}}
+@media(max-width:1000px){.altar-bar{grid-template-columns:minmax(0,1fr) 160px minmax(0,1fr);gap:6px}.altar-bar .resources{width:160px}.altar-bar .country,.altar-bar .country.pasture{padding:10px;column-gap:6px}.altar-bar .country strong{font-size:14px}.altar-bar .country .stats{font-size:11px}}
+@media(max-height:600px) and (orientation:landscape){:root{--cardh:min(29vh,19vw,155px);--skillh:100px}footer{bottom:12px;gap:20px}#gods{gap:8px;padding:8px 5px}.skill{width:80px;padding:22px 8px 8px;gap:3px}.skill img{width:26px;height:26px}.skill .label{font-size:12px}.altar-bar .country,.altar-bar .country.pasture,.altar-bar .resources{min-height:72px}.altar-bar .country,.altar-bar .country.pasture{grid-template-columns:minmax(0,1fr);padding:9px}.altar-bar .country img{display:none}.altar-bar .country .country-title,.altar-bar .country .stats{grid-column:1}.altar-bar .country .country-title{gap:3px 6px}#aimHint{top:92px}}
+@media(max-width:740px){.altar-bar{left:58px;right:8px;width:calc(100% - 66px);grid-template-columns:minmax(0,1fr) 142px minmax(0,1fr)}.altar-bar .resources{width:142px}.altar-bar .country strong{font-size:13px}.altar-bar .country .stats{font-size:10px}footer{gap:12px}#skills{gap:8px}.skill{width:72px}}
+@media(prefers-reduced-motion:reduce){.god.invoked,.god.invoked .card-glint:after,.skill.deal,.skill.active img{animation:none!important}}
+.altar-bar .country.farm{grid-column:1;grid-row:1}.altar-bar .resources{grid-column:2;grid-row:1}.altar-bar .country.pasture{grid-column:3;grid-row:1}
+/* Larger cards and independent menu/time controls. */
+:root{--cardh:min(28vh,25.76vw,269px);--skillh:max(108px,calc(var(--cardh)*.63))}
+.skill{width:clamp(84px,8.64vw,123px)}
+.altar-bar{left:64px;right:64px;width:calc(100% - 128px);max-width:960px}
+.altar-bar #menu,.altar-bar #pauseToggle{position:fixed;top:max(16px,env(safe-area-inset-top));width:44px;height:44px;display:grid;place-items:center;z-index:7}
+.altar-bar #menu{left:var(--safe)}.altar-bar #pauseToggle{right:max(12px,env(safe-area-inset-right))}
+.altar-bar>button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.play-symbol{display:none}.is-paused .play-symbol{display:block}.is-paused .pause-symbol{display:none}
+#paused{top:max(64px,calc(env(safe-area-inset-top) + 48px));right:max(9px,env(safe-area-inset-right));left:auto;bottom:auto;padding:4px 3px;background:#242b2bd9;font-size:11px;letter-spacing:1px}
+@media(max-height:600px) and (orientation:landscape){:root{--cardh:min(32.5vh,21.28vw,174px);--skillh:108px}.skill{width:86px}}
+@media(max-width:740px){.altar-bar{left:60px;right:60px;width:calc(100% - 120px);grid-template-columns:minmax(0,1fr) 132px minmax(0,1fr);gap:5px}.altar-bar .resources{width:132px}.altar-bar .country,.altar-bar .country.pasture{padding:9px 7px}.altar-bar .country .country-title{gap:3px 5px}.altar-bar .country strong{font-size:12px}.altar-bar .country .stats{font-size:10px}.skill{width:76px}#gods{gap:7px}footer{gap:12px}}
+@media(max-width:600px) and (orientation:landscape){:root{--cardh:min(30vh,18vw,150px);--skillh:100px}.skill{width:66px}.altar-bar{grid-template-columns:minmax(0,1fr) 112px minmax(0,1fr)}.altar-bar .resources{width:112px;gap:2px}.resources svg,.resources .soul-resource svg{width:20px}.resources b{font-size:15px}.altar-bar .country .population{font-size:10px}#gods{gap:6px}}
+
+/* Keep the ledgers close to the resource panel, without stretching empty space. */
+.altar-bar{width:max-content;max-width:calc(100% - 128px);grid-template-columns:minmax(0,max-content) auto minmax(0,max-content);gap:8px;justify-content:center}
+.altar-bar .country,.altar-bar .country.pasture{width:auto}
+@media(max-width:740px){.altar-bar{max-width:calc(100% - 120px);gap:5px}}
+@media(hover:hover){.god:hover .card-glint:after{animation:card-shine .75s ease-out both}}
+.god:focus-visible .card-glint:after{animation:card-shine .75s ease-out both}
+@media(prefers-reduced-motion:reduce){.god .card-glint:after{animation:none!important}}
+/* Independent status, identity and action regions. */
+.altar-bar{display:grid;width:max-content;max-width:calc(100vw - 128px);grid-template-columns:minmax(0,max-content) 204px minmax(0,max-content);gap:8px;align-items:stretch}
+.altar-bar .country,.altar-bar .country.pasture{display:grid;grid-template-columns:36px minmax(0,1fr);grid-template-rows:auto auto;width:auto;min-width:190px;min-height:84px;padding:12px;gap:6px 9px;overflow:visible}
+.altar-bar .country.pasture{grid-template-columns:minmax(0,1fr) 36px}
+.altar-bar .country img,.altar-bar .country.pasture img{display:block;position:static;width:36px;height:40px;grid-column:1;grid-row:1/3}
+.altar-bar .country.pasture img{grid-column:2}
+.altar-bar .country .country-title,.altar-bar .country .stats{grid-column:2;min-width:0;white-space:normal}
+.altar-bar .country.pasture .country-title,.altar-bar .country.pasture .stats{grid-column:1}
+.altar-bar .country .country-title{gap:4px 8px;flex-wrap:wrap}.altar-bar .country strong{font-size:16px;letter-spacing:1px}.altar-bar .country .population{font-size:12px;margin:0}.altar-bar .country .stats{font-size:12px;gap:3px 6px;flex-wrap:wrap}
+.altar-bar .resources{width:204px;min-width:0;height:auto;min-height:84px;display:grid;grid-template-columns:76px minmax(0,1fr);gap:7px;padding:8px}
+.altar-bar .resources svg{width:30px;height:52px}.altar-bar .soul-resource svg{width:30px}.mana-resource,.soul-resource{min-width:0;gap:4px}.mana-resource>div,.soul-resource>div{min-width:0}.resources b{font-size:20px}.resources small{font-size:11px;letter-spacing:1px}.resources .goal-label{font-size:12px}.resources #timer{font-size:13px;letter-spacing:1px;margin-top:5px}
+:root{--cardh:min(32vh,28vw,306px);--cardw:calc(var(--cardh)*.562);--skillh:clamp(108px,18vh,172px)}
+footer{position:absolute;left:0;right:0;bottom:max(20px,env(safe-area-inset-bottom));width:100%;max-width:none;transform:none;height:calc(var(--cardh) + 24px);display:block;pointer-events:none}
+#gods{position:absolute;left:max(18px,env(safe-area-inset-left));bottom:0;display:flex;gap:0;padding:12px 5px;align-items:flex-end;isolation:isolate}
+#gods .god+.god{margin-left:calc(var(--cardw)*-.25)}
+#gods .god{z-index:1;transform:rotate(-6deg);transform-origin:50% 90%;transition:transform .28s ease,filter .28s,box-shadow .28s}
+#gods .god:nth-child(2){z-index:2;transform:translateY(-5px) rotate(0deg)}#gods .god:nth-child(3){z-index:3;transform:rotate(6deg)}
+#gods .god.active{z-index:5;transform:translateY(-18px) rotate(0deg)}#gods .god:not(.active){filter:brightness(.82) saturate(.8)}
+#gods .god b{font-size:clamp(13px,1.5vw,20px)}
+#skills{position:absolute;left:50%;bottom:4px;transform:translateX(-50%);display:flex;gap:12px;padding:0;pointer-events:none}
+.skill{width:clamp(84px,7.5vw,116px);height:var(--skillh)}#skills:before{top:-28px;font-size:13px}
+#skillNote{left:50%;right:auto;transform:translateX(-50%);bottom:calc(var(--skillh) + 66px);max-height:38vh;width:300px}
+#weather{left:50%;right:auto;transform:translateX(-50%);bottom:calc(var(--skillh) + 60px);max-width:calc(100vw - 24px);gap:5px;padding:8px}
+@media(hover:hover){#gods .god:hover{z-index:6;transform:translateY(-24px) rotate(0deg);filter:brightness(1.08)}#gods .god.active:hover{transform:translateY(-26px)}}
+/* Keep the hand wholly left of the independently centered skill row. */
+@media(max-width:1200px){:root{--cardh:min(30vh,19vw,250px);--cardw:calc(var(--cardh)*.562);--skillh:clamp(100px,18vh,152px)}#gods .god+.god{margin-left:calc(var(--cardw)*-.30)}.skill{width:clamp(76px,7.5vw,100px)}#skills{gap:9px}}
+@media(max-width:900px){.altar-bar{grid-template-columns:minmax(0,1fr) 174px minmax(0,1fr);width:calc(100vw - 128px);gap:6px}.altar-bar .country,.altar-bar .country.pasture{min-width:0;padding:9px 8px;grid-template-columns:28px minmax(0,1fr);gap:4px 6px}.altar-bar .country.pasture{grid-template-columns:minmax(0,1fr) 28px}.altar-bar .country img,.altar-bar .country.pasture img{width:28px;height:34px}.altar-bar .country strong{font-size:13px}.altar-bar .country .population,.altar-bar .country .stats{font-size:11px}.altar-bar .resources{width:174px;grid-template-columns:62px minmax(0,1fr);gap:4px;padding:6px}.altar-bar .resources svg,.altar-bar .soul-resource svg{width:24px}.resources b{font-size:17px}.resources .goal-label{font-size:11px}.resources small{font-size:10px}}
+@media(max-width:740px){:root{--cardh:min(30vh,17vw,150px);--skillh:100px}#gods{left:8px;padding:9px 3px}#gods .god+.god{margin-left:calc(var(--cardw)*-.24)}#gods .god b{font-size:12px;letter-spacing:1px}.skill{width:62px;padding:23px 7px 8px}#skills{gap:7px}.skill .label{font-size:11px}.altar-bar{left:58px;right:58px;max-width:calc(100vw - 116px);width:calc(100vw - 116px);grid-template-columns:minmax(0,1fr) 150px minmax(0,1fr);gap:4px}.altar-bar .resources{width:150px;grid-template-columns:52px minmax(0,1fr);padding:5px;gap:3px}.altar-bar .resources svg,.altar-bar .soul-resource svg{width:20px}.resources b{font-size:16px}.resources #timer{font-size:12px}.altar-bar .country,.altar-bar .country.pasture{padding:8px 6px;column-gap:4px;grid-template-columns:22px minmax(0,1fr)}.altar-bar .country.pasture{grid-template-columns:minmax(0,1fr) 22px}.altar-bar .country img,.altar-bar .country.pasture img{width:22px;height:30px}.altar-bar .country .stats,.altar-bar .country .population{font-size:10px}.altar-bar .country strong{font-size:12px}.altar-bar .country .country-title{gap:3px}footer{bottom:12px}#aimHint{top:114px}}
+@media(max-height:450px){:root{--cardh:min(30vh,19vw,140px);--skillh:96px}footer{bottom:10px}#gods{padding-bottom:5px}.skill img{height:24px;width:24px}.skill .label{font-size:11px}#skillNote{bottom:calc(var(--skillh) + 50px);max-height:42vh}#gods .god b{font-size:12px}}
+@media(max-width:900px){.altar-bar{width:max-content;grid-template-columns:minmax(0,max-content) 174px minmax(0,max-content)}}
+@media(max-width:740px){:root{--cardh:min(30vh,22vw,174px)}.altar-bar{width:max-content;grid-template-columns:minmax(0,max-content) 150px minmax(0,max-content)}#gods .god+.god{margin-left:calc(var(--cardw)*-.38)}}
+@media(max-height:450px){:root{--cardh:min(34vh,22vw,160px)}}
+@media(max-width:1200px){#gods .god+.god{margin-left:calc(var(--cardw)*-.25)}}
+@media(max-width:740px){:root{--cardh:min(34vh,21vw,174px)}#gods .god+.god{margin-left:calc(var(--cardw)*-.20)}}
+@media(max-width:600px){#gods .god+.god{margin-left:calc(var(--cardw)*-.16)}.skill{width:56px}#skills{gap:6px}}
+/* Current identity: one full portrait with two vertical switch tabs. */
+:root{--cardh:min(36vh,29vw,324px);--cardw:calc(var(--cardh)*.562)}
+#gods{display:flex;align-items:stretch;gap:10px;padding:6px;left:max(14px,env(safe-area-inset-left));bottom:0}
+#gods .god,#gods .god:nth-child(2),#gods .god:nth-child(3),#gods .god.active{margin:0;transform:none;transform-origin:center;z-index:auto}
+#gods .god+.god{margin-left:0}
+#gods .god-main{width:var(--cardw);height:var(--cardh);animation:identity-arrive .28s ease-out}
+.god-switches{display:flex;flex-direction:column;gap:9px;justify-content:center;width:clamp(44px,4vw,58px);pointer-events:none}
+#gods .god-tab{width:100%;height:calc((var(--cardh) - 9px)*.46);min-height:44px;overflow:hidden;padding:3px;border-radius:5px;filter:brightness(.85) saturate(.85)}
+#gods .god-tab img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;opacity:.7}
+#gods .god-tab b{left:auto;right:3px;bottom:3px;top:3px;width:24px;height:auto;min-height:0;writing-mode:vertical-rl;letter-spacing:3px;font-size:clamp(12px,1.2vw,16px);background:#e2cfb9e8;border-color:#9f8870;box-shadow:none}
+#gods .god-tab:before{inset:4px;border-radius:3px}#gods .god-tab:after{display:none}
+#gods .god-main b{font-size:clamp(14px,1.6vw,22px)}
+@keyframes identity-arrive{from{opacity:.55;translate:-5px 0}to{opacity:1;translate:0 0}}
+@media(hover:hover){#gods .god-main:hover,#gods .god-main.active:hover{transform:translateY(-5px);filter:brightness(1.06)}#gods .god-tab:hover{transform:translateX(3px);filter:brightness(1.1) saturate(1)}}
+@media(max-width:740px){#gods{left:8px;gap:7px;padding:4px}.god-switches{width:44px;gap:7px}#gods .god-tab{height:calc((var(--cardh) - 7px)*.46)}}
+@media(max-height:450px){:root{--cardh:min(38vh,28vw,170px)}}
+@media(prefers-reduced-motion:reduce){#gods .god-main{animation:none}}
+#gods .god-tab{filter:brightness(.96) saturate(.95);padding:3px}
+#gods .god-tab img{position:absolute;left:3px;top:3px;width:calc(100% - 6px);height:calc(100% - 22px);object-fit:cover;object-position:50% 15%;opacity:1;border-radius:2px}
+#gods .god-tab[data-group="0"] img{object-position:50% 12%}
+#gods .god-tab[data-group="2"] img{object-position:50% 17%}
+#gods .god-tab b{writing-mode:horizontal-tb;left:3px;right:3px;top:auto;bottom:3px;width:auto;height:18px;min-height:0;font-size:11px;letter-spacing:1px;background:#e2cfb9;line-height:1}
+
+
+/* Broad painted shapes, with the same frame and sheen as the god portraits. */
+.skill[data-school="0"]{--spell-base:#573a39;--spell-paper:#ddc7b7}
+.skill[data-school="1"]{--spell-base:#34484d;--spell-paper:#cbd5cc}
+.skill[data-school="2"]{--spell-base:#403440;--spell-paper:#d1c6d2}
+.skill{display:block;padding:4px;overflow:hidden;background:linear-gradient(145deg,#e8d4a0,#695337 35%,#c6ac7c 65%,#564531);border:2px solid #b29a70;border-radius:7px;outline:0;box-shadow:0 6px 14px #10252466,inset 0 0 0 1px #fff0c480;isolation:isolate}
+.skill-art{position:absolute;inset:4px 4px 31px;display:block;background-image:url('assets/ui/skill-colorblock-atlas.png');background-size:300% 300%;background-position:var(--art-x) var(--art-y);border-radius:3px;background-color:var(--spell-base);pointer-events:none}
+.skill:before{display:block;inset:7px 7px 32px;border:1px solid #e4c98f77;border-radius:45% 45% 2px 2px / 18% 18% 2px 2px;opacity:.7;z-index:1;pointer-events:none}
+.skill .label{position:absolute;left:5px;right:5px;bottom:5px;width:auto;max-width:none;height:25px;min-height:0;display:grid;place-items:center;padding:1px;background:linear-gradient(#edddc4,var(--spell-paper));border:1px solid #9f8870;box-shadow:inset 0 0 0 2px #efdec25c;color:#40382f;font-size:clamp(11px,1.1vw,16px);line-height:1.1;z-index:3}
+.skill .cost{position:absolute;right:6px;top:6px;font:12px Georgia;color:#f4e6cc;background:#29272bdc;border:1px solid #bda57e;border-radius:3px;padding:2px 4px;line-height:1.1;z-index:4}
+.skill .card-glint{inset:4px;z-index:2}
+.skill .cooldown{inset:5px 5px 32px;z-index:3;display:grid;place-items:center;background:#29282bce;color:#eee0c5;font:23px Georgia}
+.skill .cooldown:empty{display:none}
+.skill.unaffordable .cost{color:#ffb7a4;border-color:#bd8170}
+.skill.active{outline:1px solid var(--accent);outline-offset:3px;box-shadow:0 10px 20px #10252488,0 0 18px color-mix(in srgb,var(--accent) 35%,transparent)}
+@media(hover:hover){.skill:hover .card-glint:after{animation:card-shine .75s ease-out both}.skill:hover{filter:brightness(1.06)}}
+.skill:focus-visible .card-glint:after{animation:card-shine .75s ease-out both}
+@media(max-width:740px),(max-height:450px){.skill .label{font-size:11px;height:25px}.skill .cost{font-size:10px;padding:2px 3px}.skill-art{bottom:31px}}
+@media(prefers-reduced-motion:reduce){.skill .card-glint:after{animation:none!important}}

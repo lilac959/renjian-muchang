@@ -1,0 +1,362 @@
+{
+  "status": "农牧经营、固定地编优先扩张、身份神力；表现层由独立协作者接入",
+  "config": {
+    "version": 7,
+    "duration": 300,
+    "goal": 60,
+    "mana": 30,
+    "initialAdults": 8,
+    "initialFood": 80,
+    "foodRate": 0.9,
+    "foodUse": 0.4,
+    "foodLimit": 600,
+    "birthSeconds": 24,
+    "growthSeconds": 12,
+    "birthFoodSeconds": 4,
+    "populationLimit": 80,
+    "keepAdults": 2,
+    "offerInterval": 20,
+    "offerFood": 12,
+    "offerMana": 2,
+    "offerReserveSeconds": 20,
+    "soulMana": 2,
+    "humanHP": 100,
+    "walkSpeed": 2,
+    "soldierSpeed": 4,
+    "healRate": 1,
+    "starveDelay": 8,
+    "starveDamage": 8,
+    "warSize": 1,
+    "minArmy": 1,
+    "warSeconds": 28,
+    "armyInterval": 35,
+    "soldierDamage": 24,
+    "defenderDamage": 16,
+    "attackInterval": 1.5,
+    "truceSeconds": 12,
+    "blessSeconds": 20,
+    "blessFactor": 1.4,
+    "joySeconds": 18,
+    "joyFactor": 2,
+    "joyFoodFactor": 2,
+    "weatherSeconds": 30,
+    "meteorDamage": 100,
+    "fireSeconds": 5,
+    "fireRadius": 3,
+    "fireDamage": 8,
+    "plagueSeconds": 10,
+    "plagueSpreadSeconds": 3,
+    "plagueRadius": 2,
+    "plagueSpreadChance": 0.15,
+    "plagueDeathChance": 0.3,
+    "immunitySeconds": 25,
+    "undeadHP": 80,
+    "undeadSeconds": 18,
+    "undeadDamage": 20,
+    "undeadLimit": 6,
+    "corpseSeconds": 30,
+    "saveInterval": 30,
+    "longPress": 400,
+    "dragPixels": 10,
+    "toastMs": 2400,
+    "rageSeconds": 30,
+    "appetiteSeconds": 36,
+    "birthProductionMargin": 1.1,
+    "kingWarSize": 4
+  },
+  "skills": [
+    {
+      "id": "peace",
+      "name": "和解",
+      "group": 0,
+      "icon": "☮",
+      "cost": 4,
+      "cd": 10,
+      "r": 7,
+      "unlock": 0,
+      "desc": "选中出征者或正在号令的国王，使双方停止号令、停战返乡，12秒内不能再次出征。",
+      "number": 1
+    },
+    {
+      "id": "bless",
+      "name": "安居乐业",
+      "group": 0,
+      "icon": "✦",
+      "cost": 6,
+      "cd": 15,
+      "r": 8,
+      "unlock": 0,
+      "desc": "范围内健康成年居民产粮效率提高40%，持续20秒。",
+      "number": 2
+    },
+    {
+      "id": "joy",
+      "name": "欢愉时刻",
+      "group": 0,
+      "icon": "♡",
+      "cost": 6,
+      "cd": 20,
+      "r": 8,
+      "unlock": 0,
+      "desc": "人类享乐18秒并停工，催生暂时无视口粮和住房，随后36秒食量翻倍；羊群和野兽繁殖加速，羊可叠加雨天。",
+      "number": 3
+    },
+    {
+      "id": "weather",
+      "name": "气候控制",
+      "group": 1,
+      "icon": "☁",
+      "cost": 5,
+      "cd": 12,
+      "r": 0,
+      "unlock": 0,
+      "desc": "选择晴天、降雨、酷热或寒冷，再选择岛屿。降雨增产并扑灭本岛火场。",
+      "number": 4
+    },
+    {
+      "id": "lightning",
+      "name": "闪电",
+      "group": 1,
+      "icon": "ϟ",
+      "cost": 3,
+      "cd": 3,
+      "r": 2.5,
+      "unlock": 0,
+      "desc": "精准击杀最近一个居民或动物。野兽掉肉，击杀动物不收魂；清理野兽可解除附近扩建阻碍。",
+      "number": 5
+    },
+    {
+      "id": "meteor",
+      "name": "陨石",
+      "group": 1,
+      "icon": "☄",
+      "cost": 12,
+      "cd": 25,
+      "r": 5,
+      "unlock": 0,
+      "desc": "范围生物受到100伤害，留下短时火场；野兽掉肉，也可帮助完成扩张地块清理。本版不破坏地编建筑。",
+      "number": 6
+    },
+    {
+      "id": "rage",
+      "name": "暴怒",
+      "group": 2,
+      "icon": "♨",
+      "cost": 8,
+      "cd": 22,
+      "r": 2.5,
+      "unlock": 0,
+      "desc": "单体施法：普通居民独自出征；国王留守号令，征召最多4名成年人出征。至少保留2名劳动力，最多持续28秒。",
+      "number": 7
+    },
+    {
+      "id": "plague",
+      "name": "瘟疫",
+      "group": 2,
+      "icon": "✣",
+      "cost": 10,
+      "cd": 28,
+      "r": 5,
+      "unlock": 0,
+      "number": 8,
+      "desc": "感染居民停产，病程10秒，可近距离传播；30%死亡，幸存者免疫25秒。"
+    },
+    {
+      "id": "undead",
+      "name": "亡灵",
+      "group": 2,
+      "icon": "♜",
+      "cost": 8,
+      "cd": 24,
+      "r": 7,
+      "unlock": 0,
+      "number": 9,
+      "desc": "消耗最多6具附近尸体召唤亡灵，追杀活人18秒；亡灵死亡不再计魂。"
+    }
+  ],
+  "climate": {
+    "normal": {
+      "field": 1,
+      "human": 1
+    },
+    "rain": {
+      "field": 1.3,
+      "human": 1
+    },
+    "hot": {
+      "field": 0.6,
+      "human": 0.7
+    },
+    "cold": {
+      "field": 0.75,
+      "human": 0.8
+    }
+  },
+  "texts": {
+    "intro": "农耕国扩建房田，畜牧国繁育宰羊。欢愉影响人口与劳力，暴怒按身份生效，真实死亡获得灵魂。",
+    "oldSave": "旧版存档不兼容，请开始新局"
+  },
+  "settlement": {
+    "initialHouses": 2,
+    "houseCapacity": 5,
+    "initialFields": 2,
+    "workersPerField": 4,
+    "builders": 1,
+    "buildSeconds": 5,
+    "clearSeconds": 4,
+    "buildFood": 2,
+    "buildReserveSeconds": 4,
+    "planInterval": 1,
+    "houseBuildOccupancy": 0.8,
+    "foodMargin": 1.25,
+    "foodReserveSeconds": 25,
+    "beastBlockRadius": 4,
+    "upgradeSeconds": 8,
+    "expansion": {
+      "house": {
+        "minX": 13,
+        "maxX": 40,
+        "minY": 16,
+        "maxY": 24,
+        "spacing": 3,
+        "size": 2.3
+      },
+      "field": {
+        "minX": 15,
+        "maxX": 41,
+        "minY": 36,
+        "maxY": 44,
+        "spacing": 1,
+        "size": 1.8
+      }
+    },
+    "specials": {
+      "hall": {
+        "population": 25,
+        "productionMargin": 1.1,
+        "reserveSeconds": 20,
+        "cost": 5
+      },
+      "granary": {
+        "population": 30,
+        "productionMargin": 1.15,
+        "reserveSeconds": 25,
+        "cost": 6
+      },
+      "windmill": {
+        "population": 40,
+        "productionMargin": 1.2,
+        "reserveSeconds": 25,
+        "cost": 8
+      },
+      "academy": {
+        "population": 50,
+        "productionMargin": 1.2,
+        "reserveSeconds": 25,
+        "cost": 8
+      }
+    },
+    "huntDamage": 12,
+    "huntInterval": 1.5,
+    "windmillProduction": 1.15,
+    "granaryStorage": 1.5
+  },
+  "husbandry": {
+    "initialSheep": 12,
+    "initialAdultSheep": 6,
+    "hp": 30,
+    "matureSeconds": 8,
+    "birthRate": 0.065,
+    "sheepPerWorker": 5,
+    "slaughterPerWorker": 0.08,
+    "meatFood": 12,
+    "keepBreeders": 6,
+    "emergencyBreeders": 2,
+    "reserveSeconds": 20,
+    "emergencySeconds": 4,
+    "rainBreeding": 1.5,
+    "joyBreeding": 4,
+    "pens": [
+      {
+        "id": "pasture-pen-0",
+        "x": 67,
+        "y": 22,
+        "capacity": 32
+      },
+      {
+        "id": "pasture-pen-1",
+        "x": 67,
+        "y": 27,
+        "capacity": 32
+      },
+      {
+        "id": "pasture-pen-2",
+        "x": 67,
+        "y": 32,
+        "capacity": 32
+      }
+    ],
+    "breederMargin": 1.5
+  },
+  "wildlife": {
+    "hp": 50,
+    "damage": 8,
+    "attackInterval": 2,
+    "reach": 1.2,
+    "search": 4,
+    "rageSearch": 20,
+    "speed": 1.2,
+    "rageSpeed": 2,
+    "respawnSeconds": 45,
+    "settlementRadius": 7,
+    "meatFood": 8,
+    "homes": [
+      [
+        {
+          "x": 12,
+          "y": 22
+        },
+        {
+          "x": 19,
+          "y": 41
+        }
+      ],
+      [
+        {
+          "x": 85,
+          "y": 16
+        },
+        {
+          "x": 90,
+          "y": 35
+        }
+      ]
+    ],
+    "maxPerIsland": 6,
+    "joyBirthSeconds": 10
+  },
+  "society": {
+    "warIntentSeconds": 30,
+    "successionSeconds": 8,
+    "unrestExhaustion": 60,
+    "unrestPerOrder": 35,
+    "revoltPressure": 100,
+    "fedRecovery": 0.7,
+    "hungryRecovery": 0.15,
+    "recoveryReserveSeconds": 12,
+    "casualtyExhaustion": 8,
+    "scholarPopulation": 50,
+    "maxScholars": 2,
+    "scholarReserveSeconds": 25,
+    "scholarKeepReserveSeconds": 8,
+    "scholarMargin": 1.2,
+    "researchPerScholar": 0.2,
+    "rageSearch": 9,
+    "rageSpeed": 1.5,
+    "rageReach": 1.3,
+    "rageDamage": 8,
+    "rageAttackInterval": 2,
+    "woundSeconds": 5,
+    "unrestRecovery": 0.3
+  }
+}

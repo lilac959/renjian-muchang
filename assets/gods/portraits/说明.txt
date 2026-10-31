@@ -1,0 +1,15 @@
+三神明独立立绘
+
+life.png：生命之神，来源 approved-love.png。
+weather.png：天气之神，来源 approved-weather.png。
+death.png：死亡之神，来源 approved-death.png。
+
+三张图片均为 1024 × 1536 的 RGBA PNG，带真实透明通道。保留人物、服装及手持道具，去掉卡框、背景场景和底部铭牌，可用于序章对话立绘。
+保持纵横比显示，例如 object-fit: contain；建议底部居中对齐。
+这是基于现有卡片使用内置 image_gen 做的人物提取及边缘补全，并非逐像素无损裁切。少量头发、轮廓和衣物边缘可能与原图不同。未补画原卡片没有展示的完整腿部。
+
+原卡片仍在 assets/ui/approved-*.png，本目录新增素材尚未替换游戏中的卡牌引用。
+preview.html：可切换棋盘格、浅色、深色底的本地预览。
+prompts.json：本次内置 image_gen 的完整处理提示词。
+alpha-check.json：尺寸与透明通道检查结果；透明像素保留的 RGB 信息不表示背景不透明，导入时须启用 Alpha。
+manifest.json：源文件与输出文件的映射和 SHA256 校验值。

@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-31",
+  "sourceRemoteCommit": "6de954e",
+  "method": "built-in image_gen background extraction with edge completion",
+  "assets": [
+    {
+      "id": "life",
+      "name": "生命之神",
+      "file": "life.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "format": "RGBA PNG",
+      "transparent": true,
+      "source": "整理输出/game/assets/ui/approved-love.png",
+      "sourceSHA256": "b41389012bd7a3f3e64c9532af1aafd920d831327ae04f307e756e41845e8dd9",
+      "SHA256": "ee71f5eada312b474315f6636f69fa79c4107721fff080dbe037895ffb8bbab4",
+      "anchor": [
+        0.5,
+        1.0
+      ]
+    },
+    {
+      "id": "weather",
+      "name": "天气之神",
+      "file": "weather.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "format": "RGBA PNG",
+      "transparent": true,
+      "source": "整理输出/game/assets/ui/approved-weather.png",
+      "sourceSHA256": "7052f54c31dd0e7317f87f51307f27e08b9f81f505b39e133727cd8993d02d26",
+      "SHA256": "5c721ef9887c85823dddda27dcf49d211257519fd85c241c1dce89dcbb405d7c",
+      "anchor": [
+        0.5,
+        1.0
+      ]
+    },
+    {
+      "id": "death",
+      "name": "死亡之神",
+      "file": "death.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "format": "RGBA PNG",
+      "transparent": true,
+      "source": "整理输出/game/assets/ui/approved-death.png",
+      "sourceSHA256": "aed4940fdea9ab3a37fde6bcae5acc57affa52fc12eda9a03947c13a9579c0d8",
+      "SHA256": "70266c145d5d4cf70ac6d8b91691595d515af5445379b4dec0f02804cc33ac67",
+      "anchor": [
+        0.5,
+        1.0
+      ]
+    }
+  ]
+}

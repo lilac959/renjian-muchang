@@ -1,0 +1,9 @@
+Crown by Quaternius
+Source: https://poly.pizza/m/i0PZVuVlYv
+Creator: https://quaternius.com/
+License: CC0 1.0 Universal (Public Domain)
+License URL: https://creativecommons.org/publicdomain/zero/1.0/
+Downloaded: 2026-10-31
+Original asset: https://static.poly.pizza/1381b02a-8310-437b-a2a7-82cab0a94a4c.glb
+840 triangles. Original GLB preserved. Runtime normalizes scale and placement;
+material roughness/metalness and emissive light adjusted for the game.

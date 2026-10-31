@@ -1,3 +1,4 @@
+import {drawRageBubbles} from './rage-bubbles.js';
 // Bounded, deterministic presentation: all ages come from simulation time.
 const TAU=Math.PI*2,clamp=x=>Math.max(0,Math.min(1,x));
 function ellipse(g,x,y,rx,ry,color,alpha=1){if(rx<=0||ry<=0)return;g.globalAlpha=clamp(alpha);g.fillStyle=color;g.beginPath();g.ellipse(x,y,rx,ry,0,0,TAU);g.fill();}
@@ -5,8 +6,6 @@ function glow(g,x,y,r,color,alpha){if(r<=0)return;const grad=g.createRadialGradi
 function ring(g,v,p,r,color,alpha,width=2){g.globalAlpha=clamp(alpha);g.strokeStyle=color;g.lineWidth=width;g.beginPath();for(let i=0;i<=48;i++){const a=i/48*TAU,q=v.project({x:p.x+Math.cos(a)*r,y:p.y+Math.sin(a)*r});i?g.lineTo(q.x,q.y):g.moveTo(q.x,q.y);}g.stroke();}
 function heart(g,x,y,s,alpha){g.save();g.translate(x,y);g.scale(s,s);g.globalAlpha=clamp(alpha);g.fillStyle='#f0aaa9';g.beginPath();g.moveTo(0,.6);g.bezierCurveTo(-1,-.1,-.7,-1,0,-.4);g.bezierCurveTo(.7,-1,1,-.1,0,.6);g.fill();g.restore();}
 function flame(g,x,y,s,t,alpha){g.save();g.translate(x,y);const lean=Math.sin(t*7)*s*.22;g.globalAlpha=clamp(alpha);const grad=g.createLinearGradient(0,0,0,-s*2.8);grad.addColorStop(0,'#c14d27');grad.addColorStop(.45,'#ffac43');grad.addColorStop(1,'#ffeab0');g.fillStyle=grad;g.beginPath();g.moveTo(-s*.55,0);g.bezierCurveTo(-s,-s,lean-s*.2,-s*1.7,lean,-s*2.8);g.bezierCurveTo(lean+s*.8,-s*1.3,s*.9,-s*.3,s*.55,0);g.closePath();g.fill();ellipse(g,0,-s*.35,s*.25,s*.55,'#fff0bd',alpha);g.restore();}
-// Four bent strokes read as anger at both overview and close-up scales.
-function anger(g,x,y,size,alpha){g.save();g.translate(x,y);g.globalAlpha=clamp(alpha);g.strokeStyle='#bd443b';g.lineWidth=Math.max(1.5,size*.21);g.lineJoin='round';for(let i=0;i<4;i++){g.save();g.rotate(i*Math.PI/2);g.beginPath();g.moveTo(-size*.75,-size*.25);g.lineTo(-size*.28,-size*.25);g.lineTo(-size*.28,-size*.75);g.stroke();g.restore();}g.restore();}
 export function drawSpellFeedback(g,v,world,events,scale){
  const s=scale,time=world.time;g.save();g.lineCap='round';
  for(const e of events){const t=time-e.time,p=v.project(e);if(t<0)continue;
@@ -38,9 +37,9 @@ export function drawSpellFeedback(g,v,world,events,scale){
  // State feedback follows living recipients, including infections acquired later.
  for(const a of world.entities){if(a.dead||a.inside)continue;const q=v.project(a),phase=time+a.id*.73;
   const weather=world.islands?.[a.country]?.weather;if(weather?.left>0){const u=(phase*.4)%1;if(weather.kind==='cold')ellipse(g,q.x+s*(.15+u*.5),q.y-s*.9-u*s*.2,s*(.08+u*.2),s*.1,'#e5ece5',.3*(1-u));if(weather.kind==='hot')ellipse(g,q.x+s*.25,q.y-s*(1-u*.5),s*.04,s*.09,'#b5d9de',Math.sin(u*Math.PI)*.7);}
-  if(a.king&&a.commanding){anger(g,q.x+s*.42,q.y-s*.15,Math.max(4,Math.min(12,s*.22)),.85);ring(g,v,a,.65,'#c9984d',.25+.12*Math.sin(time*4),1.5);}
+  if(a.king&&a.commanding){ring(g,v,a,.65,'#c9984d',.25+.12*Math.sin(time*4),1.5);}
   if(a.sick>0){for(let j=0;j<2;j++){const u=(phase*.4+j*.5)%1;ellipse(g,q.x+Math.sin(phase+j)*s*.35,q.y-u*s*1.4,s*(.2+u*.2),s*.2,'#859768',.3*(1-u));}}
-  else if(a.soldier&&!a.returning){const pulse=.5+.5*Math.sin(phase*3);anger(g,q.x+s*.25,q.y-s*(.15+pulse*.03),Math.max(4,Math.min(12,s*.24)),.7+pulse*.3);glow(g,q.x,q.y-s*.45,s*.55,'#bf5140',.05+pulse*.08);}
+  else if(a.soldier&&!a.returning){const pulse=.5+.5*Math.sin(phase*3);glow(g,q.x,q.y-s*.45,s*.55,'#bf5140',.05+pulse*.08);}
   if(a.bless>0&&a.adult&&!a.sick&&!a.soldier){const u=(phase*.55)%1;glow(g,q.x,q.y-s*.4,s*.8,'#edcf79',.12);ellipse(g,q.x+Math.sin(phase)*s*.35,q.y-u*s*1.6,s*.07,s*.13,'#f6dda0',1-u);}
   if(a.joy>0&&a.adult){const u=(phase*.32)%1;heart(g,q.x+Math.sin(phase)*s*.25,q.y-s*(.9+u),s*.23,Math.sin(u*Math.PI)*.8);}
   if(a.kind==='undead'){ring(g,v,a,.4,'#b694d5',.4,1);glow(g,q.x,q.y-s*.5,s*.7,'#ad82d5',.2);}
@@ -48,4 +47,5 @@ export function drawSpellFeedback(g,v,world,events,scale){
  // A recognizable spirit rises first, then curves into the soul bottle.
  for(const e of world.effects){if(!e.soul)continue;const age=1.8-e.life,u=clamp((age-.55)/1.25),ease=u*u,q=v.project(e),target=v.soulTarget||{x:v.w*.8,y:35},x=q.x+(target.x-q.x)*ease+Math.sin(age*6+e.x)*s*.15*(1-u),y=q.y-s*(.6+Math.min(age,.55)*1.8)+(target.y-q.y+s*1.6)*ease-Math.sin(u*Math.PI)*s*3,sz=Math.max(3,s*.32)*(1-u*.6),alpha=clamp(e.life/.2);glow(g,x,y,sz*4,'#bceee7',alpha*.5);g.globalAlpha=alpha*.75;g.strokeStyle='#c7f5e9';g.lineWidth=sz*.7;g.beginPath();g.moveTo(x,y+sz);g.quadraticCurveTo(x-Math.sin(age*7)*sz,y+sz*3,x-sz*.4,y+sz*4);g.stroke();ellipse(g,x,y,sz,sz*1.2,'#e4fff2',alpha);ellipse(g,x-sz*.3,y-sz*.1,sz*.12,sz*.17,'#588f99',alpha);ellipse(g,x+sz*.3,y-sz*.1,sz*.12,sz*.17,'#588f99',alpha);}
  g.restore();
+ drawRageBubbles(g,v,world,scale);
 }

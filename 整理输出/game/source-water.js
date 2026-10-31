@@ -9,6 +9,7 @@ export function sourceWater(time,buffer,meta,version=9){
  for(let i=0;i<data.length;i++)data[i]=T.DataUtils.toHalfFloat(values[i]);
  const map=new T.DataTexture(data,meta.width,meta.height,T.RedFormat,T.HalfFloatType);map.minFilter=map.magFilter=T.LinearFilter;map.needsUpdate=true;
  const material=new T.MeshPhysicalMaterial({color:0xffffff,roughness:.62,metalness:0,specularIntensity:.24});
+ material.userData.skipClimate=true;
  material.onBeforeCompile=shader=>{
   shader.uniforms.sourceTime=time;shader.uniforms.sourceShore={value:map};
   shader.vertexShader='varying vec3 vWaterWorld;\n'+shader.vertexShader;

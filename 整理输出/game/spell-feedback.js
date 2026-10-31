@@ -44,8 +44,12 @@ export function drawSpellFeedback(g,v,world,events,scale){
   if(a.joy>0&&a.adult){const u=(phase*.32)%1;heart(g,q.x+Math.sin(phase)*s*.25,q.y-s*(.9+u),s*.23,Math.sin(u*Math.PI)*.8);}
   if(a.kind==='undead'){ring(g,v,a,.4,'#b694d5',.4,1);glow(g,q.x,q.y-s*.5,s*.7,'#ad82d5',.2);}
  }
- // A recognizable spirit rises first, then curves into the soul bottle.
- for(const e of world.effects){if(!e.soul)continue;const age=1.8-e.life,u=clamp((age-.55)/1.25),ease=u*u,q=v.project(e),target=v.soulTarget||{x:v.w*.8,y:35},x=q.x+(target.x-q.x)*ease+Math.sin(age*6+e.x)*s*.15*(1-u),y=q.y-s*(.6+Math.min(age,.55)*1.8)+(target.y-q.y+s*1.6)*ease-Math.sin(u*Math.PI)*s*3,sz=Math.max(3,s*.32)*(1-u*.6),alpha=clamp(e.life/.2);glow(g,x,y,sz*4,'#bceee7',alpha*.5);g.globalAlpha=alpha*.75;g.strokeStyle='#c7f5e9';g.lineWidth=sz*.7;g.beginPath();g.moveTo(x,y+sz);g.quadraticCurveTo(x-Math.sin(age*7)*sz,y+sz*3,x-sz*.4,y+sz*4);g.stroke();ellipse(g,x,y,sz,sz*1.2,'#e4fff2',alpha);ellipse(g,x-sz*.3,y-sz*.1,sz*.12,sz*.17,'#588f99',alpha);ellipse(g,x+sz*.3,y-sz*.1,sz*.12,sz*.17,'#588f99',alpha);}
+
  g.restore();
  drawRageBubbles(g,v,world,scale);
 }
+
+export function drawSoulFlights(g,v,world,scale){const s=scale;g.save();
+ // A recognizable spirit rises first, then curves into the soul bottle.
+ for(const e of world.effects){if(!e.soul)continue;const age=1.8-e.life,u=clamp((age-.45)/1.15),ease=u*u,q=v.project(e),target=v.soulTarget||{x:v.w*.8,y:35},x=q.x+(target.x-q.x)*ease+Math.sin(age*6+e.x)*s*.15*(1-u),y=q.y-s*(.6+Math.min(age,.45)*1.8)+(target.y-q.y+s*1.41)*ease-Math.sin(u*Math.PI)*s*3,sz=Math.max(6,s*.48)*(1-u*.35),alpha=clamp(e.life/.2);glow(g,x,y,sz*4,'#bceee7',alpha*.5);g.globalAlpha=alpha*.75;g.strokeStyle='#c7f5e9';g.lineWidth=sz*.7;g.beginPath();g.moveTo(x,y+sz);g.quadraticCurveTo(x-Math.sin(age*7)*sz,y+sz*3,x-sz*.4,y+sz*4);g.stroke();ellipse(g,x,y,sz,sz*1.2,'#e4fff2',alpha);ellipse(g,x-sz*.3,y-sz*.1,sz*.12,sz*.17,'#588f99',alpha);ellipse(g,x+sz*.3,y-sz*.1,sz*.12,sz*.17,'#588f99',alpha);}
+g.restore();}

@@ -12,3 +12,5 @@ test('feedback is deterministic at paused time and never mutates gameplay',()=>{
  const before=JSON.stringify(world);drawSpellFeedback(g,view,world,events,8);const first=JSON.stringify(calls);calls.length=0;drawSpellFeedback(g,view,world,events,8);assert.equal(JSON.stringify(calls),first);assert.equal(JSON.stringify(world),before);
  for(const time of [0,1.4,3,6]){world.time=time;drawSpellFeedback(g,view,world,events,56);}
 });
+import {drawSoulFlights} from '../game/spell-feedback.js';
+test('soul reaches the HUD bottle before its arrival pulse and does not alter simulation',()=>{const ellipses=[],g=new Proxy({}, {set(o,k,v){o[k]=v;return true;},get(o,k){if(k in o)return o[k];if(k.startsWith('create'))return()=>({addColorStop(){}});return(...args)=>{if(k==='ellipse')ellipses.push(args);};}}),world={effects:[{soul:true,life:.18,x:3,y:4}]},view={soulTarget:{x:600,y:40},project:()=>({x:100,y:400})};drawSoulFlights(g,view,world,10);assert.ok(ellipses.some(([x,y])=>Math.abs(x-600)<.01&&Math.abs(y-40)<.01));assert.equal(world.effects[0].life,.18);});

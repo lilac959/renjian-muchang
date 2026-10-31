@@ -22,11 +22,11 @@ export function installSourceVegetation(root,meta,buffer,time){
     shader.vertexShader=`uniform float sourceTime;attribute float _wind_weight;attribute vec4 sourcePlant;varying vec2 vSourceField;\n`+shader.vertexShader;
     shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>
      float wave=sin(sourcePlant.x-(sourceTime+1./24.)*${meta.wind.wind_speed});
-     float bend=wave*${wheat?meta.wind.wheat_bend:meta.wind.grass_bend}*_wind_weight/sourcePlant.z;
+     float bend=wave*${(wheat?meta.wind.wheat_bend:meta.wind.grass_bend)*(placement.amplitude??1)}*_wind_weight/sourcePlant.z;
      float cs=cos(sourcePlant.w),sn=sin(sourcePlant.w);
      transformed.x+=bend*(.88*cs+.48*sn);
      transformed.z+=bend*(.88*sn-.48*cs);
-     transformed.y-=(wave*.5+.5)*_wind_weight*.13/sourcePlant.z;
+     transformed.y-=(wave*.5+.5)*_wind_weight*${.13*(placement.amplitude??1)}/sourcePlant.z;
      vSourceField=vec2(wave*.5+.5,sourcePlant.y);
     `);
    };
@@ -37,12 +37,13 @@ export function installSourceVegetation(root,meta,buffer,time){
      diffuseColor.rgb=${wheat?`mix(${rgb(palette.low)},${rgb(palette.high)},vSourceField.x)`:`mix(meadowBase(vSourceField.y),meadowWind(vSourceField.x),${meta.wind.wave_contrast})`};
     `);
    };
-   material.customProgramCacheKey=()=>`source-plants-v2-${part.material.name}`;
+   material.customProgramCacheKey=()=>`source-plants-v3-${part.material.name}`;
    geometry.setAttribute('sourcePlant',new T.InstancedBufferAttribute(data,4));
    const mesh=new T.InstancedMesh(geometry,material,points.length);mesh.name=placement.name;mesh.userData.sourceName=placement.name;
    for(let i=0;i<points.length;i++){const [x,y,z,scale,yaw,phase,base]=points[i];rotation.setFromAxisAngle(axis,yaw);matrix.compose(new T.Vector3(x,z,-y),rotation,new T.Vector3(scale,scale,scale));mesh.setMatrixAt(i,matrix);data.set([phase,base,scale,yaw],i*4);}
    mesh.instanceMatrix.needsUpdate=true;mesh.castShadow=true;mesh.receiveShadow=true;
-   const depth=new T.MeshDepthMaterial({depthPacking:T.RGBADepthPacking,side:T.DoubleSide});depth.onBeforeCompile=configure;depth.customProgramCacheKey=()=>`source-plant-depth-${wheat}`;mesh.customDepthMaterial=depth;
+   const depth=new T.MeshDepthMaterial({depthPacking:T.RGBADepthPacking,side:T.DoubleSide});depth.onBeforeCompile=configure;depth.customProgramCacheKey=()=>`source-plant-depth-${wheat}-${placement.amplitude??1}`;mesh.customDepthMaterial=depth;
+   if(placement.matrix){const b=new T.Matrix4().makeRotationX(-Math.PI/2),m=new T.Matrix4().set(...placement.matrix.flat());mesh.applyMatrix4(b.clone().multiply(m).multiply(b.clone().invert()));}
    mesh.computeBoundingSphere();mesh.boundingSphere.radius+=.6;root.add(mesh);meshes++;
   }
   total+=placement.count;

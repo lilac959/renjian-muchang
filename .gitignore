@@ -9,3 +9,6 @@ __pycache__/
 *.py[cod]
 .DS_Store
 Thumbs.db
+
+# Editable art sources and delivery archives are retained locally, not in Git.
+整理输出/美术交付/

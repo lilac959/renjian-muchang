@@ -20,13 +20,12 @@ export function sourceWater(time,buffer,meta){
   shader.fragmentShader=shader.fragmentShader.replace('#include <emissivemap_fragment>','#include <emissivemap_fragment>\ntotalEmissiveRadiance=diffuseColor.rgb*.35;');
   shader.fragmentShader=shader.fragmentShader.replace('#include <color_fragment>',`#include <color_fragment>
    vec2 p=vec2((vWaterWorld.x-${QINGHE.transform.position[0]})/.5,(${QINGHE.transform.position[2]}-vWaterWorld.z)/.5);
-   vec2 uv=(p-vec2(-80,-66))/vec2(160,132);
+   vec2 uv=(p-vec2(${meta.min.join(',')}))/vec2(${meta.size.join(',')});
    float sourceDistance=texture2D(sourceShore,uv).r;
-   float whiteDistance=(length((vWaterWorld.xz-vec2(76,28))/vec2(23,17))-1.)*17.*2.;
-   float d=max(0.,min(sourceDistance,whiteDistance));
+   float d=max(0.,sourceDistance);
    float phase=sourceTime*6.28318530718/5.;float movement=sin(phase)*.07;float w=sin(phase)*.25;
    float edgeNoise=waterFbm(vec3(p*2.5,w*2.5));float holes=waterFbm(vec3(p*9.,w*9.));
-   float ratio=d/(.57+movement);float aa=max(fwidth(ratio),.025);
+   float ratio=d/(.63+movement);float aa=max(fwidth(ratio),.025);
    float foam=(1.-smoothstep(.62+edgeNoise*.85-aa,.62+edgeNoise*.85+aa,ratio))*smoothstep(.24+ratio*.3-.035,.24+ratio*.3+.035,holes);
    float shift=movement+edgeNoise*.1;
    float lines=max(fineLine(d-(.66+shift),.016),fineLine(d-(1.04+shift),.009))*smoothstep(.37,.41,edgeNoise);

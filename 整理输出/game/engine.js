@@ -1,4 +1,4 @@
-import {islandId,castable,walkable,nearestWalkable,moveAlong} from './island-layout.js';
+import {QINGHE,islandId,castable,walkable,reachable,nearestWalkable,moveAlong} from './island-layout.js';
 import {CONFIG as C, SKILLS, CLIMATE} from './config.js';
 export const distance = (a,b) => Math.hypot(a.x-b.x,a.y-b.y);
 
@@ -10,9 +10,9 @@ export class World {
   for(let id=0;id<2;id++) this.createIsland(id);
  }
  random(){this.seed=(Math.imul(this.seed,1664525)+1013904223)>>>0;return this.seed/4294967296;}
- point(c){for(let i=0;i<64;i++){const a=this.random()*Math.PI*2,r=Math.sqrt(this.random()),p={x:c.x+Math.cos(a)*r*11,y:c.y+Math.sin(a)*r*8};if(walkable(p)&&islandId(p)===c.id)return p;}return nearestWalkable(c,c.id);}
+ point(c){for(let i=0;i<64;i++){const a=this.random()*Math.PI*2,r=Math.sqrt(this.random()),p={x:c.x+Math.cos(a)*r*11,y:c.y+Math.sin(a)*r*8};if(reachable(p)&&islandId(p)===c.id)return p;}return nearestWalkable(c,c.id);}
  createIsland(id){
-  const c={id,name:id?'白鹿岛':'青禾岛',x:id?76:27,y:28,food:C.initialFood,birthProgress:0,
+  const c={id,name:id?'白鹿岛':'青禾岛',...QINGHE.centers[id],food:C.initialFood,birthProgress:0,
    offering:0,weather:{kind:'normal',left:0},army:null,lastArmy:-C.armyInterval};
   this.islands.push(c);
   for(let i=0;i<C.initialAdults;i++)this.spawn('human',c,true);

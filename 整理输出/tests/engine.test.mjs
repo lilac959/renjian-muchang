@@ -1,3 +1,4 @@
+import {BRIDGE} from '../game/island-layout.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {World} from '../game/engine.js';
@@ -26,6 +27,6 @@ test('success takes priority over extinction and timeout',()=>{const w=active();
 test('save/restore preserves ongoing war, resources and timers; old and broken saves rejected',()=>{const w=active();gather(w,w.islands[0]);w.cast('rage',w.islands[0]);w.step(5);const v=World.restore(w.serialize());assert.equal(v.paused,true);assert.deepEqual(v.islands,w.islands);assert.deepEqual(v.entities,w.entities);assert.throws(()=>World.restore('{"version":3}'),/旧版/);const bad=JSON.parse(w.serialize());bad.state.mana=-1;assert.throws(()=>World.restore(JSON.stringify(bad)),/损坏/);});
 test('simulation conserves actual population across varied attacks',()=>{for(const seed of [11,22,33]){const w=new World(seed);w.paused=false;w.mana=100;w.cast('rage',w.islands[0]);w.step(50);w.cast('plague',w.islands[1]);w.step(20);w.cast('meteor',w.islands[0]);w.step(230);assert.ok(w.result);assert.equal(w.humans().length+w.souls,C.initialAdults*2+w.births);assert.ok(w.islands.every(c=>Number.isFinite(c.food)&&c.food>=0));}});
 
-test('returning soldiers snap to bridge waypoints instead of stalling just off shore',()=>{for(const side of [0,1]){const w=active(),c=w.islands[side];gather(w,c);w.cast('rage',c);w.retreat(c);for(const id of c.army.ids){const e=w.get(id);e.x=side===0?43.005:59.995;e.y=28;}w.step(15);assert.equal(w.humans(side).filter(e=>e.soldier).length,0);assert.equal(c.army,null);}});
+test('returning soldiers snap to bridge waypoints instead of stalling just off shore',()=>{for(const side of [0,1]){const w=active(),c=w.islands[side];gather(w,c);w.cast('rage',c);w.retreat(c);for(const id of c.army.ids){const e=w.get(id);Object.assign(e,side===0?BRIDGE.a:BRIDGE.b);}w.step(15);assert.equal(w.humans(side).filter(e=>e.soldier).length,0);assert.equal(c.army,null);}});
 
 test('visual events preserve targets before death, follow impact timing, and are not restored',()=>{const w=active();w.mana=100;const e=w.humans()[0];const p={x:e.x,y:e.y};assert.ok(w.cast('lightning',p).ok);const f=w.visualEvents.at(-1);assert.equal(f.id,'lightning');assert.ok(f.targets.some(t=>t.id===e.id));assert.equal(World.restore(w.serialize()).visualEvents.length,0);const v=active();v.mana=100;const q=v.humans()[0];v.cast('meteor',q);v.step(.65);assert.equal(v.visualEvents.some(f=>f.id==='impact'),false);v.step(.1);assert.equal(v.visualEvents.some(f=>f.id==='impact'),true);});

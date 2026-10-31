@@ -1,0 +1,167 @@
+REFERENCE EXCERPTS ONLY; not a standalone executable module.
+Source: scripts/main.gd
+
+
+# scripts/main.gd:1535 _setup_tutorial
+func _setup_tutorial() -> void:
+	tutorial=TutorialDirector.new()
+	tutorial.name="TutorialDirector"
+	add_child(tutorial)
+	tutorial.setup(sim,citizens,conflicts)
+	tutorial_ui=TutorialDialogue.new()
+	tutorial_ui.name="TutorialDialogue"
+	add_child(tutorial_ui)
+	tutorial.conversation_requested.connect(tutorial_ui.show_conversation)
+	tutorial.objective_changed.connect(_tutorial_objective_changed)
+	tutorial.phase_changed.connect(_tutorial_phase_changed)
+	tutorial.finale_requested.connect(_tutorial_start_finale)
+	tutorial.completed.connect(_tutorial_completed)
+	tutorial_ui.conversation_finished.connect(tutorial.notify_conversation_finished)
+	tutorial_ui.dialogue_visibility_changed.connect(_tutorial_visibility_changed)
+	tutorial_ui.exit_requested.connect(func(): main_menu_requested.emit())
+	tutorial_ui.challenge_requested.connect(func(): tutorial_challenge_requested.emit())
+	tutorial_ui.replay_requested.connect(_restart)
+	if not sim.human_deaths_recorded.is_connected(_tutorial_human_deaths): sim.human_deaths_recorded.connect(_tutorial_human_deaths)
+	game_speed=3.0
+	# This opening is a real pending campaign, not an illustrative army.
+	sim.relation=25.0
+	sim._request_conflict(0,"两国为桥上的通行与粮贸起了争执，国王正在集结军队。","culture_challenge")
+	conflicts.advance(0.1,1.0,false)
+	world.set_campaign_state(conflicts.get_campaign_state())
+	_tutorial_apply_permissions("intro")
+	hud.toast_label.visible=false
+	hud._toast_time=0.0
+	tutorial.begin()
+
+
+# scripts/main.gd:1565 _tutorial_blocks_input
+func _tutorial_blocks_input() -> bool:
+	return is_instance_valid(tutorial_ui) and tutorial_ui.blocks_world_input()
+
+
+# scripts/main.gd:1568 _tutorial_blocks_simulation
+func _tutorial_blocks_simulation() -> bool:
+	return is_instance_valid(tutorial) and (tutorial.is_dialogue_active() or tutorial.phase=="complete")
+
+
+# scripts/main.gd:1571 _tutorial_visibility_changed
+func _tutorial_visibility_changed(dialogue: bool) -> void:
+	if not is_instance_valid(tutorial): return
+	hud.visible=not dialogue and not tutorial.is_finale()
+	hud.skill_panel.visible=not dialogue and not tutorial.is_finale()
+	hud.toast_label.visible=false
+	hud._toast_time=0.0
+	world.clear_target_preview()
+	_middle_drag=false
+
+
+# scripts/main.gd:1580 _tutorial_apply_permissions
+func _tutorial_apply_permissions(phase: String) -> void:
+	if not is_instance_valid(tutorial): return
+	sim.set_tutorial_permissions(tutorial.get_allowed_skills(),phase)
+	if not selected_skill.is_empty() and not tutorial.is_skill_allowed(selected_skill): selected_skill=""
+	hud.update_state(sim,selected_island,selected_skill,paused,game_speed)
+
+
+# scripts/main.gd:1586 _tutorial_phase_changed
+func _tutorial_phase_changed(phase: String) -> void:
+	_tutorial_apply_permissions(phase)
+	var chapters: Dictionary={"intro":1,"peace":1,"weather":2,"rain":2,"stewardship":3,"harvest":4,"first_soul":4,"catastrophe":4,"final_cast":5,"finale":5,"complete":5}
+	tutorial_ui.set_chapter(int(chapters.get(phase,1)),str({1:"先学会爱",2:"风调雨顺",3:"你亲手养大的文明",4:"上帝也有考核",5:"神明也疯狂"}[int(chapters.get(phase,1))]))
+	if phase=="peace":
+		selected_skill="reconcile"
+		_focus_next_tutorial_king()
+	if phase=="weather":
+		conflicts.negotiate_tutorial_peace()
+		sim.set_tutorial_armistice(true)
+		sim._config["tutorial_treaty_signed"]=true
+		sim.relation=85.0
+		for nation: Dictionary in sim.nations:
+			nation.leader_war_desire=0.0
+			nation.leader_rage_remaining=0.0
+		sim.grievances.assign([0.0,0.0])
+		sim.revenge_pending.assign([false,false])
+	if phase=="rain":
+		sim.set_climate_options("normal","cloudy")
+		hud.set_climate_options(sim.climate_options)
+		selected_skill="climate"
+		world.focus_island(0)
+	if phase=="stewardship":
+		hud.toast(TutorialScenario.BLESSING_NAME+"：仅教程加快真实建造、生育和研究。")
+		world.focus_overview()
+	if phase=="harvest":
+		sim.set_tutorial_armistice(false)
+		selected_skill="lightning"
+	if phase=="final_cast":
+		sim._progression.levels["meteor"]=3
+		selected_skill="meteor"
+	_tutorial_apply_permissions(phase)
+
+
+# scripts/main.gd:1619 _focus_next_tutorial_king
+func _focus_next_tutorial_king() -> void:
+	if not is_instance_valid(tutorial): return
+	var state: Dictionary=tutorial.get_state()
+	for index: int in range(2):
+		if bool(state.get("peace_nations",[false,false])[index]): continue
+		var id: int=int(sim.nations[index].get("leader_id",-1))
+		var info: Dictionary=citizens.get_spatial_info(id)
+		if not info.is_empty():
+			selected_island=index
+			world.focus_person(info.position)
+			return
+
+
+# scripts/main.gd:1641 _tutorial_human_deaths
+func _tutorial_human_deaths(cause: String, counts: Array) -> void:
+	if is_instance_valid(tutorial): tutorial.notify_human_deaths(cause,int(counts[0])+int(counts[1]))
+
+
+# scripts/main.gd:1644 _tutorial_start_finale
+func _tutorial_start_finale(point: Vector3) -> void:
+	_tutorial_finale_time=0.0
+	_tutorial_finale_start=world._camera_focus
+	_tutorial_finale_target=point
+	_tutorial_finale_size=world.get_camera().size
+	game_speed=1.0
+	paused=false
+	if cataclysms.has_method("start_tutorial_finale"):
+		cataclysms.start_tutorial_finale(int(tutorial.get_state().get("finale_cast_id",-1)))
+	tutorial_ui.set_finale("zoom",0.0)
+	hud.visible=false
+
+
+# scripts/main.gd:1656 _advance_tutorial_finale
+func _advance_tutorial_finale(seconds: float) -> void:
+	if _tutorial_finale_time<0.0 or not is_instance_valid(tutorial): return
+	_tutorial_finale_time+=seconds
+	var elapsed: float=_tutorial_finale_time
+	if elapsed<2.2:
+		var blend: float=smoothstep(0.0,2.2,elapsed)
+		world._camera_focus=_tutorial_finale_start.lerp(_tutorial_finale_target,blend)
+		world.get_camera().size=lerpf(_tutorial_finale_size,8.0,blend)
+		world._update_camera()
+		tutorial_ui.set_finale("zoom",blend)
+	elif elapsed<3.3: tutorial_ui.set_finale("black",(elapsed-2.2)/1.1)
+	else: tutorial_ui.set_finale("title",minf(1.0,(elapsed-3.3)/1.4))
+	if elapsed>=10.0:
+		var active: bool=false
+		for event: Dictionary in cataclysms.get_states():
+			if bool(event.get("story",false)): active=true
+		if not active:
+			_tutorial_finale_time=-1.0
+			tutorial.notify_finale_finished()
+
+
+# scripts/main.gd:1676 _tutorial_completed
+func _tutorial_completed() -> void:
+	hud.visible=false
+	tutorial_ui.show_complete()
+
+
+# scripts/main.gd:1273 get_save_blocker
+func get_save_blocker() -> String:
+	if is_instance_valid(tutorial) and (tutorial.is_dialogue_active() or tutorial.is_finale()): return "剧情正在演出，交还操作后可从菜单保存。"
+	if pending_attacks>0 or not _pending_eggs.is_empty() or not sim._reserved_casts.is_empty(): return "神罚尚未落地，请先继续游戏，等它落地后再保存。"
+	if not sim.outcome.is_empty(): return "本局已经结束，重新开始后可以保存新进度。"
+	return ""

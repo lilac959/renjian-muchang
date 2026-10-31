@@ -1,0 +1,187 @@
+{
+  "date": "2026-10-31",
+  "referenceRoot": "C:/god",
+  "runtimeModified": false,
+  "sourceFiles": {
+    "config/tutorial_story.json": {
+      "sha256": "4482dce4295cf87cca18ad38023a979f1ac5b9eb31233e1ab32199ca6030103f",
+      "included_as": "data/tutorial_story.json"
+    },
+    "config/ui.json": {
+      "sha256": "e1f53e354fb351edca22fb422a6942565480cd57f61b69f40f0cd582728964c8",
+      "included_as": "data/ui.json"
+    },
+    "config/skills.json": {
+      "sha256": "8e4a749372791f676ed24ea253455c203c3bcbbeea6c2b36e3fe2688005e21ad",
+      "included_as": "data/skills.json"
+    },
+    "scripts/tutorial_director.gd": {
+      "sha256": "feeb644e7454d2309783b83c9f4b23f48f3f825f1864236e10703c3c0ce0da56",
+      "included_as": "reference-code/tutorial_director.gd"
+    },
+    "scripts/tutorial_dialogue.gd": {
+      "sha256": "cee0c2e81303c2dc124044eac824b5ec2e019a99c03967300a6459827fc3577a",
+      "included_as": "reference-code/tutorial_dialogue.gd"
+    },
+    "scripts/tutorial_scenario.gd": {
+      "sha256": "8f3de870c5b4774c64c78ce023d7f7bd09ea292d281edb898c42dd5a6641bc0c",
+      "included_as": "reference-code/tutorial_scenario.gd"
+    },
+    "scripts/civilization.gd": {
+      "sha256": "8643b3a1a09c1639b5c8c9477955f106f4715cdb02d88ad4863f23d4f5456dcc",
+      "included_as": "reference-code/civilization.gd"
+    },
+    "assets/portraits/love.png": {
+      "sha256": "09a0a2291c708ba3f75f3fc1956e68c052427322a1ad6cee710cc0d609d72fa1",
+      "included_as": "portraits/love.png"
+    },
+    "assets/portraits/weather.png": {
+      "sha256": "be75171c3a9d85d36df9cc64a3cda3c348c34c38f07b50d3768f8f2e2a8f2e91",
+      "included_as": "portraits/weather.png"
+    },
+    "assets/portraits/death.png": {
+      "sha256": "e66a49c831c81b104377f49d4f069723a4de6e56a3b51233599e98190d1f44f8",
+      "included_as": "portraits/death.png"
+    },
+    "artifacts/tutorial_visual/intro_1280x800.png": {
+      "sha256": "222aa9e062c908459f33a910d5e890ad2fd72f3ba67b3c61d3bd8d8c1f753833",
+      "included_as": "screenshots/intro_1280x800.png"
+    },
+    "artifacts/tutorial_visual/weather_dialogue_1280x800.png": {
+      "sha256": "11c4e88f8297bfb4eb0b217b151256bab21c801ceec05d6d6bd499a7e8c41e60",
+      "included_as": "screenshots/weather_dialogue_1280x800.png"
+    },
+    "artifacts/tutorial_visual/harvest_death_1280x800.png": {
+      "sha256": "5c5eaf8923fab8a764d3af0ee2759629fb80bf1ab4820dadb466b8881553ad7e",
+      "included_as": "screenshots/harvest_death_1280x800.png"
+    },
+    "artifacts/tutorial_visual/finale_title_1280x800.png": {
+      "sha256": "d8cd2fd8b7ad9a4af7c1242a329f077b3fc6b6f3b99bb19e342c918e629009d6",
+      "included_as": "screenshots/finale_title_1280x800.png"
+    },
+    "scripts/main.gd": {
+      "sha256": "24c8fb914ae4cd7b98168e85876176401230adbc9a1d38fb06823d0321926975",
+      "included_as": "reference-code/main_tutorial_excerpt.txt",
+      "functions": [
+        "_setup_tutorial",
+        "_tutorial_blocks_input",
+        "_tutorial_blocks_simulation",
+        "_tutorial_visibility_changed",
+        "_tutorial_apply_permissions",
+        "_tutorial_phase_changed",
+        "_focus_next_tutorial_king",
+        "_tutorial_human_deaths",
+        "_tutorial_start_finale",
+        "_advance_tutorial_finale",
+        "_tutorial_completed",
+        "get_save_blocker"
+      ]
+    },
+    "scripts/simulation.gd": {
+      "sha256": "e82b60f08795ef076391bea3ce2bae273aa9e041286fed00d44df7d1e52bc9d1",
+      "included_as": "reference-code/simulation_excerpt.txt",
+      "functions": [
+        "reset",
+        "_make_nation",
+        "skill_info",
+        "upgrade_skill",
+        "_record_deaths",
+        "_check_outcome",
+        "set_tutorial_permissions",
+        "set_tutorial_armistice"
+      ]
+    },
+    "scripts/conflict_system.gd": {
+      "sha256": "374ee36174da58127257b893a32f030334b0ba502cfb84d903b0b00e6101d5e1",
+      "included_as": "reference-code/peace_excerpt.txt",
+      "functions": [
+        "negotiate_tutorial_peace",
+        "negotiate_peace",
+        "advance_peace_returns"
+      ]
+    },
+    "scripts/cataclysm_system.gd": {
+      "sha256": "726b3d4519808d675095a503d3dacdd2580d59bdf7790aa40063d16bdc4afc37",
+      "included_as": "reference-code/cataclysm_excerpt.txt",
+      "functions": [
+        "start_tutorial_finale",
+        "_configure_story_event",
+        "advance",
+        "_story_impact_point",
+        "_strike"
+      ]
+    },
+    "scripts/app.gd": {
+      "sha256": "ac5b8775d754f19bc9f2d5449acdf71da1cbf63e0401ba379be14dff9e3bc9b9",
+      "included_as": "reference-code/app_transition_excerpt.txt",
+      "functions": [
+        "_start_after_tutorial",
+        "_start_after_tutorial_now"
+      ]
+    },
+    "artifacts/tutorial-fast-playthrough.json": {
+      "sha256": "8603b72055876267f881eab35fbb796ead5203e24a5b214c71324a193fb8188d",
+      "included_as": "evidence-summary.json (summary only)"
+    }
+  },
+  "portraitMetadata": {
+    "death.png": {
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ]
+    },
+    "love.png": {
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ]
+    },
+    "weather.png": {
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ]
+    }
+  },
+  "bundleFilesSHA256": {
+    "data/portraits.json": "a8262f3d8c59a51d8c48661e4e4072aba9e7328aad5ff086e2754eec44c531c1",
+    "data/prologue_spec.json": "2e8a80870dfbc85b1528f017df26d7eef4e3faf9ce45df9d133f01342bdb64cf",
+    "data/skills.json": "8e4a749372791f676ed24ea253455c203c3bcbbeea6c2b36e3fe2688005e21ad",
+    "data/tutorial_story.json": "4482dce4295cf87cca18ad38023a979f1ac5b9eb31233e1ab32199ca6030103f",
+    "data/ui.json": "e1f53e354fb351edca22fb422a6942565480cd57f61b69f40f0cd582728964c8",
+    "evidence-summary.json": "bd1042c583c14d88fff23b8d3fd4cc646b89365508d061b531ca8625980dd98a",
+    "portraits/death.png": "e66a49c831c81b104377f49d4f069723a4de6e56a3b51233599e98190d1f44f8",
+    "portraits/love.png": "09a0a2291c708ba3f75f3fc1956e68c052427322a1ad6cee710cc0d609d72fa1",
+    "portraits/weather.png": "be75171c3a9d85d36df9cc64a3cda3c348c34c38f07b50d3768f8f2e2a8f2e91",
+    "reference-code/app_transition_excerpt.txt": "33d890f1cfc679ee17638b437d73b09e7b0ceef9ba1a9f652f655500e8cb3081",
+    "reference-code/cataclysm_excerpt.txt": "4abdb092f7053592bf5fcd52594e1b653328a36e258792486628490fe4592fc0",
+    "reference-code/civilization.gd": "8643b3a1a09c1639b5c8c9477955f106f4715cdb02d88ad4863f23d4f5456dcc",
+    "reference-code/main_tutorial_excerpt.txt": "81ec055b145b1f3c13249809339b866b2a02ed5ec229260732e5252897b2edb5",
+    "reference-code/peace_excerpt.txt": "c8ae4b3ac5ac642fd5c9517fa6a2560a78d874eeb4093c3c048b7d3e49b79516",
+    "reference-code/simulation_excerpt.txt": "5cb9522b36c583752d188510aae4fd61f8c83ac48b719765b58b9a43b8e71d3c",
+    "reference-code/tutorial_dialogue.gd": "cee0c2e81303c2dc124044eac824b5ec2e019a99c03967300a6459827fc3577a",
+    "reference-code/tutorial_director.gd": "feeb644e7454d2309783b83c9f4b23f48f3f825f1864236e10703c3c0ce0da56",
+    "reference-code/tutorial_scenario.gd": "8f3de870c5b4774c64c78ce023d7f7bd09ea292d281edb898c42dd5a6641bc0c",
+    "screenshots/finale_title_1280x800.png": "d8cd2fd8b7ad9a4af7c1242a329f077b3fc6b6f3b99bb19e342c918e629009d6",
+    "screenshots/harvest_death_1280x800.png": "5c5eaf8923fab8a764d3af0ee2759629fb80bf1ab4820dadb466b8881553ad7e",
+    "screenshots/intro_1280x800.png": "222aa9e062c908459f33a910d5e890ad2fd72f3ba67b3c61d3bd8d8c1f753833",
+    "screenshots/weather_dialogue_1280x800.png": "11c4e88f8297bfb4eb0b217b151256bab21c801ceec05d6d6bd499a7e8c41e60",
+    "序章复刻技术说明.md": "5687b865240a3933618d245a96b6c4df6b519d36a12a971c67c287dde8dcf955"
+  }
+}

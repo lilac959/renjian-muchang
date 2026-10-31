@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "path_base": "this JSON file directory",
+  "portraits": {
+    "love": {
+      "name": "生命之神",
+      "role": "养育 · 和解",
+      "color": "#f0afbc",
+      "side": "left",
+      "texture": "../portraits/love.png",
+      "scale": 1,
+      "offset": [
+        0,
+        0
+      ],
+      "modulate": "#ffffff"
+    },
+    "weather": {
+      "name": "天气之神",
+      "role": "云层服务部",
+      "color": "#8fd2e7",
+      "side": "right",
+      "texture": "../portraits/weather.png",
+      "scale": 1,
+      "offset": [
+        0,
+        0
+      ],
+      "modulate": "#ffffff"
+    },
+    "death": {
+      "name": "死亡之神",
+      "role": "灵魂归档科",
+      "color": "#c1afe8",
+      "side": "right",
+      "texture": "../portraits/death.png",
+      "scale": 1,
+      "offset": [
+        0,
+        0
+      ],
+      "modulate": "#ffffff"
+    }
+  }
+}

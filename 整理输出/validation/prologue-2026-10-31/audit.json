@@ -1,0 +1,340 @@
+{
+  "passed": true,
+  "reports": [
+    {
+      "seed": 11,
+      "phases": [
+        {
+          "phase": "intro",
+          "real": 0,
+          "simulation": 0,
+          "population": 24,
+          "souls": 0
+        },
+        {
+          "phase": "peace",
+          "real": 0,
+          "simulation": 0,
+          "population": 24,
+          "souls": 0
+        },
+        {
+          "phase": "weather_intro",
+          "real": 0.25,
+          "simulation": 0,
+          "population": 24,
+          "souls": 0
+        },
+        {
+          "phase": "rain",
+          "real": 0.25,
+          "simulation": 0,
+          "population": 24,
+          "souls": 0
+        },
+        {
+          "phase": "stewardship",
+          "real": 0.5,
+          "simulation": 0,
+          "population": 24,
+          "souls": 0
+        },
+        {
+          "phase": "grow",
+          "real": 0.5,
+          "simulation": 0,
+          "population": 24,
+          "souls": 0
+        },
+        {
+          "phase": "reveal",
+          "real": 7,
+          "simulation": 19.25,
+          "population": 50,
+          "souls": 0
+        },
+        {
+          "phase": "first_soul",
+          "real": 7,
+          "simulation": 19.25,
+          "population": 50,
+          "souls": 0
+        },
+        {
+          "phase": "first_soul_done",
+          "real": 7.25,
+          "simulation": 19.25,
+          "population": 49,
+          "souls": 1
+        },
+        {
+          "phase": "harvest",
+          "real": 7.25,
+          "simulation": 19.25,
+          "population": 49,
+          "souls": 1
+        },
+        {
+          "phase": "final_instruction",
+          "real": 16,
+          "simulation": 45.45,
+          "population": 51,
+          "souls": 13
+        },
+        {
+          "phase": "final_cast",
+          "real": 16,
+          "simulation": 45.45,
+          "population": 51,
+          "souls": 13
+        },
+        {
+          "phase": "finale",
+          "real": 16.75,
+          "simulation": 46.2,
+          "population": 41,
+          "souls": 13
+        }
+      ],
+      "teachingReal": 26.5,
+      "readingSecondsEstimate": 45,
+      "populationAtStart": 47,
+      "teachingSouls": 25,
+      "result": "success",
+      "challengeSeconds": 177.2,
+      "score": 101,
+      "goal": 100,
+      "remainingPopulation": 100
+    },
+    {
+      "seed": 22,
+      "phases": [
+        {
+          "phase": "intro",
+          "real": 0,
+          "simulation": 0,
+          "population": 24,
+          "souls": 0
+        },
+        {
+          "phase": "peace",
+          "real": 0,
+          "simulation": 0,
+          "population": 24,
+          "souls": 0
+        },
+        {
+          "phase": "weather_intro",
+          "real": 0.25,
+          "simulation": 0,
+          "population": 24,
+          "souls": 0
+        },
+        {
+          "phase": "rain",
+          "real": 0.25,
+          "simulation": 0,
+          "population": 24,
+          "souls": 0
+        },
+        {
+          "phase": "stewardship",
+          "real": 0.5,
+          "simulation": 0,
+          "population": 24,
+          "souls": 0
+        },
+        {
+          "phase": "grow",
+          "real": 0.5,
+          "simulation": 0,
+          "population": 24,
+          "souls": 0
+        },
+        {
+          "phase": "reveal",
+          "real": 7,
+          "simulation": 19.3,
+          "population": 50,
+          "souls": 0
+        },
+        {
+          "phase": "first_soul",
+          "real": 7,
+          "simulation": 19.3,
+          "population": 50,
+          "souls": 0
+        },
+        {
+          "phase": "first_soul_done",
+          "real": 7.25,
+          "simulation": 19.3,
+          "population": 49,
+          "souls": 1
+        },
+        {
+          "phase": "harvest",
+          "real": 7.25,
+          "simulation": 19.3,
+          "population": 49,
+          "souls": 1
+        },
+        {
+          "phase": "final_instruction",
+          "real": 16,
+          "simulation": 45.5,
+          "population": 43,
+          "souls": 19
+        },
+        {
+          "phase": "final_cast",
+          "real": 16,
+          "simulation": 45.5,
+          "population": 43,
+          "souls": 19
+        },
+        {
+          "phase": "finale",
+          "real": 16.75,
+          "simulation": 46.25,
+          "population": 41,
+          "souls": 19
+        }
+      ],
+      "teachingReal": 26.5,
+      "readingSecondsEstimate": 45,
+      "populationAtStart": 48,
+      "teachingSouls": 23,
+      "result": "success",
+      "challengeSeconds": 194.2,
+      "score": 106,
+      "goal": 100,
+      "remainingPopulation": 104
+    },
+    {
+      "seed": 33,
+      "phases": [
+        {
+          "phase": "intro",
+          "real": 0,
+          "simulation": 0,
+          "population": 24,
+          "souls": 0
+        },
+        {
+          "phase": "peace",
+          "real": 0,
+          "simulation": 0,
+          "population": 24,
+          "souls": 0
+        },
+        {
+          "phase": "weather_intro",
+          "real": 0.25,
+          "simulation": 0,
+          "population": 24,
+          "souls": 0
+        },
+        {
+          "phase": "rain",
+          "real": 0.25,
+          "simulation": 0,
+          "population": 24,
+          "souls": 0
+        },
+        {
+          "phase": "stewardship",
+          "real": 0.5,
+          "simulation": 0,
+          "population": 24,
+          "souls": 0
+        },
+        {
+          "phase": "grow",
+          "real": 0.5,
+          "simulation": 0,
+          "population": 24,
+          "souls": 0
+        },
+        {
+          "phase": "reveal",
+          "real": 7,
+          "simulation": 19.2,
+          "population": 50,
+          "souls": 0
+        },
+        {
+          "phase": "first_soul",
+          "real": 7,
+          "simulation": 19.2,
+          "population": 50,
+          "souls": 0
+        },
+        {
+          "phase": "first_soul_done",
+          "real": 7.25,
+          "simulation": 19.2,
+          "population": 49,
+          "souls": 1
+        },
+        {
+          "phase": "harvest",
+          "real": 7.25,
+          "simulation": 19.2,
+          "population": 49,
+          "souls": 1
+        },
+        {
+          "phase": "final_instruction",
+          "real": 16,
+          "simulation": 45.4,
+          "population": 41,
+          "souls": 20
+        },
+        {
+          "phase": "final_cast",
+          "real": 16,
+          "simulation": 45.4,
+          "population": 41,
+          "souls": 20
+        },
+        {
+          "phase": "finale",
+          "real": 16.75,
+          "simulation": 46.15,
+          "population": 41,
+          "souls": 20
+        }
+      ],
+      "teachingReal": 26.5,
+      "readingSecondsEstimate": 45,
+      "populationAtStart": 47,
+      "teachingSouls": 22,
+      "result": "success",
+      "challengeSeconds": 180.15,
+      "score": 100,
+      "goal": 100,
+      "remainingPopulation": 66
+    }
+  ],
+  "sourceRemoteCommit": "f458c46",
+  "rules": {
+    "saveVersion": 7,
+    "campaignVersion": 2,
+    "initialPopulationPerIsland": 12,
+    "prologuePopulationTarget": 50,
+    "populationLimitPerIsland": 80,
+    "challengeSouls": 100,
+    "challengeSeconds": 300,
+    "eraProgression": false
+  },
+  "regression": {
+    "passed": 87,
+    "failed": 0,
+    "command": "node --test 整理输出/tests/*.test.mjs"
+  },
+  "notes": [
+    "阅读 45 秒是估计，模拟用时不包括模型加载或人工操作。",
+    "v09 场景与人物渲染保持远端；玩法适配固定槽位和动态建筑碰撞。"
+  ]
+}

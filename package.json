@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "node 整理输出/scripts/serve.mjs",
     "test": "node --test 整理输出/tests/*.test.mjs",
-    "balance": "node 整理输出/scripts/balance.mjs"
+    "balance": "node 整理输出/scripts/balance.mjs",
+    "audit:gameplay": "node 整理输出/scripts/gameplay-audit.mjs"
   },
   "type": "module",
   "version": "0.3.0"

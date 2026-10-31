@@ -5,7 +5,7 @@ export function targetPreview(world,id,p,weather='rain'){
  if(!id||!p||world.validate(id,p,weather))return result;
  const skill=SKILLS.find(s=>s.id===id);
  if(id==='undead'){result.corpses=world.corpses.filter(b=>b.life>0&&distance(b,p)<=skill.r).slice(0,CONFIG.undeadLimit).map(b=>b.id);return result;}
- if(id==='rage'){const c=world.islandAt(p),actor=world.rageTarget(c,p);result.affected=[actor.id];if(actor.king)result.secondary=world.rageTroops(c,actor).map(e=>e.id);return result;}
+ if(id==='rage'){const actor=world.get(world.preview(id,p,weather)[0])||world.animals.find(e=>e.id===world.preview(id,p,weather)[0]&&!e.dead);if(!actor)return result;result.affected=[actor.id];if(actor.king){const c=world.islands[actor.country],rage=actor.rage;actor.rage=0;try{if(!world.armyCheck(c,actor))result.secondary=world.rageTroops(c,actor).map(e=>e.id);}finally{actor.rage=rage;}}return result;}
  let actors=id==='meteor'?world.targets(p,skill.r):world.legalTargets(id,p,skill.r);
  if(id==='lightning')actors=actors.sort((a,b)=>distance(a,p)-distance(b,p)).slice(0,1);
  if(id==='peace')actors=world.entities.filter(e=>!e.dead&&(e.soldier||e.commanding));

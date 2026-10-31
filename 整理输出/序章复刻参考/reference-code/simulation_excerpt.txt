@@ -1,0 +1,294 @@
+REFERENCE EXCERPTS ONLY; not a standalone executable module.
+Source: scripts/simulation.gd
+
+
+# scripts/simulation.gd:372 reset
+func reset(seed: int = 7, overrides: Dictionary = {}) -> void:
+	_load_config()
+	if overrides.has("wilderness_enabled"):
+		_config.wilderness_enabled = bool(overrides.wilderness_enabled)
+	# Session modes are local overrides; never rewrite the shared balance file.
+	var mode: String = str(overrides.get("game_mode", "configured"))
+	_config["game_mode"] = mode if mode in ["challenge", "sandbox", "tutorial"] else "configured"
+	if mode == "challenge":
+		_config.max_years = maxf(0.1,float(_config.max_years)) if float(_config.max_years)>0.0 else 50.0
+		_config.target_souls = int(_config.target_souls) if int(_config.target_souls) > 0 else 300
+		_config.science_ending = bool(_config.civilization_enabled)
+	elif mode == "sandbox":
+		_config.max_years = 0.0
+		_config.target_souls = 0
+		_config.science_ending = true
+	elif mode=="tutorial":
+		preload("res://scripts/tutorial_scenario.gd").apply_config(_config)
+		_config.max_years=0.0
+		_config.target_souls=0
+		_config.science_ending=false
+		_config.initial_spirit=120.0
+		_config["tutorial_allowed_skills"]=["reconcile","prosperity","joy"]
+		_config["tutorial_phase"]="intro"
+	_rng.seed = seed
+	climate_options = {"temperature":"normal","clouds":"cloudy"}
+	year = 0.0
+	civilization_events.clear()
+	_civilization_event_serial = 0
+	souls = 0
+	spirit = float(_config.initial_spirit)
+	_progression.reset(_config)
+	_love_modifiers = [{"natural":1.0,"work":1.0},{"natural":1.0,"work":1.0}]
+	_peace_intentions = [0.0,0.0]
+	spirit_sources={"initial":spirit,"souls":0.0,"offerings":0.0,"spent_cast":0.0,"spent_upgrades":0.0}
+	offering_receipts.clear()
+	_faith_death_serial=0
+	_faith_scene_driven=false
+	_scholar_scene_driven=false
+	target_souls = int(_config.target_souls)
+	max_years = float(_config.max_years)
+	relation = 65.0
+	diplomacy = "贸易"
+	cooperation = 0.0
+	union_state = "independent"
+	grievances = [0.0, 0.0]
+	revenge_pending = [false, false]
+	war_exhaustion = [0.0, 0.0]
+	_war_reorganizing = [false, false]
+	_war_population_mark = [float(_config.initial_population),float(_config.initial_population)]
+	peace_years = 0.0
+	trade_total = 0.0
+	last_trade.clear()
+	_meat_collected.clear()
+	_dinosaur_meat_collected.clear()
+	_culture_resolution_receipts.clear()
+	_pasture_scene_driven = false
+	_harvest_serial = 0
+	livestock_harvests.clear()
+	outcome = ""
+	spell_souls = 0
+	last_hit.clear()
+	_reserved_casts.clear()
+	_tree_locks.clear()
+	_death_fraction = 0.0
+	_diplomacy_check = 0.0
+	_war_remaining = 0.0
+	_recovery_remaining = 0.0
+	_request_retry_remaining = 0.0
+	_raid_attacker = -1
+	war_request = -1
+	war_active = false
+	war_status = {"phase": "idle", "attacker": -1, "mobilized": [0, 0], "casualties": [0, 0], "loot": 0.0}
+	last_battle_report.clear()
+	battle_history.clear()
+	_battle_serial = 0
+	_conflict_opening.clear()
+	_clear_raid_cargo()
+	_next_structure_id = 1
+	_next_animal_id = 1
+	_event_timers.clear()
+	events.clear()
+	cooldowns = {}
+	for skill: String in _skills: cooldowns[skill] = 0.0
+	nations = [_make_nation(0, "farm", "禾穗国"), _make_nation(1, "pasture", "绒角国")]
+	campaign_logistics.setup(nations,_config)
+	_campaign_opening_roster = [0,0]
+	faith.reset(nations,_config)
+	culture.reset(nations,_config,seed)
+	for index: int in range(nations.size()):
+		_place_shrine(index)
+		_refresh_metrics(nations[index])
+	_event("双岛从小聚落起步：每屋住 5 人，每人每年吃 %s 份粮。住房和食物决定人口增长。" % str(_config.food_per_person_per_year))
+	_event("两名劳力经营一片田，年产 10 份粮；牧民保留种羊、实际宰羊补粮，盈余羊进入公共大牧场。")
+	if target_souls == 0 and max_years == 0.0:
+		_event(("沙盒模式：时间与收魂数量不限；人类灭绝或存活国家实际建成封魂工程时结束。" if bool(_config.civilization_enabled) else "沙盒模式：时间与收魂数量不限；人类灭绝或任一国家科技达到 100% 时结束。") if mode == "sandbox" else "自由观察：无固定收魂目标与期限。")
+	else:
+		_event("本局考核：收魂目标%s，期限%s。" % [str(target_souls) if target_souls > 0 else "不限", "%s 年" % str(max_years) if max_years > 0.0 else "不限"])
+		if bool(_config.civilization_enabled) and bool(_config.science_ending): _event("文明分为冷兵器、热兵器与激光时代；在人类实际建成封魂工程前完成收魂，末期会提前预警。")
+
+
+# scripts/simulation.gd:471 _make_nation
+func _make_nation(index: int, id: String, title: String) -> Dictionary:
+	var pop: float = float(_config.initial_population)
+	var nation: Dictionary = {
+		"id": id, "name": title, "population": pop, "initial_population": pop,
+		"food": pop * float(_config.food_per_person_per_year) * float(_config.initial_food_years), "food_balance": 0.0,
+		"science": 0.0, "rain": 0.22, "damage": 0.0, "capacity": 0.0,
+		"civilization_enabled":bool(_config.civilization_enabled), "era":0, "era_phase":0, "era_title":"冷兵器 · 早期",
+		"medical_multiplier":1.0, "technology_production_multiplier":1.0, "civilization_notice":0,
+		"soul_project":{}, "soul_project_food_paid":false, "soul_project_food_spent":0.0,
+		"productivity": 1.0, "births": 0.0, "deaths": 0.0, "starvation_deaths": 0.0,
+		"birth_credit": 0.0, "death_credit": 0.0, "starvation_credit": 0.0,
+		"production": 0.0, "base_production": 0.0, "consumption": pop * float(_config.food_per_person_per_year), "interruption": 0.0,
+		"invasion_panic":0.0,"invasion_panic_target":0.0,"invasion_enemies":0,"invasion_exposed_sites":0,"invasion_work_multiplier":1.0,
+		"science_stage": 0, "starving": false, "flooding": false, "year": 0.0,
+		"academy_enabled":bool(_config.academies_enabled),"academy_active":false,"academy_program_open":false,
+		"scholar_slots":0,"scholar_ids":[],"scholar_assigned_ids":[],"active_scholars":0,"research_rate":0.0,
+		"housing_capacity": 0, "houses": 0, "fields": 0, "pastures": 0,
+		"workers_required": 0, "workers_assigned": 0, "workers_available": 0,
+		"livestock_count": 0, "stage": 0, "construction_count": 0,
+		"structures": [], "livestock": [], "build_check": 0.0, "breed_timer": 0.0,
+		"housing_shortage": false, "food_years": float(_config.initial_food_years), "low_food": false, "hunger_ratio": 0.0,
+		"cold_remaining": 0.0, "temperature": 22.0, "ill_count": 0, "mobilized": 0,
+		"climate_temperature":"normal","climate_clouds":"clear","climate_precipitation":"none",
+		"climate_remaining":0.0,"climate_heat_seconds":0.0,"climate_heat_triggered":false,
+		"plague_deaths": 0, "war_deaths": 0, "workers_total": 0,
+		"outbreak_active": false, "rumor_ready_year": 0.0,
+		"builders_assigned": 0, "wildlife_deaths": 0,
+		"leader_id": -1, "leader_generation": 0, "leadership_state": "stable",
+		"war_unrest":{"active":false,"leader_id":-1,"pressure":0.0,"phase":"calm","participants":[],"progress":0.0,"reason":"民众尚未反对战令","order_year":-1.0},
+		"exhaustion_recovery_rate":0.0,"exhaustion_recovery_reason":"和平与口粮有助恢复",
+		"revolt_unavailable_workers":0,"revolt_deaths":0,"war_recall":false,
+		"succession_remaining": 0.0, "governance_multiplier": 1.0,
+		"cooperation_production_multiplier": 1.0, "cooperation_science_multiplier": 1.0,
+		"joy_remaining": 0.0, "joy_birth_credit": 0.0, "joy_births": 0, "joy_animal_births": 0,
+		"joy_people": {}, "pleasure_count":0, "pleasure_remaining":0.0, "joy_unavailable_workers":0,
+		"appetite_count":0, "appetite_remaining":0.0, "appetite_multiplier":float(_config.joy_appetite_multiplier), "extra_consumption":0.0,
+		"holding_pasture":{"center":CENTERS[index]+Vector3(0,0,15.6), "radius":3.2, "count":0}, "holding_livestock":0,
+		"breeding_credit":{}, "pasture_rain_remaining":0.0, "pasture_rain_multiplier":1.0,
+		"leader_war_desire": 0.0, "leader_rage_remaining": 0.0, "leader_rage_id": -1,
+		"cultural_challenge_remaining":0.0,"cultural_challenge_desire":0.0,
+		"leader_order_count": 0, "leader_order_year": -1.0,
+		"wild_meat_collected": 0.0,
+		"dinosaur_workers_reserved":0,"dinosaur_food_spent":0.0,"dinosaur_meat_collected":0.0,"dinosaur_deaths":0,
+		"fire_workers_reserved":0,"fire_deaths":0,
+		"rage_people":{}, "rage_idle_count":0, "rage_unavailable_workers":0,
+		"livestock_slaughtered":0, "livestock_meat_collected":0.0,
+		"pasture_food_forecast":0.0,"field_production":0.0,"pasture_production":0.0,
+		"harvest_wait":0.0,
+	}
+	for local: Vector3 in [Vector3(-1.5, 0, -1.3), Vector3(1.5, 0, -1.3), Vector3(0, 0, 1.5)]:
+		_add_structure(nation, index, "house", CENTERS[index] + local, true)
+	var kind: String = "field" if index == 0 else "pasture"
+	for local: Vector3 in [Vector3(-4.0, 0, 2.4), Vector3(4.0, 0, 2.4)]:
+		var structure: Dictionary = _add_structure(nation, index, kind, CENTERS[index] + local, true)
+		if kind == "pasture":
+			for unused: int in range(int(_config.pasture_animals)):
+				_add_animal(nation, index, structure)
+	if str(_config.get("game_mode",""))=="tutorial":
+		# Teaching towns start with real spare homes, productive plots and a
+		# school. Preserve appropriate capacity for other explicit scenarios.
+		var extra_homes: int=maxi(0,ceili(pop/float(_config.house_capacity))+1-3)
+		var home_lots: Array[Vector2]=[Vector2(-6,-4),Vector2(-3,-4),Vector2(0,-4),Vector2(3,-4),Vector2(6,-4),Vector2(-6,-7),Vector2(-3,-7),Vector2(0,-7),Vector2(3,-7)]
+		for local: Vector2 in home_lots.slice(0,mini(home_lots.size(),extra_homes)):
+			_add_structure(nation,index,"house",CENTERS[index]+Vector3(local.x,0,local.y),true)
+		var extra_plots: Array=[Vector2(-8,3),Vector2(8,3)] if index==0 else [Vector2(-8,4),Vector2(8,4),Vector2(-4,7),Vector2(4,7)]
+		for local: Vector2 in extra_plots:
+			var plot: Dictionary=_add_structure(nation,index,kind,CENTERS[index]+Vector3(local.x,0,local.y),true)
+			if kind=="pasture":
+				for unused: int in range(int(_config.pasture_animals)): _add_animal(nation,index,plot)
+		_add_structure(nation,index,"school",CENTERS[index]+Vector3(0,0,-10),true)
+	nation.wilderness = EcologyState.create(index, CENTERS[index], nation.structures, bool(_config.wilderness_enabled),int(_rng.seed))
+	_refresh_metrics(nation)
+	return nation
+
+
+# scripts/simulation.gd:735 skill_info
+func skill_info(skill: String) -> Dictionary:
+	var info: Dictionary=_progression.info(skill,_skills.get(skill,{}),_config,souls,spirit)
+	if skill=="climate" and not info.is_empty():
+		info.effect_values["temperature_mode"]=str(climate_options.temperature)
+		info.effect_values["cloud_mode"]=str(climate_options.clouds)
+	if skill=="ghost_parade" and not info.is_empty():
+		info.cost=maxf(5.0,spirit)
+		info.effect_values["spirit_budget"]=spirit
+		info.effect_values["summon_count"]=floori(spirit/5.0)
+	if str(_config.get("game_mode",""))=="tutorial" and not info.is_empty():
+		info.unlocked=skill in _config.get("tutorial_allowed_skills",[])
+		info.can_unlock=false
+		info.can_upgrade=false
+		info.upgrade_reason="引导中由神明授予技能，无需购买升级。" if info.unlocked else "这位神明尚未登场。"
+	if not outcome.is_empty() and not info.is_empty():
+		info.can_upgrade=false
+		info.upgrade_reason="本局已经结束"
+	return info
+
+
+# scripts/simulation.gd:754 upgrade_skill
+func upgrade_skill(skill: String) -> Dictionary:
+	if bool(_config.pantheon_enabled) and skill not in PantheonCatalog.skills(): return {"ok":false,"reason":"该技能已并入三神九技能，不再单独升级。","cost":0.0}
+	if str(_config.get("game_mode",""))=="tutorial": return {"ok":false,"reason":"引导中由神明授予技能，无需购买升级。","cost":0.0}
+	if not outcome.is_empty(): return {"ok":false,"reason":"本局已经结束","cost":0.0}
+	var result: Dictionary=_progression.upgrade(skill,_skills.get(skill,{}),_config,souls,spirit)
+	if not bool(result.ok): return result
+	spirit-=float(result.cost)
+	spirit_sources.spent_upgrades=float(spirit_sources.spent_upgrades)+float(result.cost)
+	_event(("与神明合作：解锁%s，消耗 %.0f 灵力。"%[_skills[skill].title,float(result.cost)]) if bool(result.get("unlocked_now",false)) else ("%s升至 %d 级，消耗 %.0f 灵力；累计亡魂不消耗。"%[_skills[skill].title,int(result.level),float(result.cost)]))
+	return result
+
+
+# scripts/simulation.gd:3112 _record_deaths
+func _record_deaths(index: int, amount: float, spatial: bool = false, cause: String = "natural") -> void:
+	var nation: Dictionary = nations[index]
+	var available: int = int(floor(maxf(0.0, float(nation.population) - (0.0 if spatial else _protected_population(index)))))
+	var actual: int = 0
+	if spatial:
+		actual = clampi(int(amount), 0, available)
+	else:
+		var key: String = "starvation_credit" if cause == "starvation" else "death_credit"
+		nation[key] = float(nation[key]) + clampf(amount, 0.0, float(available))
+		actual = mini(available, int(floor(float(nation[key]) + 0.00000001)))
+		nation[key] = float(nation[key]) - float(actual)
+	if actual <= 0: return
+	nation.population = float(nation.population) - float(actual)
+	nation.deaths = float(nation.deaths) + float(actual)
+	if cause == "starvation": nation.starvation_deaths = float(nation.starvation_deaths) + float(actual)
+	if cause in ["wildlife","dinosaur"]: nation.wildlife_deaths = int(nation.get("wildlife_deaths", 0)) + actual
+	if cause == "dinosaur": nation.dinosaur_deaths = int(nation.get("dinosaur_deaths",0)) + actual
+	if cause == "fire": nation.fire_deaths = int(nation.get("fire_deaths",0)) + actual
+	var before_souls: int=souls
+	souls += actual
+	if bool(_config.progression_enabled) and not bool(_config.pantheon_enabled):
+		for key: String in DivinityProgression.DEFINITIONS:
+			var threshold: int=int(DivinityProgression.DEFINITIONS[key].unlock)
+			if _skills.has(key) and before_souls<threshold and souls>=threshold: _event("累计收集 %d 魂，解锁%s；亡魂指标不消耗。"%[threshold,str(_skills[key].title)])
+	var soul_income: float=float(actual) * float(_config.spirit_per_soul)
+	spirit += soul_income
+	spirit_sources.souls=float(spirit_sources.get("souls",0.0))+soul_income
+	var actual_counts: Array=[0,0]
+	actual_counts[index]=actual
+	human_deaths_recorded.emit(cause,actual_counts)
+	if not spatial:
+		_faith_death_serial+=1
+		note_faith_event(index,"death",minf(1.0,float(actual)/maxf(1.0,float(nation.population))*3.0),"death_%d"%_faith_death_serial)
+
+
+# scripts/simulation.gd:3146 _check_outcome
+func _check_outcome() -> void:
+	if str(_config.get("game_mode",""))=="tutorial" and str(_config.get("tutorial_phase","")) in ["final_cast","finale","complete"]: return
+	if not outcome.is_empty(): return
+	if target_souls > 0 and souls >= target_souls:
+		outcome = "won"
+		_event("考核通过！累计收集 %s 亡魂。" % souls)
+	elif float(nations[0].population) + float(nations[1].population) < 1.0:
+		outcome = "extinct"
+		_event("双岛人类灭绝。可重新开始培养新的聚落。")
+	elif bool(_config.science_ending) and _technology_finished():
+		outcome = "science"
+		_event(("封魂设施实际建成，本次沙盒演化结束。" if bool(_config.civilization_enabled) else "文明科技达到 100%，本次沙盒演化结束。") if str(_config.get("game_mode", "")) == "sandbox" else "灵魂封存工程完成，人类亡魂不再进入上帝的收魂考核。")
+	elif max_years > 0.0 and year >= max_years - 0.000001:
+		year = max_years
+		outcome = "time"
+		_event("考核期限已到，收魂指标未完成。")
+
+
+# scripts/simulation.gd:3189 set_tutorial_permissions
+func set_tutorial_permissions(skills: Array, phase: String) -> void:
+	if str(_config.get("game_mode",""))!="tutorial": return
+	var allowed: Array[String]=[]
+	for key: String in skills:
+		if _skills.has(key) and not allowed.has(key): allowed.append(key)
+	_config["tutorial_allowed_skills"]=allowed
+	_config["tutorial_phase"]=phase
+
+
+# scripts/simulation.gd:3200 set_tutorial_armistice
+func set_tutorial_armistice(active: bool) -> void:
+	if str(_config.get("game_mode",""))!="tutorial": return
+	_config["tutorial_armistice"]=active
+	if active:
+		war_request=-1
+		for nation: Dictionary in nations:
+			nation.leader_war_desire=0.0
+			nation.leader_rage_remaining=0.0
+			nation.leader_rage_id=-1
+		revenge_pending.assign([false,false])
+		grievances.assign([0.0,0.0])
+		clear_invasion_pressure()
+		diplomacy="双边停火"

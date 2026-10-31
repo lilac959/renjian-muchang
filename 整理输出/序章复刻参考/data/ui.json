@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "theme": {
+    "font": "",
+    "font_names": ["Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", "Arial"],
+    "font_scale": 1.0,
+    "minimum_font_size": 10,
+    "resource": "",
+    "palette": {"ink":"#eaf0e4", "muted":"#a6bfc1", "accent":"#79ded0", "gold":"#ebc57d"},
+    "color_overrides": {},
+    "corner_radius_scale": 1.0,
+    "padding_scale": 1.0,
+    "backgrounds": {},
+    "icons": {}
+  },
+  "layout": {
+    "hud_header": {}, "hud_nation_left": {}, "hud_nation_right": {},
+    "hud_diplomacy": {}, "hud_skills": {}, "hud_climate": {},
+    "hud_events": {}, "hud_advice": {}, "hud_hit": {}, "hud_target": {},
+    "hud_civilization_alert": {}, "hud_modal": {}, "hud_toast": {},
+    "menu_content": {}, "menu_footer": {}, "menu_world_caption": {},
+    "tutorial_dialogue": {}, "tutorial_objective": {}, "tutorial_portrait_left": {},
+    "tutorial_portrait_right": {}, "tutorial_title": {}, "tutorial_complete": {}, "settings_panel": {}
+  },
+  "node_overrides": {},
+  "texts": {},
+  "templates": {"challenge_description":"{years} 年内累计收集 {souls} 个亡魂", "challenge_description_unlimited":"不限年限累计收集 {souls} 个亡魂"},
+  "ux": {
+    "show_hints": true, "show_tooltips": true, "show_hit_feedback": true,
+    "show_toasts": true, "show_events": true, "auto_focus": true,
+    "tooltip_delay_seconds": 0.5, "toast_seconds": 3.6,
+    "dialogue_characters_per_second": 38.0,
+    "dialogue_punctuation_pause_seconds": 0.10, "dialogue_comma_pause_seconds": 0.045,
+    "dialogue_click_reveals_first": true, "dialogue_mouse_advance": true,
+    "portrait_transition_seconds": 0.26,
+    "portrait_listener_modulate": "#c7ccd6f5"
+  },
+  "bindings": {
+    "skill_reconcile":["1"], "skill_prosperity":["2"], "skill_joy":["3"],
+    "skill_climate":["4"], "skill_lightning":["5"], "skill_meteor":["6"],
+    "skill_rage":["7"], "skill_plague":["8"], "skill_undead":["9"],
+    "pause":["SPACE"], "cancel":["ESCAPE"], "restart":["R"],
+    "focus_selected":["F"], "focus_leader":["L"], "overview":["TAB"], "battle":["B"],
+    "camera_left":["A","LEFT"], "camera_right":["D","RIGHT"],
+    "camera_up":["W","UP"], "camera_down":["S","DOWN"],
+    "dialogue_advance":["ENTER","KP_ENTER","SPACE"]
+  },
+  "settings_defaults": {"fullscreen":false,"vsync":true,"fps_limit":60,"graphics_quality":"standard","camera_speed":1.0}
+}

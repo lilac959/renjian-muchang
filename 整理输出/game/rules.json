@@ -1,5 +1,5 @@
 {
-  "status": "简化双岛战争版：目标以自动策略实测验证，仍需真人试玩",
+  "status": "农牧经营、固定地编优先扩张、身份神力；表现层由独立协作者接入",
   "config": {
     "version": 6,
     "duration": 300,
@@ -38,7 +38,7 @@
     "blessFactor": 1.4,
     "joySeconds": 18,
     "joyFactor": 2,
-    "joyFoodFactor": 1.5,
+    "joyFoodFactor": 2,
     "weatherSeconds": 30,
     "meteorDamage": 100,
     "fireSeconds": 5,
@@ -58,7 +58,10 @@
     "saveInterval": 30,
     "longPress": 400,
     "dragPixels": 10,
-    "toastMs": 2400
+    "toastMs": 2400,
+    "rageSeconds": 30,
+    "appetiteSeconds": 36,
+    "birthProductionMargin": 1.1
   },
   "skills": [
     {
@@ -70,7 +73,7 @@
       "cd": 10,
       "r": 7,
       "unlock": 0,
-      "desc": "范围内有出征居民即可使双方停战返乡，12秒内不能再次出征。",
+      "desc": "范围内有出征居民或正在下令的国王即可让双方停战返乡，并取消待发战令；12秒内不能再次出征。",
       "number": 1
     },
     {
@@ -94,7 +97,7 @@
       "cd": 20,
       "r": 8,
       "unlock": 0,
-      "desc": "范围内成年人繁衍贡献翻倍，耗粮增加50%，持续18秒；无配对与停工前置。",
+      "desc": "人类享乐18秒并停工，催生暂时无视口粮和住房，随后36秒食量翻倍；羊群和野兽繁殖加速，羊可叠加雨天。",
       "number": 3
     },
     {
@@ -118,7 +121,7 @@
       "cd": 3,
       "r": 2.5,
       "unlock": 0,
-      "desc": "精准击杀一名居民，实际死亡获得1魂和2灵力。",
+      "desc": "精准击杀最近一个居民或动物。野兽掉肉，击杀动物不收魂；清理野兽可解除附近扩建阻碍。",
       "number": 5
     },
     {
@@ -130,7 +133,7 @@
       "cd": 25,
       "r": 5,
       "unlock": 0,
-      "desc": "范围内生物受到100伤害，并留下5秒火场；实际死亡才收魂。",
+      "desc": "范围生物受到100伤害，留下短时火场；野兽掉肉，也可帮助完成扩张地块清理。本版不破坏地编建筑。",
       "number": 6
     },
     {
@@ -142,7 +145,7 @@
       "cd": 22,
       "r": 9,
       "unlock": 0,
-      "desc": "范围内2至4名健康成年人跨桥出征，保留至少2名劳动力；最多持续28秒，伤亡过半撤退。",
+      "desc": "精准影响最近一个目标：国王尝试下令出征；平民停工伤人；学士停研袭击同窗；野兽主动袭人。连续强征可能引发民变。",
       "number": 7
     },
     {
@@ -189,7 +192,170 @@
     }
   },
   "texts": {
-    "intro": "双岛自动生产与繁衍。暴怒跨桥出征，和解停战；真实死亡获得灵魂和灵力。",
+    "intro": "农耕国扩建房田，畜牧国繁育宰羊。欢愉影响人口与劳力，暴怒按身份生效，真实死亡获得灵魂。",
     "oldSave": "旧版存档不兼容，请开始新局"
+  },
+  "settlement": {
+    "initialHouses": 2,
+    "houseCapacity": 5,
+    "initialFields": 2,
+    "workersPerField": 4,
+    "builders": 1,
+    "buildSeconds": 5,
+    "clearSeconds": 4,
+    "buildFood": 2,
+    "buildReserveSeconds": 4,
+    "planInterval": 1,
+    "houseBuildOccupancy": 0.8,
+    "foodMargin": 1.25,
+    "foodReserveSeconds": 25,
+    "beastBlockRadius": 4,
+    "upgradeSeconds": 8,
+    "expansion": {
+      "house": {
+        "minX": 13,
+        "maxX": 40,
+        "minY": 16,
+        "maxY": 24,
+        "spacing": 3,
+        "size": 2.3
+      },
+      "field": {
+        "minX": 15,
+        "maxX": 41,
+        "minY": 36,
+        "maxY": 44,
+        "spacing": 1,
+        "size": 1.8
+      }
+    },
+    "specials": {
+      "hall": {
+        "population": 25,
+        "productionMargin": 1.1,
+        "reserveSeconds": 20,
+        "cost": 5
+      },
+      "granary": {
+        "population": 30,
+        "productionMargin": 1.15,
+        "reserveSeconds": 25,
+        "cost": 6
+      },
+      "windmill": {
+        "population": 40,
+        "productionMargin": 1.2,
+        "reserveSeconds": 25,
+        "cost": 8
+      },
+      "academy": {
+        "population": 50,
+        "productionMargin": 1.2,
+        "reserveSeconds": 25,
+        "cost": 8
+      }
+    },
+    "huntDamage": 12,
+    "huntInterval": 1.5,
+    "windmillProduction": 1.15,
+    "granaryStorage": 1.5
+  },
+  "husbandry": {
+    "initialSheep": 12,
+    "initialAdultSheep": 6,
+    "hp": 30,
+    "matureSeconds": 8,
+    "birthRate": 0.065,
+    "sheepPerWorker": 5,
+    "slaughterPerWorker": 0.08,
+    "meatFood": 12,
+    "keepBreeders": 6,
+    "emergencyBreeders": 2,
+    "reserveSeconds": 20,
+    "emergencySeconds": 4,
+    "rainBreeding": 1.5,
+    "joyBreeding": 4,
+    "pens": [
+      {
+        "id": "pasture-pen-0",
+        "x": 67,
+        "y": 22,
+        "capacity": 32
+      },
+      {
+        "id": "pasture-pen-1",
+        "x": 67,
+        "y": 27,
+        "capacity": 32
+      },
+      {
+        "id": "pasture-pen-2",
+        "x": 67,
+        "y": 32,
+        "capacity": 32
+      }
+    ],
+    "breederMargin": 1.5
+  },
+  "wildlife": {
+    "hp": 50,
+    "damage": 8,
+    "attackInterval": 2,
+    "reach": 1.2,
+    "search": 4,
+    "rageSearch": 20,
+    "speed": 1.2,
+    "rageSpeed": 2,
+    "respawnSeconds": 45,
+    "settlementRadius": 7,
+    "meatFood": 8,
+    "homes": [
+      [
+        {
+          "x": 12,
+          "y": 22
+        },
+        {
+          "x": 19,
+          "y": 41
+        }
+      ],
+      [
+        {
+          "x": 85,
+          "y": 16
+        },
+        {
+          "x": 90,
+          "y": 35
+        }
+      ]
+    ],
+    "maxPerIsland": 6,
+    "joyBirthSeconds": 10
+  },
+  "society": {
+    "warIntentSeconds": 30,
+    "successionSeconds": 8,
+    "unrestExhaustion": 60,
+    "unrestPerOrder": 35,
+    "revoltPressure": 100,
+    "fedRecovery": 0.7,
+    "hungryRecovery": 0.15,
+    "recoveryReserveSeconds": 12,
+    "casualtyExhaustion": 8,
+    "scholarPopulation": 50,
+    "maxScholars": 2,
+    "scholarReserveSeconds": 25,
+    "scholarKeepReserveSeconds": 8,
+    "scholarMargin": 1.2,
+    "researchPerScholar": 0.2,
+    "rageSearch": 9,
+    "rageSpeed": 1.5,
+    "rageReach": 1.3,
+    "rageDamage": 8,
+    "rageAttackInterval": 2,
+    "woundSeconds": 5,
+    "unrestRecovery": 0.3
   }
 }

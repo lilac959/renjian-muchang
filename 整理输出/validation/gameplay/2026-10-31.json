@@ -1,0 +1,603 @@
+{
+  "passed": true,
+  "date": "2026-10-31",
+  "tests": {
+    "total": 63,
+    "passed": 63,
+    "failed": 0
+  },
+  "scope": "gameplay only; no renderer, UI or asset changes",
+  "sourceSHA256": {
+    "整理输出/game/engine.js": "9c655bb79c13553415ce5cda229b49040baeb59c505c71eb39bf030c85e49b6c",
+    "整理输出/game/config.js": "f360a3d27fbbc5d64e3d44157cd447c8fc9ea074b63ca8601a49366aab0cc7af",
+    "整理输出/game/rules.json": "3191f5f6c91f437e75070040982311d75cc8241478b2b2fba2fa1dbbf817ee6c",
+    "整理输出/game/settlement.js": "1a1647aece5990046ed1e05a7b917c120664dcc52a24cc5faed4f54d835b805f",
+    "整理输出/game/husbandry.js": "d20171760c9c4cb627eae40f05411e121daad1acf7e229a79e49e44802b36b15",
+    "整理输出/game/society.js": "354a40e2b232775e363168b1a8279c3ae0b46312970e42bdd8bdd345a439ae0d",
+    "整理输出/game/gameplay-save.js": "ec9e8e06469fe27105929b4ee3e07f8f2209dcba177f844ddc1b6de563efe349",
+    "整理输出/game/island-layout.js": "ad675264d3a9d42b236f662a28c51cf6d17f60eb546dd2a3b2fbb365da230385"
+  },
+  "strategies": [
+    {
+      "strategy": "observe",
+      "seed": 11,
+      "result": "timeout",
+      "time": 300,
+      "souls": 1,
+      "births": 145,
+      "peak": 160,
+      "population": 160,
+      "mana": 60,
+      "milestones": {
+        "birth": 6.05,
+        "soul": 219.45
+      },
+      "casts": {},
+      "islands": [
+        {
+          "id": 0,
+          "population": 80,
+          "food": 900,
+          "houses": 16,
+          "fields": 10,
+          "sheep": 0,
+          "research": 52.6
+        },
+        {
+          "id": 1,
+          "population": 80,
+          "food": 592,
+          "houses": null,
+          "fields": null,
+          "sheep": 95,
+          "research": 0
+        }
+      ]
+    },
+    {
+      "strategy": "observe",
+      "seed": 22,
+      "result": "timeout",
+      "time": 300,
+      "souls": 0,
+      "births": 144,
+      "peak": 160,
+      "population": 160,
+      "mana": 58,
+      "milestones": {
+        "birth": 6.05
+      },
+      "casts": {},
+      "islands": [
+        {
+          "id": 0,
+          "population": 80,
+          "food": 900,
+          "houses": 16,
+          "fields": 10,
+          "sheep": 0,
+          "research": 52.6
+        },
+        {
+          "id": 1,
+          "population": 80,
+          "food": 592,
+          "houses": null,
+          "fields": null,
+          "sheep": 95,
+          "research": 0
+        }
+      ]
+    },
+    {
+      "strategy": "observe",
+      "seed": 33,
+      "result": "timeout",
+      "time": 300,
+      "souls": 0,
+      "births": 144,
+      "peak": 160,
+      "population": 160,
+      "mana": 58,
+      "milestones": {
+        "birth": 6.05
+      },
+      "casts": {},
+      "islands": [
+        {
+          "id": 0,
+          "population": 80,
+          "food": 900,
+          "houses": 16,
+          "fields": 10,
+          "sheep": 0,
+          "research": 52.6
+        },
+        {
+          "id": 1,
+          "population": 80,
+          "food": 592,
+          "houses": null,
+          "fields": null,
+          "sheep": 95,
+          "research": 0
+        }
+      ]
+    },
+    {
+      "strategy": "observe",
+      "seed": 44,
+      "result": "timeout",
+      "time": 300,
+      "souls": 1,
+      "births": 145,
+      "peak": 160,
+      "population": 160,
+      "mana": 60,
+      "milestones": {
+        "birth": 6.05,
+        "soul": 213.45
+      },
+      "casts": {},
+      "islands": [
+        {
+          "id": 0,
+          "population": 80,
+          "food": 900,
+          "houses": 16,
+          "fields": 10,
+          "sheep": 0,
+          "research": 52.6
+        },
+        {
+          "id": 1,
+          "population": 80,
+          "food": 592,
+          "houses": null,
+          "fields": null,
+          "sheep": 95,
+          "research": 0
+        }
+      ]
+    },
+    {
+      "strategy": "observe",
+      "seed": 55,
+      "result": "timeout",
+      "time": 300,
+      "souls": 0,
+      "births": 144,
+      "peak": 160,
+      "population": 160,
+      "mana": 58,
+      "milestones": {
+        "birth": 6.05
+      },
+      "casts": {},
+      "islands": [
+        {
+          "id": 0,
+          "population": 80,
+          "food": 900,
+          "houses": 16,
+          "fields": 10,
+          "sheep": 0,
+          "research": 52.6
+        },
+        {
+          "id": 1,
+          "population": 80,
+          "food": 592,
+          "houses": null,
+          "fields": null,
+          "sheep": 95,
+          "research": 0
+        }
+      ]
+    },
+    {
+      "strategy": "war",
+      "seed": 11,
+      "result": "timeout",
+      "time": 300,
+      "souls": 38,
+      "births": 164,
+      "peak": 142,
+      "population": 142,
+      "mana": 5,
+      "milestones": {
+        "birth": 6.05,
+        "army": 25.3,
+        "soul": 39.25
+      },
+      "casts": {
+        "weather": 5,
+        "rage": 13
+      },
+      "islands": [
+        {
+          "id": 0,
+          "population": 62,
+          "food": 900,
+          "houses": 13,
+          "fields": 7,
+          "sheep": 0,
+          "research": 4.2
+        },
+        {
+          "id": 1,
+          "population": 80,
+          "food": 595.2,
+          "houses": null,
+          "fields": null,
+          "sheep": 95,
+          "research": 0
+        }
+      ]
+    },
+    {
+      "strategy": "war",
+      "seed": 22,
+      "result": "timeout",
+      "time": 300,
+      "souls": 38,
+      "births": 159,
+      "peak": 137,
+      "population": 137,
+      "mana": 5,
+      "milestones": {
+        "birth": 6.05,
+        "army": 25.3,
+        "soul": 37.15
+      },
+      "casts": {
+        "weather": 5,
+        "rage": 13
+      },
+      "islands": [
+        {
+          "id": 0,
+          "population": 57,
+          "food": 732.4,
+          "houses": 13,
+          "fields": 6,
+          "sheep": 0,
+          "research": 19.4
+        },
+        {
+          "id": 1,
+          "population": 80,
+          "food": 595.2,
+          "houses": null,
+          "fields": null,
+          "sheep": 95,
+          "research": 0
+        }
+      ]
+    },
+    {
+      "strategy": "war",
+      "seed": 33,
+      "result": "timeout",
+      "time": 300,
+      "souls": 33,
+      "births": 154,
+      "peak": 137,
+      "population": 137,
+      "mana": 5,
+      "milestones": {
+        "birth": 6.05,
+        "army": 25.3,
+        "soul": 37.25
+      },
+      "casts": {
+        "weather": 3,
+        "rage": 13
+      },
+      "islands": [
+        {
+          "id": 0,
+          "population": 57,
+          "food": 703,
+          "houses": 15,
+          "fields": 6,
+          "sheep": 0,
+          "research": 29
+        },
+        {
+          "id": 1,
+          "population": 80,
+          "food": 592,
+          "houses": null,
+          "fields": null,
+          "sheep": 95,
+          "research": 0
+        }
+      ]
+    },
+    {
+      "strategy": "war",
+      "seed": 44,
+      "result": "timeout",
+      "time": 300,
+      "souls": 45,
+      "births": 166,
+      "peak": 137,
+      "population": 137,
+      "mana": 14,
+      "milestones": {
+        "birth": 6.05,
+        "army": 25.3,
+        "soul": 36.45
+      },
+      "casts": {
+        "weather": 6,
+        "rage": 13
+      },
+      "islands": [
+        {
+          "id": 0,
+          "population": 57,
+          "food": 888,
+          "houses": 15,
+          "fields": 6,
+          "sheep": 0,
+          "research": 24.99
+        },
+        {
+          "id": 1,
+          "population": 80,
+          "food": 592,
+          "houses": null,
+          "fields": null,
+          "sheep": 95,
+          "research": 0
+        }
+      ]
+    },
+    {
+      "strategy": "war",
+      "seed": 55,
+      "result": "timeout",
+      "time": 300,
+      "souls": 43,
+      "births": 164,
+      "peak": 137,
+      "population": 137,
+      "mana": 10,
+      "milestones": {
+        "birth": 6.05,
+        "army": 25.3,
+        "soul": 38.5
+      },
+      "casts": {
+        "weather": 6,
+        "rage": 13
+      },
+      "islands": [
+        {
+          "id": 0,
+          "population": 57,
+          "food": 693.8,
+          "houses": 14,
+          "fields": 6,
+          "sheep": 0,
+          "research": 18.2
+        },
+        {
+          "id": 1,
+          "population": 80,
+          "food": 592,
+          "houses": null,
+          "fields": null,
+          "sheep": 95,
+          "research": 0
+        }
+      ]
+    },
+    {
+      "strategy": "cycles",
+      "seed": 11,
+      "result": "success",
+      "time": 173.6,
+      "souls": 64,
+      "births": 72,
+      "peak": 35,
+      "population": 24,
+      "mana": 102,
+      "milestones": {
+        "birth": 6.05,
+        "soul": 50.9
+      },
+      "casts": {
+        "joy": 3,
+        "meteor": 5
+      },
+      "islands": [
+        {
+          "id": 0,
+          "population": 19,
+          "food": 455,
+          "houses": 6,
+          "fields": 4,
+          "sheep": 0,
+          "research": 0
+        },
+        {
+          "id": 1,
+          "population": 5,
+          "food": 160.9,
+          "houses": null,
+          "fields": null,
+          "sheep": 93,
+          "research": 0
+        }
+      ]
+    },
+    {
+      "strategy": "cycles",
+      "seed": 22,
+      "result": "success",
+      "time": 155.6,
+      "souls": 64,
+      "births": 67,
+      "peak": 37,
+      "population": 19,
+      "mana": 96,
+      "milestones": {
+        "birth": 6.05,
+        "soul": 50.9
+      },
+      "casts": {
+        "joy": 3,
+        "meteor": 5
+      },
+      "islands": [
+        {
+          "id": 0,
+          "population": 8,
+          "food": 520.9,
+          "houses": 6,
+          "fields": 5,
+          "sheep": 0,
+          "research": 0
+        },
+        {
+          "id": 1,
+          "population": 11,
+          "food": 97,
+          "houses": null,
+          "fields": null,
+          "sheep": 96,
+          "research": 0
+        }
+      ]
+    },
+    {
+      "strategy": "cycles",
+      "seed": 33,
+      "result": "success",
+      "time": 176.6,
+      "souls": 73,
+      "births": 82,
+      "peak": 39,
+      "population": 25,
+      "mana": 108,
+      "milestones": {
+        "birth": 6.05,
+        "soul": 50.9
+      },
+      "casts": {
+        "joy": 3,
+        "meteor": 6
+      },
+      "islands": [
+        {
+          "id": 0,
+          "population": 17,
+          "food": 709.5,
+          "houses": 8,
+          "fields": 5,
+          "sheep": 0,
+          "research": 0
+        },
+        {
+          "id": 1,
+          "population": 8,
+          "food": 64.2,
+          "houses": null,
+          "fields": null,
+          "sheep": 96,
+          "research": 0
+        }
+      ]
+    },
+    {
+      "strategy": "cycles",
+      "seed": 44,
+      "result": "success",
+      "time": 152.6,
+      "souls": 70,
+      "births": 72,
+      "peak": 43,
+      "population": 18,
+      "mana": 110,
+      "milestones": {
+        "birth": 6.05,
+        "soul": 50.9
+      },
+      "casts": {
+        "joy": 3,
+        "meteor": 5
+      },
+      "islands": [
+        {
+          "id": 0,
+          "population": 7,
+          "food": 401.2,
+          "houses": 6,
+          "fields": 4,
+          "sheep": 0,
+          "research": 0
+        },
+        {
+          "id": 1,
+          "population": 11,
+          "food": 219.7,
+          "houses": null,
+          "fields": null,
+          "sheep": 96,
+          "research": 0
+        }
+      ]
+    },
+    {
+      "strategy": "cycles",
+      "seed": 55,
+      "result": "success",
+      "time": 151.6,
+      "souls": 60,
+      "births": 75,
+      "peak": 43,
+      "population": 31,
+      "mana": 90,
+      "milestones": {
+        "birth": 6.05,
+        "soul": 50.9
+      },
+      "casts": {
+        "joy": 3,
+        "meteor": 5
+      },
+      "islands": [
+        {
+          "id": 0,
+          "population": 22,
+          "food": 600,
+          "houses": 7,
+          "fields": 5,
+          "sheep": 0,
+          "research": 0
+        },
+        {
+          "id": 1,
+          "population": 9,
+          "food": 206,
+          "houses": null,
+          "fields": null,
+          "sheep": 96,
+          "research": 0
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "goal": 60,
+    "successes": 5,
+    "runs": 15
+  },
+  "limits": [
+    "Headless logic verification; visual wiring belongs to the presentation owner.",
+    "Five fixed seeds are regression cases, not a measured human win rate."
+  ]
+}

@@ -1,7 +1,8 @@
 import {World} from '../game/engine.js';
 import {CONFIG as C} from '../game/config.js';
 const reports=[];
-for(const strategy of ['observe','war','cycles'])for(const seed of [11,22,33,44,55]){
+const strategies=process.argv.includes('--cycles-only')?['cycles']:['observe','war','cycles'];
+for(const strategy of strategies)for(const seed of [11,22,33,44,55]){
  const w=new World(seed);w.paused=false;let decision=0,peak=C.initialAdults*2,casts={};
  const cast=(id,p,arg)=>{if(w.cast(id,p,arg).ok)casts[id]=(casts[id]||0)+1;};
  for(let i=0;i<6001&&!w.result;i++){

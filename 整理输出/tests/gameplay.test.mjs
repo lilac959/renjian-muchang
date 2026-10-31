@@ -79,13 +79,13 @@ test('sheep births have real pen capacity, rain and animal joy stack without hum
 test('killing beasts provides meat once and no human souls',()=>{
  const w=active(),beast=w.animals.find(a=>a.kind==='beast'),c=w.islands[beast.country],before=c.food;w.kill(beast);w.kill(beast);assert.equal(c.food,before+B.meatFood);assert.equal(w.souls,0);assert.equal(w.mana,C.mana);
 });
-test('king rage issues a real order, civilian rage never directly recruits an army',()=>{
+test('remote single-target civilian rage recruits one resident; king commands a group',()=>{
  const w=active(),c=w.islands[0];gather(w,c);const king=w.get(c.kingId),person=w.humans(0).find(e=>e.role==='civilian');
- Object.assign(person,nearestWalkable({x:36,y:21},0));assert.ok(w.cast('rage',person).ok);assert.equal(person.rage,C.rageSeconds);assert.equal(c.army,null);assert.equal(w.workers(c).includes(person),false);
- w.cooldowns.rage=0;assert.ok(w.cast('rage',king).ok);assert.ok(c.army);assert.ok(c.army.ids.length<=C.warSize);assert.ok(c.army.ids.every(id=>w.get(id).role==='civilian'));
+ Object.assign(person,nearestWalkable({x:36,y:21},0));assert.ok(w.cast('rage',person).ok);assert.equal(person.rage,C.rageSeconds);assert.deepEqual(c.army.ids,[person.id]);assert.equal(w.workers(c).includes(person),false);w.retreat(c);person.soldier=false;c.army=null;c.lastArmy=-C.armyInterval;
+ w.cooldowns.rage=0;assert.ok(w.cast('rage',king).ok);assert.ok(c.army);assert.ok(c.army.ids.length<=C.kingWarSize);assert.ok(c.army.ids.every(id=>w.get(id).role==='civilian'));
 });
 test('an enraged king with too few workers keeps a blocked intention without conjuring soldiers',()=>{
- const w=active(),c=w.islands[0];gather(w,c);for(const e of w.humans(0).slice(3))w.kill(e);const king=w.get(c.kingId),count=w.humans().length;
+ const w=active(),c=w.islands[0];gather(w,c);for(const e of w.humans(0).slice(2))w.kill(e);const king=w.get(c.kingId),count=w.humans().length;
  assert.ok(w.cast('rage',king).ok);assert.equal(c.army,null);assert.ok(c.warIntent>0);assert.ok(c.lastWarBlocker);assert.equal(w.humans().length,count);
 });
 test('repeated forced war against exhausted citizens can depose the actual king',()=>{
@@ -132,7 +132,7 @@ test('animal meat respects upgraded granary capacity instead of deleting existin
  const beast=w.animals.find(a=>a.kind==='beast'&&a.country===0);w.kill(beast);assert.equal(c.food,850+B.meatFood);
 });
 test('rage preview and committed payload identify exactly the same real target',()=>{
- const w=active(),c=w.islands[0];gather(w,c);const king=w.get(c.kingId),preview=w.preview('rage',king);assert.deepEqual(preview,[king.id]);assert.ok(w.cast('rage',king).ok);assert.deepEqual(w.visualEvents.at(-1).targets.map(e=>e.id),preview);
+ const w=active(),c=w.islands[0];gather(w,c);const king=w.get(c.kingId),preview=w.preview('rage',king);assert.deepEqual(preview,[king.id]);assert.ok(w.cast('rage',king).ok);assert.deepEqual(w.visualEvents.find(e=>e.id==='rage').targets.map(e=>e.id),preview);
 });
 test('new saves reject moved authored buildings and duplicate animal identities',()=>{
  const w=active(),saved=w.serialize(),moved=JSON.parse(saved);moved.state.islands[0].buildings[0].x+=1;assert.throws(()=>World.restore(JSON.stringify(moved)),/损坏/);
@@ -155,4 +155,11 @@ test('peace cancels a blocked royal order and does not leave a delayed surprise 
  const w=active(),c=w.islands[0];for(const e of w.humans(0).slice(3))w.kill(e);gather(w,c);const king=w.get(c.kingId);
  assert.ok(w.cast('rage',king).ok);assert.ok(c.warIntent>0);assert.ok(w.cast('peace',king).ok);assert.equal(c.warIntent,0);assert.equal(king.rage,0);
  w.step(C.truceSeconds+2);assert.equal(c.army,null);assert.equal(c.warIntent,0);
+});
+
+test('a blocked royal order recruits the army once rest ends even while the king is angry',()=>{
+ const w=active(),c=w.islands[0];gather(w,c);const king=w.get(c.kingId);c.lastArmy=w.time;
+ assert.ok(w.cast('rage',king).ok);assert.equal(c.army,null);assert.ok(c.warIntent>0);assert.ok(king.rage>0);
+ c.lastArmy=-1000;advanceSociety(w,.1);
+ assert.equal(c.army.kingId,king.id);assert.equal(c.army.ids.length,C.kingWarSize);assert.equal(king.commanding,true);assert.ok(king.rage>0);assert.equal(c.warIntent,0);
 });

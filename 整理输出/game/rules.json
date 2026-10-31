@@ -26,8 +26,8 @@
     "healRate": 1,
     "starveDelay": 8,
     "starveDamage": 8,
-    "warSize": 4,
-    "minArmy": 2,
+    "warSize": 1,
+    "minArmy": 1,
     "warSeconds": 28,
     "armyInterval": 35,
     "soldierDamage": 24,
@@ -61,7 +61,8 @@
     "toastMs": 2400,
     "rageSeconds": 30,
     "appetiteSeconds": 36,
-    "birthProductionMargin": 1.1
+    "birthProductionMargin": 1.1,
+    "kingWarSize": 4
   },
   "skills": [
     {
@@ -73,7 +74,7 @@
       "cd": 10,
       "r": 7,
       "unlock": 0,
-      "desc": "范围内有出征居民或正在下令的国王即可让双方停战返乡，并取消待发战令；12秒内不能再次出征。",
+      "desc": "选中出征者或正在号令的国王，使双方停止号令、停战返乡，12秒内不能再次出征。",
       "number": 1
     },
     {
@@ -143,9 +144,9 @@
       "icon": "♨",
       "cost": 8,
       "cd": 22,
-      "r": 9,
+      "r": 2.5,
       "unlock": 0,
-      "desc": "精准影响最近一个目标：国王尝试下令出征；平民停工伤人；学士停研袭击同窗；野兽主动袭人。连续强征可能引发民变。",
+      "desc": "单体施法：普通居民独自出征；国王留守号令，征召最多4名成年人出征。至少保留2名劳动力，最多持续28秒。",
       "number": 7
     },
     {

@@ -33,7 +33,7 @@ export class World {
  spawn(kind,c,adult=false,p=this.point(c)){
   p=nearestWalkable(p,c.id,this.blockers());
   const e={id:++this.serial,kind,country:c.id,x:p.x,y:p.y,adult,growth:0,hp:kind==='undead'?C.undeadHP:C.humanHP,
-   dead:false,bless:0,joy:0,sick:0,immune:0,spread:0,starve:0,attack:0,soldier:false,returning:false,
+   dead:false,king:false,commanding:false,bless:0,joy:0,sick:0,immune:0,spread:0,starve:0,attack:0,soldier:false,returning:false,
    life:C.undeadSeconds,role:'civilian',rage:0,wounded:0,appetite:0,workSite:null,schoolId:null,action:adult?'自动生产':'成长中',destination:this.point(c)};
   this.entities.push(e);return e;
  }
@@ -60,7 +60,7 @@ export class World {
  message(text){this.events.push({text});if(this.events.length>8)this.events.shift();}
  fx(x,y,text,color='#f4d58a'){this.effects.push({x,y,text,color,life:1.8});}
  kill(e,cause='divine'){
-  if(!e||e.dead)return;e.dead=true;
+  if(!e||e.dead)return;this.visualEvents.push({id:'death',x:e.x,y:e.y,time:this.time,king:!!e.king,human:e.kind==='human',cause});e.dead=true;if(e.commanding)this.retreat(this.islands[e.country]);
    if(e.kind==='beast'||e.kind==='sheep'){const c=this.islands[e.country],food=e.kind==='beast'?B.meatFood:H.meatFood;c.food=Math.min(C.foodLimit*(complete(c,'granary').length?S.granaryStorage:1),c.food+food);if(e.kind==='sheep'){c.harvested++;c.meatCollected+=food;}this.change('animal-killed',{animalId:e.id,country:e.country,kind:e.kind,cause,food});return;}
   if(e.kind==='human'){
    this.souls++;this.mana+=C.soulMana;
@@ -74,24 +74,26 @@ export class World {
  damage(e,n,cause='damage'){if(!e||e.dead||!Number.isFinite(n)||n<=0)return;e.hurt=true;e.hp-=n;if(e.hp<=0)this.kill(e,cause);}
  move(e,p,dt,speed=C.walkSpeed){return moveAlong(e,p,dt,speed,this.blockers(),this.navRevision);}
  attackTarget(e,v,dt,damage){this.move(e,v,dt,C.soldierSpeed);if(distance(e,v)<=1.2&&e.attack<=0){const hp=v.hp;this.damage(v,damage,e.kind==='undead'?'undead':'war');if(v.hp<hp)this.visualEvents.push({id:'actor-hit',attackerId:e.id,targetId:v.id,x:v.x,y:v.y,time:this.time});e.attack=C.attackInterval*(e.soldier&&e.rage>0?.6:1);this.fx(v.x,v.y,'－'+damage,'#ffb39d');}}
+ rageTroops(c,target){if(!target)return [];if(!target.king)return [target];const available=this.adults(c).filter(e=>this.available(e)&&!e.workSite);return available.filter(e=>e.id!==target.id&&!e.king).sort((a,b)=>distance(a,target)-distance(b,target)||a.id-b.id).slice(0,Math.max(0,Math.min(C.kingWarSize,available.length-C.keepAdults)));}
+ rageTarget(c,p){return this.adults(c).filter(e=>this.available(e)&&!e.workSite).filter(e=>distance(e,p)<=SKILLS.find(s=>s.id==='rage').r).sort((a,b)=>distance(a,p)-distance(b,p)||a.id-b.id)[0];}
  armyCheck(c,p=c){
   if(this.truce>0)return '双方停战保护中';
   if(c.army)return '本岛队伍尚未返乡';
   if(this.time-c.lastArmy<C.armyInterval)return '本岛正在休整';
-  const available=this.workers(c);
-  if(available.length<C.keepAdults+C.minArmy)return `成年劳动力不足，需留${C.keepAdults}人生产与繁衍`;
-  const nearby=available.filter(e=>distance(e,p)<=SKILLS.find(s=>s.id==='rage').r);
-  if(nearby.length<C.minArmy)return `范围内至少需要${C.minArmy}名健康成年人`;
+  const available=this.adults(c).filter(e=>this.available(e)&&!e.workSite);
+  if(available.length<C.keepAdults+1)return `成年劳动力不足，需留${C.keepAdults}人生产与繁衍`;
+  if(!this.rageTarget(c,p))return '请瞄准一名健康成年居民';
   return '';
  }
  armyStart(c,p){
   const error=this.armyCheck(c,p);if(error)return false;
-  const workers=this.workers(c),troops=workers.filter(e=>distance(e,p)<=SKILLS.find(s=>s.id==='rage').r).sort((a,b)=>distance(a,p)-distance(b,p)).slice(0,Math.min(C.warSize,workers.length-C.keepAdults));
+  const target=this.rageTarget(c,p),troops=this.rageTroops(c,target);
+  if(target.king){target.commanding=true;this.visualEvents.push({id:'royal-command',x:target.x,y:target.y,time:this.time,kingId:target.id,targets:troops.map(e=>({id:e.id,x:e.x,y:e.y}))});}
   for(const e of troops){e.soldier=true;e.returning=false;}
-  c.army={ids:troops.map(e=>e.id),left:C.warSeconds,start:troops.length,returning:false};c.lastArmy=this.time;
+  c.army={kingId:target.king?target.id:null,ids:troops.map(e=>e.id),left:C.warSeconds,start:troops.length,returning:false};c.lastArmy=this.time;
   this.milestones.army??=Number(this.time.toFixed(2));this.message(`${c.name}${troops.length}人跨桥出征，后方暂时减产`);return true;
  }
- retreat(c){if(!c.army)return;c.army.returning=true;for(const id of c.army.ids){const e=this.get(id);if(e)e.returning=true;}}
+ retreat(c){if(!c.army)return;const king=this.get(c.army.kingId);if(king)king.commanding=false;c.army.returning=true;for(const id of c.army.ids){const e=this.get(id);if(e)e.returning=true;}}
  peace(){this.truce=C.truceSeconds;for(const c of this.islands){c.warIntent=0;this.retreat(c);}for(const e of this.humans())if(e.soldier||e.role==='king')e.rage=0;}
  soldier(e,c,dt){
   const enemy=this.islands[1-c.id],a=c.army;
@@ -103,14 +105,14 @@ export class World {
   if(victim){e.action='交战中';this.attackTarget(e,victim,dt,C.soldierDamage);}else{e.action='跨桥出征';this.cross(e,enemy,dt);if(!enemyAdults.length)this.retreat(c);}
  }
  cross(e,dest,dt){this.move(e,nearestWalkable(dest,dest.id),dt,C.soldierSpeed);}
- legalTargets(id,p,r){return this.targets(p,r).filter(e=>['rage','lightning','joy'].includes(id)?(e.kind==='human'?(id!=='joy'||e.adult):e.kind==='beast'||e.kind==='sheep'):e.kind==='human'&&(id!=='plague'||e.sick<=0&&e.immune<=0)).sort((a,b)=>distance(a,p)-distance(b,p)||a.id-b.id);}
+ legalTargets(id,p,r){return this.targets(p,r).filter(e=>['rage','lightning','joy'].includes(id)?(e.kind==='human'?(id==='rage'?e.adult&&e.sick<=0&&e.joy<=0&&e.wounded<=0:id!=='joy'||e.adult):e.kind==='beast'||e.kind==='sheep'):e.kind==='human'&&(id!=='plague'||e.sick<=0&&e.immune<=0)).sort((a,b)=>distance(a,p)-distance(b,p)||a.id-b.id);}
  validate(id,p,weather='rain'){
   const s=SKILLS.find(s=>s.id===id);if(!s)return '未知技能';if(this.result)return '本局已结束';if(this.paused)return '请先继续游戏';
   if(!p||!Number.isFinite(p.x)||!Number.isFinite(p.y)||!this.inWorld(p))return '请在岛屿或桥上施放';
   if(this.cooldowns[id]>0)return `冷却中：${Math.ceil(this.cooldowns[id])}秒`;if(this.mana<s.cost)return `灵力不足：需要${s.cost}`;
   const c=this.islandAt(p),targets=this.legalTargets(id,p,s.r);
   if(id==='weather'&&(!c||!Object.hasOwn(CLIMATE,weather)))return '请选择天气并点击岛屿';
-  if(id==='rage'&&!targets.length)return '范围内没有可暴怒的生物';
+  if(id==='rage'){if(!targets.length)return '范围内没有可暴怒的生物';const e=targets[0];if(e.kind==='human'&&e.role!=='scholar'&&!e.soldier){const reason=this.armyCheck(this.islands[e.country],e);if(reason&&e.role!=='king')return reason;}}
   if(id==='peace'&&!this.entities.some(e=>!e.dead&&(e.soldier&&!e.returning||e.role==='king'&&(e.rage>0||this.islands[e.country].warIntent>0||this.islands[e.country].army))&&distance(e,p)<=s.r))return '范围内没有出征居民或正在下令的国王';
   if(id==='undead'&&!this.corpses.some(b=>b.life>0&&distance(b,p)<=s.r))return '范围内没有可用尸体';
   if(['bless','joy','lightning','plague','rage'].includes(id)&&!targets.length)return '范围内没有有效居民';
@@ -119,7 +121,7 @@ export class World {
  cast(id,p,weather='rain'){
   const error=this.validate(id,p,weather);if(error)return {ok:false,message:error};
   const s=SKILLS.find(s=>s.id===id),c=this.islandAt(p),all=this.legalTargets(id,p,s.r),targets=id==='rage'||id==='lightning'?all.slice(0,1):all;
-  this.visualEvents??=[];this.visualEvents.push({id,x:p.x,y:p.y,time:this.time,weather,targets:targets.map(e=>({id:e.id,x:e.x,y:e.y})),corpses:id==='undead'?this.corpses.filter(b=>b.life>0&&distance(b,p)<=s.r).slice(0,C.undeadLimit).map(b=>({x:b.x,y:b.y})):[]});
+  this.visualEvents??=[];this.visualEvents.push({id,x:p.x,y:p.y,time:this.time,weather,extinguished:id==='weather'&&weather==='rain'?this.fires.filter(f=>this.islandAt(f)?.id===c.id).map(f=>({x:f.x,y:f.y})):[],targets:(id==='peace'?this.humans().filter(e=>e.soldier||e.commanding):targets).map(e=>({id:e.id,x:e.x,y:e.y})),corpses:id==='undead'?this.corpses.filter(b=>b.life>0&&distance(b,p)<=s.r).slice(0,C.undeadLimit).map(b=>({x:b.x,y:b.y})):[]});
   this.mana-=s.cost;this.cooldowns[id]=s.cd;
   if(id==='peace')this.peace();
   if(id==='bless')for(const e of targets)e.bless=C.blessSeconds;
@@ -138,9 +140,9 @@ export class World {
   const needed=this.consumption(c)*dt,availableFood=c.food+harvest;c.foodCoverage=needed>0?Math.min(1,availableFood/needed):1;
   c.food=Math.max(0,Math.min(C.foodLimit*(complete(c,"granary").length?S.granaryStorage:1),availableFood-needed));
   c.birthProgress+=dt*this.birthRate(c);
-  while(c.birthProgress>=C.birthSeconds&&this.birthRate(c)>0){c.birthProgress-=C.birthSeconds;const e=this.spawn('human',c);this.births++;this.fx(e.x,e.y,'新生儿','#bde9a5');this.milestones.birth??=Number(this.time.toFixed(2));}
+  while(c.birthProgress>=C.birthSeconds&&this.birthRate(c)>0){c.birthProgress-=C.birthSeconds;const e=this.spawn('human',c);this.births++;this.visualEvents.push({id:'birth',x:e.x,y:e.y,time:this.time});this.fx(e.x,e.y,'新生儿','#bde9a5');this.milestones.birth??=Number(this.time.toFixed(2));}
   c.joyBirthProgress+=dt*this.joyBirthRate(c);
-  while(c.joyBirthProgress>=C.birthSeconds&&this.joyBirthRate(c)>0){c.joyBirthProgress-=C.birthSeconds;const e=this.spawn('human',c);this.births++;this.change('joy-birth',{country:c.id,personId:e.id});}
+  while(c.joyBirthProgress>=C.birthSeconds&&this.joyBirthRate(c)>0){c.joyBirthProgress-=C.birthSeconds;const e=this.spawn('human',c);this.births++;this.visualEvents.push({id:'birth',x:e.x,y:e.y,time:this.time});this.change('joy-birth',{country:c.id,personId:e.id});}
   if(this.humans(c.id).length>=this.populationLimit)c.joyBirthProgress=Math.min(c.joyBirthProgress,C.birthSeconds-.001);
   c.offering+=dt;if(c.offering>=C.offerInterval){c.offering-=C.offerInterval;if(this.humans(c.id).length&&c.food>=this.consumption(c)*C.offerReserveSeconds+C.offerFood){c.food-=C.offerFood;this.mana+=C.offerMana;this.fx(c.x,c.y,`供奉 ＋${C.offerMana}灵力`);}}
  }
@@ -160,8 +162,8 @@ export class World {
    const c=this.islands[e.country];
    if(e.kind==='undead'){e.life-=dt;if(e.life<=0){this.kill(e);continue;}const v=this.humans().filter(v=>distance(v,e)<=10).sort((a,b)=>distance(a,e)-distance(b,e))[0];e.action='亡灵追击';if(v)this.attackTarget(e,v,dt,C.undeadDamage);continue;}
    if(!e.adult){e.growth+=dt;if(e.growth>=C.growthSeconds){e.adult=true;this.fx(e.x,e.y,'成年 · 开始生产');}}
-   if(e.sick>0){e.sick-=dt;e.spread-=dt;if(e.spread<=0){e.spread=C.plagueSpreadSeconds;for(const v of this.legalTargets('plague',e,C.plagueRadius))if(v.id!==e.id&&this.random()<C.plagueSpreadChance){v.sick=C.plagueSeconds;v.spread=C.plagueSpreadSeconds;}}
-    if(e.sick<=0){if(this.random()<C.plagueDeathChance)this.kill(e,'plague');else{e.immune=C.immunitySeconds;this.fx(e.x,e.y,'康复');}}}
+   if(e.sick>0){e.sick-=dt;e.spread-=dt;if(e.spread<=0){e.spread=C.plagueSpreadSeconds;for(const v of this.legalTargets('plague',e,C.plagueRadius))if(v.id!==e.id&&this.random()<C.plagueSpreadChance){v.sick=C.plagueSeconds;v.spread=C.plagueSpreadSeconds;this.visualEvents.push({id:'infection',x:v.x,y:v.y,from:{x:e.x,y:e.y},time:this.time});}}
+    if(e.sick<=0){if(this.random()<C.plagueDeathChance)this.kill(e,'plague');else{this.visualEvents.push({id:'recovery',x:e.x,y:e.y,time:this.time});e.immune=C.immunitySeconds;this.fx(e.x,e.y,'康复');}}}
    if(e.dead)continue;
    if(c.foodCoverage<1){e.starve+=dt*(1-c.foodCoverage);if(e.starve>C.starveDelay)this.damage(e,C.starveDamage*(1-c.foodCoverage)*dt,"starvation");}else e.starve=Math.max(0,e.starve-dt);
    if(e.dead)continue;
@@ -181,6 +183,7 @@ export class World {
   if(!s||s.result||!Number.isFinite(s.time)||s.time<0||s.time>=timeLimit||!Number.isFinite(s.mana)||s.mana<0||!Number.isInteger(s.souls)||s.souls<0||!Array.isArray(s.islands)||s.islands.length!==2||!Array.isArray(s.entities)||!Array.isArray(s.corpses)||!Array.isArray(s.fires)||!Array.isArray(s.pending)||s.pending.length||new Set(s.entities.map(e=>e.id)).size!==s.entities.length||s.entities.some(e=>!s.islands[e.country]||!Number.isFinite(e.hp)||!Number.isFinite(e.x)||!Number.isFinite(e.y)||!walkable(e)||!e.destination||!walkable(e.destination))||s.islands.some(c=>!Number.isFinite(c.food)||c.food<0))throw Error('存档损坏，无法恢复');
   if(!Array.isArray(s.animals)||!Array.isArray(s.islands[0].buildings)||!Array.isArray(s.islands[1].pens)||!Number.isInteger(s.changeSerial)||s.animals.some(a=>!s.islands[a.country]||!['sheep','beast'].includes(a.kind)||!Number.isFinite(a.hp)||!walkable(a)||!a.home||!walkable(a.home))||new Set([...s.entities,...s.animals].map(e=>e.id)).size!==s.entities.length+s.animals.length)throw Error('存档损坏，无法恢复');
   if(!validGameplayState(s))throw Error('存档损坏，无法恢复');
+  for(const e of s.entities){e.king=e.role==='king';e.commanding=!!(e.king&&s.islands[e.country].army?.kingId===e.id&&!s.islands[e.country].army.returning);}
   return Object.assign(Object.create(World.prototype),s,{paused:true,visualEvents:[],changes:[]});
  }
 }

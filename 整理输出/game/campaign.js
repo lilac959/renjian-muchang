@@ -21,7 +21,7 @@ export class CampaignWorld extends World {
     for(const b of c.buildings.filter(b=>b.source==='authored'&&b.kind==='field').slice(0,P.initialFields))b.state='complete';
    }
    const king=this.get(c.kingId);Object.assign(king,nearestWalkable({x:c.x+(c.id?-7:7),y:c.y},c.id));king.destination={x:king.x,y:king.y};
-   this.armyStart(c,c);c.warIntent=30;
+   this.armyStart(c,king);c.warIntent=30;
   }
   const c=this.islands[1];for(let i=this.animals.filter(a=>a.kind==='sheep').length;i<P.initialSheep;i++){const pen=c.pens[i%c.pens.length],angle=i*2.399;spawnAnimal(this,'sheep',c,{x:pen.x+Math.cos(angle),y:pen.y+Math.sin(angle)},true);}
  }

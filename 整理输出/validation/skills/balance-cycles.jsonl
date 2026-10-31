@@ -1,0 +1,6 @@
+{"strategy":"cycles","seed":11,"result":"success","time":156.1,"souls":60,"births":76,"peak":39,"population":32,"mana":26,"milestones":{"birth":6.05,"soul":50.9,"army":51.25},"casts":{"weather":8,"meteor":5,"rage":5,"joy":2}}
+{"strategy":"cycles","seed":22,"result":"success","time":158.6,"souls":72,"births":80,"peak":38,"population":24,"mana":38,"milestones":{"birth":6.05,"soul":50.9,"army":51.25},"casts":{"weather":10,"meteor":5,"joy":5,"rage":3}}
+{"strategy":"cycles","seed":33,"result":"success","time":151.6,"souls":64,"births":83,"peak":50,"population":35,"mana":42,"milestones":{"birth":6.05,"soul":50.9,"army":51.25},"casts":{"weather":8,"meteor":5,"rage":4,"joy":2}}
+{"strategy":"cycles","seed":44,"result":"success","time":154.6,"souls":61,"births":74,"peak":36,"population":29,"mana":19,"milestones":{"birth":6.05,"soul":50.9,"army":51.25},"casts":{"weather":9,"meteor":5,"joy":4,"rage":4}}
+{"strategy":"cycles","seed":55,"result":"success","time":174.55,"souls":60,"births":70,"peak":36,"population":26,"mana":28,"milestones":{"birth":6.05,"soul":50.9,"army":51.25},"casts":{"weather":10,"meteor":4,"joy":4,"rage":4}}
+{"goal":60,"successes":5,"runs":5}

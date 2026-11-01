@@ -1,0 +1,4 @@
+/* Tutorial choices use only an outer border; original card artwork stays intact. */
+#hud button.prologue-button-hint{outline:3px solid #fff0a6!important;outline-offset:4px;animation:prologue-button-glow 1.2s ease-in-out infinite!important}
+@keyframes prologue-button-glow{0%,100%{outline-color:#fff0a6;outline-offset:3px}50%{outline-color:#ffc85a;outline-offset:6px}}
+@media(prefers-reduced-motion:reduce){#hud button.prologue-button-hint{animation:none!important;outline-color:#fff0a6;outline-offset:4px}}

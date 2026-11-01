@@ -1,3 +1,4 @@
+import {loadModel,environmentTexture} from './mobile-runtime.js';
 import * as T from './vendor/three.module.js';
 import {GLTFLoader} from './vendor/GLTFLoader.js';
 // Source v16's world-space cloud field. Static cloud shadows intentionally remain static.
@@ -10,7 +11,7 @@ export async function installEnvironment(view,root,meta){
  const base=new URL('./assets/islands/v16/',import.meta.url),loader=new T.TextureLoader();
  const [config,farm,pasture,roughness,bridge]=await Promise.all([
   fetch(new URL('environment.json',base)).then(r=>{if(!r.ok)throw Error('新版环境资料加载失败');return r.json();}),
-  ...['farm-color.png','pasture-color.png','pasture-roughness.png'].map(p=>loader.loadAsync(new URL(p,base).href)),new GLTFLoader().loadAsync(new URL('bridge.glb',base).href)
+  ...['farm-color.png','pasture-color.png','pasture-roughness.png'].map(p=>loader.loadAsync(environmentTexture(p,base))),loadModel(new URL('bridge.glb',base).href,'bridge')
  ]);
  for(const tex of [farm,pasture,roughness]){tex.flipY=false;tex.anisotropy=Math.min(8,view.renderer.capabilities.getMaxAnisotropy());}farm.colorSpace=pasture.colorSpace=T.SRGBColorSpace;
  const oldBridge=[];

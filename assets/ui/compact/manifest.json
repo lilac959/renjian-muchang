@@ -1,0 +1,145 @@
+{
+  "assets/ui/approved-death.png": {
+    "originalBytes": 2534755,
+    "downloadBytes": 68722,
+    "originalSize": [
+      1152,
+      2048
+    ],
+    "size": [
+      576,
+      1024
+    ],
+    "rgbaBytes": 2359296
+  },
+  "assets/ui/approved-love.png": {
+    "originalBytes": 3475782,
+    "downloadBytes": 102840,
+    "originalSize": [
+      1152,
+      2048
+    ],
+    "size": [
+      576,
+      1024
+    ],
+    "rgbaBytes": 2359296
+  },
+  "assets/ui/approved-weather.png": {
+    "originalBytes": 3711017,
+    "downloadBytes": 97884,
+    "originalSize": [
+      1152,
+      2048
+    ],
+    "size": [
+      576,
+      1024
+    ],
+    "rgbaBytes": 2359296
+  },
+  "assets/ui/painted-lightning.png": {
+    "originalBytes": 1649749,
+    "downloadBytes": 73684,
+    "originalSize": [
+      1024,
+      1536
+    ],
+    "size": [
+      512,
+      768
+    ],
+    "rgbaBytes": 1572864
+  },
+  "assets/ui/painted-meteor.png": {
+    "originalBytes": 1979139,
+    "downloadBytes": 72494,
+    "originalSize": [
+      1536,
+      1024
+    ],
+    "size": [
+      768,
+      512
+    ],
+    "rgbaBytes": 1572864
+  },
+  "assets/ui/painted-spirit.png": {
+    "originalBytes": 2199992,
+    "downloadBytes": 81076,
+    "originalSize": [
+      1024,
+      1536
+    ],
+    "size": [
+      512,
+      768
+    ],
+    "rgbaBytes": 1572864
+  },
+  "assets/ui/painted-wheat.png": {
+    "originalBytes": 1705164,
+    "downloadBytes": 171750,
+    "originalSize": [
+      1152,
+      1366
+    ],
+    "size": [
+      648,
+      768
+    ],
+    "rgbaBytes": 1990656
+  },
+  "assets/ui/skill-colorblock-atlas.png": {
+    "originalBytes": 2583461,
+    "downloadBytes": 96796,
+    "originalSize": [
+      1254,
+      1254
+    ],
+    "size": [
+      768,
+      768
+    ],
+    "rgbaBytes": 2359296
+  },
+  "assets/gods/portraits/death.png": {
+    "originalBytes": 1950709,
+    "downloadBytes": 70570,
+    "originalSize": [
+      1024,
+      1536
+    ],
+    "size": [
+      512,
+      768
+    ],
+    "rgbaBytes": 1572864
+  },
+  "assets/gods/portraits/life.png": {
+    "originalBytes": 2494785,
+    "downloadBytes": 102400,
+    "originalSize": [
+      1024,
+      1536
+    ],
+    "size": [
+      512,
+      768
+    ],
+    "rgbaBytes": 1572864
+  },
+  "assets/gods/portraits/weather.png": {
+    "originalBytes": 2480943,
+    "downloadBytes": 93500,
+    "originalSize": [
+      1024,
+      1536
+    ],
+    "size": [
+      512,
+      768
+    ],
+    "rgbaBytes": 1572864
+  }
+}

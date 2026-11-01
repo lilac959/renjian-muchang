@@ -95,7 +95,7 @@ button.x{box-shadow:none;border-radius:3px}
 .guide .guide-steps article:nth-child(2){background:var(--ui-grain),#cbd2c1}.guide .guide-steps article:nth-child(3){background:var(--ui-grain),#cec6d0}
 .guide-picture{height:102px;border:1px solid #b59c73;border-radius:4px;overflow:hidden;background-color:#433b39}
 .guide .guide-god img{height:100%;width:100%;max-width:none;object-fit:cover;object-position:center 17%;display:block}
-.guide-spell,.guide-cast{background-image:url('assets/ui/skill-colorblock-atlas.png');background-size:300% 300%}.guide-spell{background-position:50% 0}.guide-cast{background-position:50% 50%}
+.guide-spell,.guide-cast{background-image:url('assets/ui/compact/skill-colorblock-atlas.webp');background-size:300% 300%}.guide-spell{background-position:50% 0}.guide-cast{background-position:50% 50%}
 .guide-step-title{display:flex;align-items:center;gap:7px;margin:11px 0 6px}.guide-step-title>span{font:12px Georgia;color:#8c7453;border-right:1px solid #9a866655;padding-right:7px}
 .guide .guide-steps h3{font-size:17px;line-height:1.25;margin:0;letter-spacing:1px}
 .guide .guide-steps p{font-size:12px;line-height:1.65;margin:0}

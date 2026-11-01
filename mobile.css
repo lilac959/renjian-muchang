@@ -1,0 +1,44 @@
+@media(orientation:portrait){
+#portrait{display:none!important}
+:root{--cardh:112px;--cardw:63px;--skillh:94px}
+.altar-bar{left:8px;right:8px;top:max(8px,env(safe-area-inset-top));width:auto;max-width:none;display:flex;flex-wrap:wrap;gap:6px;padding-top:58px}
+.altar-bar .resources{position:absolute;top:0;left:50%;transform:translateX(-50%);width:190px;height:52px}
+.altar-bar .resources svg{height:44px;width:27px}.resources small{font-size:9px;margin:0}.resources #timer{margin:0}
+.altar-bar .country,.altar-bar .country.pasture{width:calc(50% - 3px);height:60px;padding:5px;grid-template-columns:24px minmax(0,1fr);gap:3px}
+.altar-bar .country.pasture{grid-template-columns:minmax(0,1fr) 24px}
+.altar-bar .country img,.altar-bar .country.pasture img{width:24px;height:30px}
+.altar-bar .country .country-title{gap:4px;flex-wrap:wrap}.altar-bar .country strong{font-size:12px;letter-spacing:0}.altar-bar .country .population,.altar-bar .country .stats{font-size:10px}
+footer{position:absolute;left:8px;right:8px;bottom:max(8px,env(safe-area-inset-bottom));width:auto;max-width:none;transform:none;display:flex;justify-content:space-between;gap:8px;height:126px}
+#gods{position:static;padding:3px;gap:5px;align-self:flex-end}.god-switches{width:38px;gap:6px}#gods .god-tab{min-width:38px;height:50px}#gods .god-main{width:63px;height:112px}
+#skills{position:relative;left:auto;bottom:auto;transform:none;gap:6px;padding-bottom:5px;align-self:flex-end}.skill{width:clamp(48px,14vw,66px);min-width:44px;height:94px}.skill .label{font-size:11px}#skills:before{font-size:11px;letter-spacing:1px}
+#weather{transform:none;left:8px;right:8px;bottom:145px;gap:4px;padding:6px;justify-content:center}#weather button{min-width:0;flex:1;padding:8px 3px;font-size:14px}
+#skillNote,#detail{max-width:calc(100vw - 20px);max-height:32dvh}#skillNote{right:10px;bottom:145px}#aimHint{top:var(--aim-hint-top,136px);bottom:auto;max-width:calc(100vw - 24px);white-space:normal;text-align:center}#paused{bottom:auto;height:auto;min-height:0;width:max-content;white-space:nowrap}
+.home-fan img{height:auto;width:29vw}.home-fan{top:25%}.home-page h1{font-size:36px}.home-actions{bottom:8vh}
+.prologue-task{top:140px;width:calc(100vw - 16px);max-width:none;flex-wrap:wrap;justify-content:center;gap:5px;font-size:12px;padding:7px}.prologue-task span{flex-basis:100%;text-align:center}
+.prologue-dialogue{display:grid;grid-template-rows:minmax(0,1fr) auto;gap:0;padding:140px 8px max(8px,env(safe-area-inset-bottom))}.prologue-panel{position:relative;inset:auto;width:100%;min-height:0;padding:14px;max-height:48dvh;overflow:auto}.prologue-panel .line{font-size:16px;line-height:1.55;min-height:70px}.prologue-panel .speaker{font-size:18px}.prologue-actions{gap:8px}.prologue-actions button{padding:8px!important;font-size:13px!important}.prologue-portraits{position:relative;inset:auto;align-self:end;width:100%;height:100%;max-height:40dvh;min-height:0}.prologue-portraits img{width:48%}
+.guide-steps{grid-template-columns:1fr;gap:10px}.end-layout{grid-template-columns:1fr}.end-art{min-height:160px;height:25dvh}.end-god{height:24dvh}.end-copy{padding:18px;text-align:center}.end-copy h2{margin:8px}.end-score{margin:8px}.end-copy p{font-size:14px}
+}
+@media(orientation:portrait){.altar-bar #resetView{display:none!important}}
+
+/* Portrait finale uses the same card artwork in a vertical composition. */
+.prologue-portrait-menu{display:none}
+@media(orientation:portrait){
+ .prologue-menu-shot{width:100%;height:100%;aspect-ratio:auto;margin:0;max-width:none}
+ .prologue-menu-shot>img{display:none}
+ .prologue-portrait-menu{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;width:100%;height:100%;padding:32px 12px 96px;background:radial-gradient(ellipse at center,#4b5952,#273336 75%)}
+ .prologue-portrait-title{font-size:clamp(32px,9vw,48px);letter-spacing:.18em;color:#ead8af;white-space:nowrap;text-indent:.18em}
+ .prologue-portrait-cards{display:flex;align-items:center;justify-content:center;width:100%;height:min(40dvh,70vw)}
+ .prologue-portrait-cards img{width:32%;max-width:180px;height:100%;object-fit:contain;filter:drop-shadow(0 5px 6px #0006)}
+ .prologue-portrait-cards img:first-child{transform:rotate(-10deg) translateX(12%)}
+ .prologue-portrait-cards img:nth-child(2){z-index:1;transform:translateY(-12px)}
+ .prologue-portrait-cards img:last-child{transform:rotate(10deg) translateX(-12%)}
+ .prologue-finale .continue-challenge{bottom:max(24px,env(safe-area-inset-bottom));font-size:14px;max-width:calc(100vw - 32px)}
+}
+/* Short landscape screens: explanations occupy a separate right-hand column. */
+@media(orientation:landscape) and (max-height:600px){
+ #skillNote,#detail{left:auto!important;right:max(8px,env(safe-area-inset-right))!important;top:auto!important;bottom:max(12px,env(safe-area-inset-bottom));transform:none;width:clamp(158px,25vw,230px);max-width:28vw;max-height:calc(100dvh - 152px);min-height:0;overflow:auto;padding:9px 11px}
+ #skillNote p,#detail p{font-size:11px;line-height:1.4}
+ #skillNote .skill-note-heading{padding-right:30px;gap:4px}#skillNote .x{width:36px;height:36px;min-height:36px}
+ #aimHint{top:auto;bottom:calc(var(--skillh) + 34px);max-width:46vw;font-size:11px;padding:3px 7px}
+ #weather{bottom:calc(var(--skillh) + 64px);max-width:48vw;padding:5px;gap:4px}#weather button{min-width:0;font-size:12px;padding:6px 7px}
+}

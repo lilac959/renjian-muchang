@@ -1,3 +1,4 @@
+import {releaseHint,positionReleaseHint} from './release-hint.js';
 import {pixelRatio} from './mobile-runtime.js';
 import {targetPreview} from './target-preview.js';
 import {GameAudio} from './game-audio.js';
@@ -17,8 +18,9 @@ const camera={...DEFAULT_CAMERA};
 try{settings={...settings,...JSON.parse(localStorage.getItem('rjmc-settings')||'{}')};saved=localStorage.getItem(saveKey);if(saved)CampaignWorld.restore(saved);}catch{saved=null;}
 function toast(t){$('toast').textContent=t.replaceAll('青禾岛','农耕岛').replaceAll('白鹿岛','畜牧岛');$('toast').hidden=false;toastEnd=performance.now()+C.toastMs;}
 const gameAudio=new GameAudio();
+let lastPointerType=matchMedia('(pointer:coarse)').matches?'touch':'mouse';
 function unlockAudio(){gameAudio.setSettings(settings);gameAudio.unlock();}
-document.addEventListener('pointerdown',unlockAudio,{capture:true});
+document.addEventListener('pointerdown',e=>{if(['mouse','touch','pen'].includes(e.pointerType))lastPointerType=e.pointerType;unlockAudio();},{capture:true});
 document.addEventListener('keydown',unlockAudio,{capture:true});
 document.addEventListener('visibilitychange',()=>gameAudio.update([],{paused:running&&!world.result&&(pauseState.paused||world.phase==='ready'),hidden:document.hidden}));
 window.addEventListener('pagehide',()=>gameAudio.track.update(settings.music,true));
@@ -55,18 +57,19 @@ story=new PrologueView({changed:()=>{clearPick();cards();syncPause();if(world.in
 canvas.addEventListener('pointerleave',()=>{if(input.owner===null)aim(null);});
 function setText(node,value){const text=String(value);if(node.textContent!==text)node.textContent=text;}
 let previousMana=null;
+function layoutAimHint(){positionReleaseHint($('aimHint'),{header:document.querySelector('.altar-bar'),task:document.querySelector('.prologue-task'),portrait:matchMedia('(orientation:portrait)').matches});}
 function updateUI(){if(!running)return;$('skills').dataset.god=['生命 · 神谕','天气 · 神谕','死亡 · 神谕'][group];const m=Math.floor(world.mana);if(previousMana!==null&&m!==previousMana){$('godFire').animate(m<previousMana?[{transform:'scale(.78)',opacity:.55},{transform:'scale(1)',opacity:1}]:[{filter:'brightness(1.3)'},{filter:'brightness(1)'}],{duration:400});}previousMana=m;$('soulFill').setAttribute('y',String(80-54*Math.min(1,world.score/world.goal)));$('timer').classList.toggle('urgent',!world.inPrologue&&world.remaining<=60);$('mana').textContent=Math.floor(world.mana);$('souls').textContent=world.score;$('goal').textContent=world.goal;const t=Math.ceil(world.remaining);$('timer').textContent=world.inPrologue?'序章':String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0');const stopped=world.paused&&!modalKind&&!world.result&&!world.dialogue&&world.phase!=='ready';$('paused').hidden=!stopped;$('pauseToggle').classList.toggle('is-paused',world.paused);$('pauseToggle').setAttribute('aria-label',world.paused?'继续游戏':'暂停游戏');$('pauseToggle').disabled=!!modalKind||!!world.result||!!story?.blocksInput;
 for(const b of $('gods').querySelectorAll('[data-group]'))b.hidden=!!world.inPrologue&&!world.visibleGod(+b.dataset.group);
 if(!$('countries').children.length){for(let i=0;i<2;i++){const b=document.createElement('button');b.className='country '+(i?'pasture':'farm');b.innerHTML=`<img src="assets/ui/island-${i?'pasture':'farm'}.svg" alt=""><span class="country-title"><strong>${islandName(i)}</strong><span class="population"></span></span><small class="stats"><span class="supply"></span><span class="production"></span></small>`;b.onclick=()=>{if(!selected)controls.focus(world.islands[i].x,world.islands[i].y);};$('countries').append(b);}}
 [...$('countries').children].forEach((b,i)=>{const c=world.islands[i],s=world.supply(c),r=world.netFood(c),bad=world.humans(i).length>0&&s<8;b.classList.toggle('danger',bad);setText(b.querySelector('.population'),'人口 '+world.humans(i).length);setText(b.querySelector('.supply'),'口粮 '+(Number.isFinite(s)?Math.floor(s)+'秒':'—'));setText(b.querySelector('.production'),' · '+(r>=0?'+':'')+r.toFixed(1)+'/秒');});
 for(const b of $('skills').children){const s=SKILLS.find(s=>s.id===b.dataset.skill);b.hidden=!!world.inPrologue&&!world.allowedSkill(s.id);b.classList.toggle('active',selected===s.id);b.classList.toggle('unaffordable',world.mana<s.cost);b.querySelector('.cooldown').textContent=world.cooldowns[s.id]>0?Math.ceil(world.cooldowns[s.id])+'s':'';}
-$('weather').hidden=selected!=='weather';$('aimHint').hidden=!selected||!$('dialog').hidden;$('aimHint').textContent=target&&world.validate(selected,target,weather)|| (matchMedia('(pointer:coarse)').matches?'按住瞄准，松手释放':'移动瞄准 · 点击释放 · 右键取消');note();detail();
+$('weather').hidden=selected!=='weather';$('aimHint').hidden=!selected||!$('dialog').hidden;$('aimHint').textContent=target&&world.validate(selected,target,weather)|| releaseHint(lastPointerType);layoutAimHint();note();detail();
 if(world.result&&!resultShown){resultShown=true;modalKind='ending';pauseState.open('dialog');syncPause();selected=null;target=null;selectedResident=null;input.clear();saved=null;try{localStorage.removeItem(saveKey);}catch{}ending(world,()=>begin(),home);}}
 
 $('weather').innerHTML=[['normal','晴天','正常'],['rain','降雨','增产 · 灭火'],['hot','酷热','减产'],['cold','寒冷','减产']].map(([k,n,d])=>`<button data-weather="${k}" class="${k===weather?'active':''}">${n}<small>${d}</small></button>`).join('');$('weather').querySelectorAll('button').forEach(b=>b.onclick=()=>{weather=b.dataset.weather;target=null;$('weather').querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));});
 $('menu').onclick=()=>modalKind==='menu'?closeModal():menu();$('pauseToggle').onclick=togglePause;$('resetView').onclick=()=>{controls.reset();toast('视角已复位');};
 function suspend(){pauseState.suspend();clearPick();syncPause();save();updateUI();}
-function resize(){view.renderer.setPixelRatio(pixelRatio());view.resize(innerWidth,innerHeight);if(running){input.clear();syncPause();}}window.addEventListener('resize',resize);resize();
+function resize(){view.renderer.setPixelRatio(pixelRatio());view.resize(innerWidth,innerHeight);if(running){input.clear();syncPause();layoutAimHint();}}window.addEventListener('resize',resize);resize();
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&running)suspend();});window.addEventListener('pagehide',save);
 document.addEventListener('keydown',e=>{
  if(story?.keydown(e))return;

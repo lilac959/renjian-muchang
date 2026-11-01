@@ -1,9 +1,10 @@
+import {loadModel,environmentTexture} from './mobile-runtime.js';
 import * as T from './vendor/three.module.js';
 import {GLTFLoader} from './vendor/GLTFLoader.js';
 import {clone} from './vendor/SkeletonUtils.js';
 export class SourceSheep {
  async load(root,meta){
-  const gltf=await new GLTFLoader().loadAsync(new URL('./assets/islands/v09/sheep.glb',import.meta.url).href);
+  const gltf=await loadModel(new URL('./assets/islands/v09/sheep.glb',import.meta.url).href,'sheep');
   const clip=gltf.animations.find(a=>a.name.includes('Sheep_Idle'));
   if(!clip)throw new Error('羊群待机动作缺失');
   this.actors=[];const basis=new T.Matrix4().makeRotationX(-Math.PI/2);

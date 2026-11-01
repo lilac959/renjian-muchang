@@ -1,0 +1,21 @@
+@media(orientation:portrait){
+#portrait{display:none!important}
+:root{--cardh:112px;--cardw:63px;--skillh:94px}
+.altar-bar{left:8px;right:8px;top:max(8px,env(safe-area-inset-top));width:auto;max-width:none;display:flex;flex-wrap:wrap;gap:6px;padding-top:58px}
+.altar-bar .resources{position:absolute;top:0;left:50%;transform:translateX(-50%);width:190px;height:52px}
+.altar-bar .resources svg{height:44px;width:27px}.resources small{font-size:9px;margin:0}.resources #timer{margin:0}
+.altar-bar .country,.altar-bar .country.pasture{width:calc(50% - 3px);height:60px;padding:5px;grid-template-columns:24px minmax(0,1fr);gap:3px}
+.altar-bar .country.pasture{grid-template-columns:minmax(0,1fr) 24px}
+.altar-bar .country img,.altar-bar .country.pasture img{width:24px;height:30px}
+.altar-bar .country .country-title{gap:4px;flex-wrap:wrap}.altar-bar .country strong{font-size:12px;letter-spacing:0}.altar-bar .country .population,.altar-bar .country .stats{font-size:10px}
+footer{position:absolute;left:8px;right:8px;bottom:max(8px,env(safe-area-inset-bottom));width:auto;max-width:none;transform:none;display:flex;justify-content:space-between;gap:8px;height:126px}
+#gods{position:static;padding:3px;gap:5px;align-self:flex-end}.god-switches{width:38px;gap:6px}#gods .god-tab{min-width:38px;height:50px}#gods .god-main{width:63px;height:112px}
+#skills{position:relative;left:auto;bottom:auto;transform:none;gap:6px;padding-bottom:5px;align-self:flex-end}.skill{width:clamp(48px,14vw,66px);min-width:44px;height:94px}.skill .label{font-size:11px}#skills:before{font-size:11px;letter-spacing:1px}
+#weather{transform:none;left:8px;right:8px;bottom:145px;gap:4px;padding:6px;justify-content:center}#weather button{min-width:0;flex:1;padding:8px 3px;font-size:14px}
+#skillNote,#detail{max-width:calc(100vw - 20px);max-height:32dvh}#skillNote{right:10px;bottom:145px}#aimHint{top:180px;max-width:94vw;white-space:normal;text-align:center}#paused{bottom:145px}
+.home-fan img{height:auto;width:29vw}.home-fan{top:25%}.home-page h1{font-size:36px}.home-actions{bottom:8vh}
+.prologue-task{top:140px;width:calc(100vw - 16px);max-width:none;flex-wrap:wrap;justify-content:center;gap:5px;font-size:12px;padding:7px}.prologue-task span{flex-basis:100%;text-align:center}
+.prologue-panel{left:8px;right:8px;bottom:max(8px,env(safe-area-inset-bottom));min-height:0;padding:14px;max-height:48dvh;overflow:auto}.prologue-panel .line{font-size:16px;line-height:1.55;min-height:70px}.prologue-panel .speaker{font-size:18px}.prologue-actions{gap:8px}.prologue-actions button{padding:8px!important;font-size:13px!important}.prologue-portraits{bottom:42dvh;left:0;right:0;height:40dvh}.prologue-portraits img{width:48%}
+.guide-steps{grid-template-columns:1fr;gap:10px}.end-layout{grid-template-columns:1fr}.end-art{min-height:160px;height:25dvh}.end-god{height:24dvh}.end-copy{padding:18px;text-align:center}.end-copy h2{margin:8px}.end-score{margin:8px}.end-copy p{font-size:14px}
+}
+@media(orientation:portrait){.altar-bar #resetView{display:none!important}}

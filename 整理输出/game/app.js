@@ -1,3 +1,4 @@
+import {pixelRatio} from './mobile-runtime.js';
 import {targetPreview} from './target-preview.js';
 import {GameAudio} from './game-audio.js';
 import {PROLOGUE} from './prologue-data.js';
@@ -28,7 +29,7 @@ function clearPick(){selected=null;target=null;selectedResident=null;hoverSkill=
 const pauseState=new PauseState();
 let modalKind='',story=null;
 
-function syncPause(){world.paused=pauseState.paused||!!world.dialogue||world.phase==='ready'||document.hidden||innerWidth<innerHeight;}
+function syncPause(){world.paused=pauseState.paused||!!world.dialogue||world.phase==='ready'||document.hidden;}
 function openModal(kind){modalKind=kind;if(running)pauseState.open('dialog');clearPick();syncPause();}
 function closeModal(){modalKind='';$('dialog').hidden=true;pauseState.close('dialog');syncPause();input.clear();updateUI();if(running)$('menu').focus({preventScroll:true});}
 function togglePause(){if(!running||world.result||modalKind||story?.blocksInput)return;pauseState.toggle();clearPick();syncPause();updateUI();}
@@ -65,7 +66,7 @@ if(world.result&&!resultShown){resultShown=true;modalKind='ending';pauseState.op
 $('weather').innerHTML=[['normal','晴天','正常'],['rain','降雨','增产 · 灭火'],['hot','酷热','减产'],['cold','寒冷','减产']].map(([k,n,d])=>`<button data-weather="${k}" class="${k===weather?'active':''}">${n}<small>${d}</small></button>`).join('');$('weather').querySelectorAll('button').forEach(b=>b.onclick=()=>{weather=b.dataset.weather;target=null;$('weather').querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));});
 $('menu').onclick=()=>modalKind==='menu'?closeModal():menu();$('pauseToggle').onclick=togglePause;$('resetView').onclick=()=>{controls.reset();toast('视角已复位');};
 function suspend(){pauseState.suspend();clearPick();syncPause();save();updateUI();}
-function resize(){view.renderer.setPixelRatio(Math.min(2,devicePixelRatio||1));view.resize(innerWidth,innerHeight);if(running){input.clear();if(innerWidth<innerHeight)suspend();}}window.addEventListener('resize',resize);resize();
+function resize(){view.renderer.setPixelRatio(pixelRatio());view.resize(innerWidth,innerHeight);if(running){input.clear();syncPause();}}window.addEventListener('resize',resize);resize();
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&running)suspend();});window.addEventListener('pagehide',save);
 document.addEventListener('keydown',e=>{
  if(story?.keydown(e))return;

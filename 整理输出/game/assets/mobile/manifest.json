@@ -1,0 +1,32 @@
+{
+  "island": {
+    "original": 163922975,
+    "download": 23106461,
+    "decoded": 45031108,
+    "nodes": 260
+  },
+  "sheep": {
+    "original": 5359096,
+    "download": 290686,
+    "decoded": 773676,
+    "nodes": 12
+  },
+  "farming": {
+    "original": 3981784,
+    "download": 465896,
+    "decoded": 1101720,
+    "nodes": 70
+  },
+  "livestock": {
+    "original": 3989788,
+    "download": 465207,
+    "decoded": 1101096,
+    "nodes": 70
+  },
+  "bridge": {
+    "original": 4617128,
+    "download": 922844,
+    "decoded": 3512904,
+    "nodes": 1
+  }
+}

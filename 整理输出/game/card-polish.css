@@ -111,7 +111,7 @@ footer{position:absolute;left:0;right:0;bottom:max(20px,env(safe-area-inset-bott
 .skill[data-school="1"]{--spell-base:#34484d;--spell-paper:#cbd5cc}
 .skill[data-school="2"]{--spell-base:#403440;--spell-paper:#d1c6d2}
 .skill{display:block;padding:4px;overflow:hidden;background:linear-gradient(145deg,#e8d4a0,#695337 35%,#c6ac7c 65%,#564531);border:2px solid #b29a70;border-radius:7px;outline:0;box-shadow:0 6px 14px #10252466,inset 0 0 0 1px #fff0c480;isolation:isolate}
-.skill-art{position:absolute;inset:4px 4px 31px;display:block;background-image:url('assets/ui/skill-colorblock-atlas.png');background-size:300% 300%;background-position:var(--art-x) var(--art-y);border-radius:3px;background-color:var(--spell-base);pointer-events:none}
+.skill-art{position:absolute;inset:4px 4px 31px;display:block;background-image:url('assets/ui/compact/skill-colorblock-atlas.webp');background-size:300% 300%;background-position:var(--art-x) var(--art-y);border-radius:3px;background-color:var(--spell-base);pointer-events:none}
 .skill:before{display:block;inset:7px 7px 32px;border:1px solid #e4c98f77;border-radius:45% 45% 2px 2px / 18% 18% 2px 2px;opacity:.7;z-index:1;pointer-events:none}
 .skill .label{position:absolute;left:5px;right:5px;bottom:5px;width:auto;max-width:none;height:25px;min-height:0;display:grid;place-items:center;padding:1px;background:linear-gradient(#edddc4,var(--spell-paper));border:1px solid #9f8870;box-shadow:inset 0 0 0 2px #efdec25c;color:#40382f;font-size:clamp(11px,1.1vw,16px);line-height:1.1;z-index:3}
 .skill .cost{position:absolute;right:6px;top:6px;font:12px Georgia;color:#f4e6cc;background:#29272bdc;border:1px solid #bda57e;border-radius:3px;padding:2px 4px;line-height:1.1;z-index:4}
